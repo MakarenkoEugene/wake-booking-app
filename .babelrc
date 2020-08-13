@@ -1,0 +1,6 @@
+{
+  "presets": ["react"],
+  "compact": false,
+  "plugins": ["transform-runtime"],
+  "env": {}
+}

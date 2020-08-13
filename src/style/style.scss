@@ -1,0 +1,714 @@
+$_font_blod: 700;
+
+@import "./reset.scss";
+
+#_wakebooking {
+  --white: white;
+  --light_gray: #e6e6e6;
+  --gray: #bbbbbb;
+  --black_gray: #4f4e58;
+  --black: #282c34;
+  --orange: #e2aa01;
+  --red: #ea4335;
+  --blue: #4285f4;
+  --green: #34a853;
+  --blueasd: #40eaff;
+
+  @keyframes appearance {
+    0% {
+      transform: translateX(0px);
+    }
+    3% {
+      transform: translateX(9px);
+    }
+    6% {
+      transform: translateX(-6px);
+    }
+    9% {
+      transform: translateX(3px);
+    }
+    11% {
+      transform: translateX(-2px);
+    }
+    13% {
+      transform: translateX(0px);
+    }
+  }
+
+  @keyframes flicker {
+    0% {
+      background-color: inherit;
+      opacity: 0.5;
+    }
+    100% {
+      background-color: var(--green);
+      opacity: 1;
+    }
+  }
+
+  div,
+  button,
+  ul {
+    border: 1px solid var(--light_gray);
+    border-radius: 3px;
+  }
+
+  > div {
+    border: none;
+    overflow: revert;
+    top: 0px;
+    left: 0px;
+    position: relative;
+    background-color: var(--light_gray);
+    color: var(--black_gray);
+  }
+
+  #alert {
+    white-space: break-spaces;
+    border: none;
+    text-align: center;
+    padding: 20px 0px 5px;
+    margin: 0px 0px 3px;
+    position: sticky;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+    background-color: var(--light_gray);
+
+    > div {
+      animation: appearance 4s linear 0s infinite;
+      text-shadow: 0px 0px 1px var(--black);
+      box-shadow: 0px 0px 1px 0px var(--black), 0px 0px 1px 0px var(--black) inset;
+      text-transform: none;
+      border: 1px solid var(--white);
+      background-color: var(--blue);
+      color: var(--white);
+      font-weight: $_font_blod;
+      font-size: 1em;
+      line-height: 1.5;
+
+      button {
+        position: absolute;
+        right: 1px;
+        bottom: 1px;
+        background-color: transparent;
+        border: none;
+        padding: 0;
+        margin: 0;
+        color: var(--light_gray);
+        margin-top: 10px;
+        transition: 0.2s;
+
+        &:focus,
+        &:hover {
+          font-size: 2em;
+          color: var(--white);
+        }
+      }
+    }
+
+    .m_error_WB {
+      background-color: var(--red);
+    }
+    .m_warning_WB {
+      background-color: var(--orange);
+    }
+    .m_success_WB {
+      background-color: var(--green);
+    }
+  }
+
+  #info {
+    position: relative;
+    padding: 0px;
+
+    #client_btn {
+      position: absolute;
+      left: 10px;
+      z-index: 2;
+      height: min-content;
+      float: left;
+      padding: 0px;
+      cursor: pointer;
+      border-radius: 50%;
+      border: 1px solid var(--light_gray);
+      height: 50px;
+      width: 50px;
+      background-color: var(--light_gray);
+
+      svg {
+        background-color: var(--light_gray);
+        border-radius: 15px;
+        height: 41px;
+        width: 41px;
+      }
+      &:focus,
+      &:hover {
+        border-color: var(--blue);
+      }
+    }
+
+    #now_date {
+      margin: 0px;
+      width: 200px;
+      line-height: 1.5em;
+      font-size: 0.8em;
+      color: var(--black_gray);
+      float: right;
+
+      h2 {
+        font-size: 1.2em;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--black_gray);
+      }
+
+      p {
+        white-space: break-spaces;
+      }
+    }
+  }
+
+  #client_nav {
+    color: var(--black);
+    position: relative;
+    padding: 10px 0px 0px;
+    margin: 0;
+    text-align: start;
+    font-size: 1em;
+
+    h2,
+    h4 {
+      text-align: left;
+      padding: 0px 0px 10px 5px;
+      line-height: 1.1;
+    }
+
+    h5 {
+      padding-bottom: 5px;
+      line-height: 1.1;
+    }
+
+    ul {
+      margin-left: 5px;
+    }
+
+    table {
+      text-align: center;
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0px 30px;
+
+      caption {
+        margin-bottom: 15px;
+        line-height: 1.1;
+        font-weight: $_font_blod;
+        font-size: 0.85em;
+      }
+
+      .recentlySaved {
+        animation: flicker 0.5s linear 0s 3 alternate;
+        background-color: var(--green);
+        color: var(--white);
+      }
+      th {
+        button {
+          float: left;
+        }
+
+        padding: 5px;
+        line-height: 26px;
+        font-size: 0.9em;
+        border-bottom: 1px solid var(--blue);
+        border-top: 1px solid var(--blue);
+      }
+      td {
+        width: 25%;
+        font-size: 0.85em;
+        font-weight: $_font_blod;
+        border-bottom: 1px solid var(--blue);
+        border-right: 1px solid var(--blue);
+        padding: 5px;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      tbody {
+        tr:nth-child(2) {
+          font-size: 0.6em;
+        }
+      }
+      tr:first-child {
+        td {
+          font-size: 0.55em;
+        }
+      }
+      tr:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+    }
+
+    .client_info {
+      padding: 0px 0px 15px 5px;
+      font-size: 0.8em;
+      color: var(--black_gray);
+      line-height: 1.4;
+    }
+
+    .client_turn {
+      padding: 0px 0px 15px 5px;
+    }
+
+    .client_return_btn {
+      background-color: var(--blue);
+      color: white;
+      margin-top: 5px;
+      padding: 10px;
+      float: left;
+
+      &:hover,
+      &:focus {
+        color: var(--blue);
+        border-color: var(--blue);
+        background-color: var(--white);
+      }
+    }
+    .client_sign_out_btn {
+      margin-top: 15px;
+      float: right;
+
+      &:hover,
+      &:focus {
+        color: var(--red);
+        border-color: var(--red);
+      }
+    }
+  }
+
+  #time,
+  #teacher,
+  #winch {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    button {
+      flex: auto;
+      margin: 2px;
+      color: inherit;
+    }
+  }
+
+  #time {
+    .button_taken_passed,
+    .button_taken_client,
+    .button_taken_clossed,
+    button {
+      border-radius: 3px;
+      font-size: 0.9em;
+      margin: 5px;
+      padding: 7px;
+      flex: 1 1;
+    }
+
+    .button_taken_client {
+      position: relative;
+      background-color: var(--green);
+      border-color: var(--red);
+      border-color: transparent;
+      color: var(--white);
+      transition: 0.25s;
+
+      &:focus,
+      &:hover {
+        // color: var(--black_gray);
+        border-color: var(--red);
+        background-color: var(--white);
+
+        span {
+          color: var(--red);
+          font-size: 2em;
+        }
+        .teacher {
+          right: 34px;
+        }
+      }
+
+      span {
+        transition: inherit;
+        position: absolute;
+        color: var(--white);
+        // text-shadow: 0px 0px 5px var(--white);
+      }
+
+      .teacher {
+        right: 0;
+        bottom: 0;
+        font-weight: $_font_blod;
+      }
+      .clear {
+        right: 0;
+        top: 0;
+        font-size: 0.9em;
+      }
+    }
+
+    .button_taken_passed,
+    .button_taken_clossed {
+      position: relative;
+      cursor: not-allowed;
+      border: 1px solid transparent;
+      background-color: var(--gray);
+      opacity: 0.5;
+      box-shadow: 1px 1px 5px 0px var(--black) inset;
+
+      span {
+        transition: inherit;
+        position: absolute;
+        color: var(--white);
+        text-shadow: 0px 0px 5px var(--black);
+        font-weight: $_font_blod;
+      }
+
+      .teacher {
+        right: 0;
+        bottom: 0;
+      }
+      .clear,
+      .winch {
+        right: 0;
+        top: 0;
+      }
+      .clear {
+        font-size: 0.9em;
+      }
+      .client {
+        left: 0;
+        bottom: 0;
+      }
+    }
+
+    .button_taken_passed {
+      opacity: 0.2;
+      box-shadow: none;
+    }
+  }
+
+  #date {
+    position: relative;
+    #calendar_btn {
+      padding: 0px 5px;
+      width: 100%;
+      height: 40px;
+
+      span {
+        line-height: 30px;
+        display: inline;
+      }
+
+      svg {
+        fill: var(--black_gray);
+        float: right;
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    #calendar {
+      overflow: hidden;
+      padding: 0px;
+      margin: 0px;
+      display: flex;
+      flex-direction: column;
+      height: 0px;
+      transition: 0.2s;
+
+      > div,
+      > ul {
+        line-height: 30px;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      > ul {
+        padding: 0px 5px;
+      }
+
+      #week_day {
+        font-size: 0.7em;
+        color: var(--black_gray);
+        > li {
+          width: 39px;
+        }
+      }
+
+      div > span {
+        transition-timing-function: linear;
+      }
+
+      #days {
+        transition-timing-function: linear;
+        justify-content: start;
+        li {
+          width: 34px;
+          margin: 3px;
+
+          button {
+            text-align: center;
+            padding: 0px;
+            width: 34px;
+            line-height: 30px;
+          }
+        }
+
+        .date_non_working_WB,
+        .date_disabled_WB {
+          display: block;
+          text-align: center;
+          padding: 0px;
+          width: 34px;
+          line-height: 30px;
+          opacity: 0.3;
+          background-color: var(--white);
+          border-radius: 5px;
+          cursor: initial;
+        }
+
+        .date_non_working_WB {
+          color: var(--white);
+          background-color: var(--gray);
+          opacity: 0.6;
+        }
+
+        .now_date_WB {
+          color: var(--blue);
+        }
+      }
+      // background-color: var(--black_gray);
+      // color: var(--light_gray);
+    }
+  }
+
+  #form {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+
+      > div {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        width: calc(100% - 9px);
+
+        padding: 4px;
+        border: 1px solid var(--gray);
+        border-radius: 5px;
+        background-color: var(--white);
+      }
+
+      .border_disabled_WB {
+        width: 100%;
+        padding: 0px;
+        border: 0px solid transparent;
+        border-radius: 5px;
+        background-color: transparent;
+      }
+    }
+
+    input {
+      flex: 100% 1 1;
+      padding: 7px 12px;
+      border: 1px solid var(--white);
+
+      font-size: 1em;
+      color: var(--black_gray);
+      outline: none;
+      border-radius: 5px;
+
+      &:focus,
+      &:hover {
+        border-color: var(--blue);
+      }
+      &:disabled {
+        background-color: var(--gray);
+        cursor: not-allowed;
+      }
+    }
+
+    input[type="password"],
+    input[type="text"],
+    input[type="tel"] {
+      &:valid {
+        border-color: var(--green);
+      }
+    }
+
+    label {
+      position: absolute;
+      top: -6px;
+      right: 0px;
+
+      background-color: var(--light_gray);
+      color: var(--black_gray);
+      font-size: 0.6em;
+    }
+
+    input[type="button"],
+    input[type="submit"] {
+      flex: 100% 1 5;
+      cursor: pointer;
+      width: 130px;
+      height: 42px;
+      color: var(--white);
+      background-color: var(--blue);
+
+      &:disabled {
+        color: var(--black);
+        background-color: var(--gray);
+        opacity: 0.8;
+        border-color: var(--light_gray);
+        cursor: not-allowed;
+      }
+    }
+
+    #input_submit_WB {
+      flex: 100% 1 6;
+      margin-left: 3px;
+
+      &:disabled {
+        color: var(--light_gray);
+      }
+    }
+
+    .show_hide_password {
+      border: 1px solid transparent;
+      padding: 9px 2px 9px 5px;
+
+      svg {
+        width: 25px;
+      }
+
+      &:hover {
+        svg {
+          fill: var(--blue);
+        }
+      }
+    }
+  }
+
+  .m_alert_WB {
+    position: relative;
+    border-color: var(--blue) !important;
+
+    #e_text_for_alert {
+      background-color: var(--light_gray);
+      color: var(--blue);
+      font-size: 0.8em;
+      position: absolute;
+      top: -12px;
+      left: 5px;
+      padding: 2px;
+    }
+  }
+
+  #e_text_for_nav {
+    background-color: var(--light_gray);
+    color: var(--black_gray);
+    font-size: 0.8em;
+    position: absolute;
+    top: -12px;
+    right: 5px;
+    padding: 2px;
+  }
+
+  .m_focus_WB {
+    position: relative;
+    z-index: 1;
+    background-color: var(--blue);
+  }
+  .m_error_WB {
+    background-color: var(--red);
+  }
+  .m_warning_WB {
+    background-color: var(--orange);
+  }
+  .m_success_WB {
+    background-color: var(--green);
+  }
+  .m_selected_WB {
+    background-color: var(--blue);
+    color: var(--white) !important;
+  }
+  .m_hidden_WB {
+    height: 0px !important;
+    padding: 0px !important;
+    margin: 0px !important;
+    visibility: hidden;
+  }
+  .m_booked_WB {
+    background-color: var(--orange);
+  }
+  .m_none_WB {
+    display: none;
+  }
+}
+
+.loading {
+  position: relative;
+  cursor: wait;
+
+  &::after,
+  &::before {
+    position: absolute;
+    display: block;
+    content: "";
+    z-index: 10;
+  }
+
+  &::after {
+    bottom: calc(50% - 50px);
+    right: calc(50% - 50px);
+    margin: auto;
+
+    border: 1px solid #8181816e;
+    border-top: 1px solid #006eff;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 1.5s ease-in-out infinite;
+  }
+
+  &::before {
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

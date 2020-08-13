@@ -1,0 +1,32 @@
+{
+  "name": "wake_booking_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "parcel build index.html --out-dir build/ --no-source-maps",
+    "build_ontop": "parcel build ./patch/ontop/index.html --out-dir ./build/ --no-source-maps",
+    "ontop": "parcel ./patch/ontop/index.html --port 80",
+    "dev": "parcel ./index.html --port 81"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.10"
+  },
+  "dependencies": {
+    "autoprefixer": "^9.8.4",
+    "locale": "^0.1.0",
+    "mo": "^1.7.3",
+    "moment": "^2.27.0",
+    "postcss-modules": "^3.1.0",
+    "react": "^16.8.3",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "react-router-dom": "^5.2.0",
+    "redux": "^3.1.0 || ^4.0.0",
+    "redux-devtools-extension": "^2.13.8"
+  }
+}
