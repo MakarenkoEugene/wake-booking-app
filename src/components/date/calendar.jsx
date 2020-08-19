@@ -110,7 +110,7 @@ function Calendar({
           <button onClick={() => onIncreaseCalendarDate({ listDateRef, textMonthAndYearRef })}>→</button>
         </div>
         <ul id="week_day">
-          {["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"].map((weekDay) => (
+          {moment.weekdaysMin(true).map((weekDay) => (
             <li key={weekDay}>{weekDay}</li>
           ))}
         </ul>

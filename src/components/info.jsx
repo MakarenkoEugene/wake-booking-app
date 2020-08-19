@@ -67,7 +67,7 @@ function Info({ toggleShowClientNav, nowDate, nowTime, locale, utcOffset, parkNa
         <h2>{parkName}</h2>
         <p>
           {nowDate && nowTime
-            ? `${moment(nowDate).locale(locale).utcOffset(utcOffset).format("llll")}\n ${nowTime}`
+            ? `${moment(nowDate).locale(locale).utcOffset(utcOffset).format("LL dddd")}\n ${nowTime}`
             : ""}
         </p>
       </div>

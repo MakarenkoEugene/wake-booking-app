@@ -12,11 +12,17 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
     "parcel-bundler": "^1.12.4",
     "sass": "^1.26.10"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "@babel/runtime": "^7.11.2",
     "autoprefixer": "^9.8.4",
     "locale": "^0.1.0",
     "mo": "^1.7.3",
