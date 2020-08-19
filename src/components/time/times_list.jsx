@@ -6,7 +6,7 @@ import TimeItem from "./time_item";
 
 const mapStateToProps = (store) => ({
   teachers: store.config.teachers,
-  workTimes: store.config.config.times,
+  workWeekDayList: store.config.config.workWeekDayList,
   selectedTeacher: store.selectedTeacher,
   selectedWinch: store.selectedWinch,
   selectedTimes: store.selectedTimes,
@@ -23,7 +23,7 @@ function TimesList({
   selectedTeacher,
   selectedWinch,
   selectedDate,
-  workTimes,
+  workWeekDayList,
   selectedTimes,
   winchTurn,
   teacherTurn,
@@ -46,12 +46,15 @@ function TimesList({
   const winchDateTurn = winchTurnDate ? winchTurnDate.dateTurn.map((item) => item.time) : [];
   const teacherDateTurn = teacherTurnDate ? teacherTurnDate.dateTurn.map((item) => item.time) : [];
 
+  const weekDay = moment(selectedDate).format("e");
+  const { timesList } = workWeekDayList[weekDay];
+
   return (
     <div className={selectedTimes.length ? "" : "m_alert_WB"} id="time">
       <span id="e_text_for_nav">Time</span>
       {!selectedTimes.length && <span id="e_text_for_alert">Select Time</span>}
 
-      {workTimes.map(({ time }) => (
+      {timesList.map(({ time }) => (
         <TimeItem
           key={time}
           time={time}
