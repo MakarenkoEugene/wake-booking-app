@@ -1,0 +1,29 @@
+#team {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  > div {
+    width: 210px;
+    padding: 20px;
+    text-align: center;
+
+    img {
+      margin: 0px auto 10px;
+      display: block;
+      width: 100px;
+      height: 100px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+
+    big {
+      font-size: 1.1em;
+      font-weight: 700;
+    }
+    p {
+      opacity: 0.7;
+      font-size: 0.8em;
+    }
+  }
+}

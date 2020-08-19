@@ -1,0 +1,311 @@
+
+@media screen and (max-width: 700px) {
+  h1 {
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 340px) {
+  h1 {
+    font-size: 1.8em;
+  }
+}
+h2 {
+  font-size: 2em;
+  line-height: 1.5;
+  @media screen and (max-width: 600px) {
+    font-size: 1.8em;
+  }
+}
+
+
+main {
+  section {
+    padding: 60px 30px;
+    font-size: 1em;
+
+    @media screen and (max-width: 900px) {
+      font-size: 0.9em;
+    }
+
+    @media screen and (max-width: 700px) {
+      padding: 60px 10px;
+      font-size: 0.85em;
+    }
+
+    @media screen and (max-width: 500px) {
+      font-size: 0.8em;
+    }
+  }
+}
+
+.warning {
+  font-style: italic;
+  font-weight: 300;
+  margin: 10px;
+  display: inline-block;
+  border: 3px solid $_o;
+  border-radius: 20px;
+  padding: 30px;
+  background-color: $_b;
+  color: $_o;
+}
+
+.link_icone {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  margin-left: 10px;
+  position: relative;
+  top: 5px;
+  background-image: url(../images/link.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+
+  &:active,
+  &:hover {
+    opacity: 0.4;
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+
+  label {
+    font-size: 0.8em;
+    margin: 50px 5px 5px;
+  }
+
+  textarea,
+  input {
+    padding: 5px 10px;
+    margin-left: 35px;
+    max-width: 150px;
+    width: min-content;
+    font-size: 0.9em;
+  }
+
+  input[type="range"] {
+    display: inline-block;
+    padding: 0px;
+  }
+
+  .text_help {
+    content: "⚠️";
+    cursor: help;
+    transition: 0.3s;
+    color: $_lg;
+    font-size: 2em;
+    position: relative;
+    margin: 0px;
+    margin-top: -37px;
+    width: min-content;
+    // opacity: 0.4;
+
+    span {
+      display: none;
+      cursor: text;
+      position: absolute;
+      width: max-content;
+      max-width: 150px;
+      padding: 10px;
+      left: 37px;
+      top: 11px;
+      font-size: 0.35em;
+      color: $_b;
+      background-color: $_lg;
+      border-radius: 1px;
+      border: 1px solid $_bg;
+
+      &::after {
+        display: block;
+        content: "";
+        border: 1px solid $_bg;
+        border-bottom-color: transparent;
+        border-right-color: transparent;
+        transform: rotate(-45deg);
+        width: 10px;
+        height: 10px;
+        background-color: $_lg;
+        position: absolute;
+        left: -6px;
+        top: 5px;
+      }
+    }
+
+    &:hover {
+      opacity: 1;
+      span {
+        display: block;
+      }
+    }
+  }
+  input:required + .text_help {
+    color: $_o;
+  }
+  input[type="button"],
+  input[type="submit"] {
+    margin: 50px 0px;
+    background-color: transparent;
+    font-size: 0.8em;
+  }
+
+  input[type="button"]:disabled,
+  input[type="submit"]:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  input:valid + .text_help {
+    color: $_green;
+  }
+
+  .toggle {
+    display: none;
+  }
+
+  .toggle + .toggleElem {
+    display: none;
+  }
+
+  .toggle:checked + .toggleElem {
+    display: inherit;
+  }
+
+  #input_recaptcha {
+    position: relative;
+    bottom: 48px;
+    left: 14px;
+    padding: 0px;
+    margin: 0px;
+    width: 1px;
+  }
+}
+
+#contact {
+  background-color: $_lg;
+  width: fit-content;
+  padding: 10px;
+  margin: 5px 0px 15px auto;
+
+  h4 {
+    padding: 0px 0px 10px;
+  }
+}
+
+p {
+  text-indent: 20px;
+}
+
+big {
+  font-weight: 600;
+  line-height: 2;
+}
+
+.example_url {
+  position: relative;
+  background-color: #282c34;
+  color: white;
+  display: inline-block;
+  padding: 6px 30px;
+  border-radius: 20px;
+
+  &::before {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    content: "";
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url(../images/lock.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $_lg;
+    border-radius: 50%;
+  }
+  @media screen and (max-width: 600px) {
+    font-size: 0.8em;
+
+    &::before {
+      width: 22px;
+      height: 22px;
+      background-size: 18px;
+    }
+  }
+}
+
+.code {
+  white-space: pre-wrap;
+  background-color: $_lg;
+  color: $_b;
+  display: block;
+  width: auto;
+  padding: 10px 30px;
+  border-radius: 5px;
+  margin: 15px 0px;
+  letter-spacing: 2px;
+
+  @media screen and (max-width: 600px) {
+    padding: 10px;
+  }
+
+  > .coment {
+    margin: 15px 0px 5px 10px;
+    display: block;
+    letter-spacing: 1px;
+    word-spacing: 5px;
+    font-size: 0.8em;
+    font-style: italic;
+    color: $_bg;
+    margin-right: auto;
+  }
+}
+
+#license {
+  padding: 70px 30px;
+
+  p {
+    line-height: 1.5;
+    padding-bottom: 15px;
+    font-weight: 300;
+  }
+}
+
+#log_in {
+  > span {
+    text-align: right;
+    margin-bottom: 20px;
+    display: block;
+  }
+}
+
+#privacy {
+  ul {
+    li:first-child {
+      font-size: 1.1em;
+      font-weight: 600;
+      padding-bottom: 20px;
+      padding-left: 0px;
+    }
+    li {
+      line-height: 1.6;
+      padding-left: 20px;
+      padding-bottom: 5px;
+    }
+  }
+}
+
+#sign_up {
+  > span {
+    float: right;
+  }
+}
+
+#g-recaptcha {
+  margin-top: 40px;
+}
