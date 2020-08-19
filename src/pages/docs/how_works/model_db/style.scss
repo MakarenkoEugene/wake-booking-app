@@ -1,0 +1,32 @@
+#model_bd {
+  list-style: none;
+  font-size: 0.7em;
+
+  ul {
+    list-style: none;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+
+    li {
+      position: relative;
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 25px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+        left: -32px;
+        top: 10px;
+
+        @media screen and (max-width: 600px) {
+          width: 12px;
+          left: -16px;
+          top: 6px;
+        }
+
+        &:hover {
+          border-bottom-color: rgba(0, 0, 0, 0.9);
+        }
+      }
+    }
+  }
+}

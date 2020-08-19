@@ -1,0 +1,45 @@
+#docs {
+  h1,
+  h2,
+  h3,
+  h4 {
+    padding: 40px 0px 10px;
+    line-height: 2;
+  }
+  padding: 40px 0;
+
+  > section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid var(--black_gray);
+
+    > div {
+      padding: 20px;
+      width: calc(50% - 40px);
+      height: auto;
+    }
+
+    > div:first-child {
+      color: var(--black);
+      background-color: var(--white);
+    }
+
+    > div:last-child {
+      height: auto;
+      color: var(--white);
+      background-color: var(--black);
+    }
+  }
+
+  
+  li > ul {
+    margin-left: 20px;
+  }
+  
+  ul li {
+    line-height: 1.2;
+    margin-bottom: 8px;
+  }
+}
