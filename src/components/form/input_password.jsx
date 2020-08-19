@@ -1,44 +1,65 @@
-import React from "react";
+import React, { Component } from "react";
 
-export default function InputPassword({ inputPasswordValue, inputPasswordValid, changeInputPasswordValue }) {
-  const inputPasswordRef = React.useRef(null);
+import closseEye from "../../images/eye.svg";
+import openEye from "../../images/openEye.svg";
 
-  return (
-    <div>
-      <div className={!inputPasswordValid ? "m_alert_WB" : ""}>
-        <label htmlFor="input_password_WB">Password</label>
+class InputPassword extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { passwordShowed: false };
+  }
+  togglePasswordShowed() {
+    const { passwordShowed } = this.state;
+
+    this.setState({ passwordShowed: !passwordShowed });
+  }
+  render() {
+    const { passwordShowed } = this.state;
+    return (
+      <>
+        <label htmlFor="input_password">Пароль:</label>
         <input
-          type="password"
-          id="input_password_WB"
-          value={inputPasswordValue}
-          onChange={(e) => changeInputPasswordValue(e.target.value, e.target.validity.valid)}
-          ref={inputPasswordRef}
-          title="You need set your password. You can enter numbers, Latin alphabet in lower and upper case. 0-9 a-z A-Z"
-          pattern="[a-zA-Z0-9]*"
-          minLength="8"
-          maxLength="16"
-          required={true}
-          placeholder="Password"
+          type={passwordShowed ? "text" : "password"}
+          id="input_password"
+          autoComplete="current-password"
+          title="Ведите код подтверждения телефона либо пароль. Вводить можно: a-z, A-Z, 0-9. Максимальное количество 6, минимальное 16"
+          pattern="[0-9a-zA-Z]{6,16}"
+          required
         />
-
-        <button
-          className="show_hide_password"
-          onClick={(e) => {
-            e.preventDefault();
-            inputPasswordRef.current.type === "password"
-              ? (inputPasswordRef.current.type = "text")
-              : (inputPasswordRef.current.type = "password");
+        <span className="text_help">
+          ⚠️
+          <span>
+            Обязательное поле. Ведите код подтверждения телефона либо пароль. Вводить можно символы латинского алфавита:
+            "a-z" "A-Z" и цифры "0-9". Минимальное количество символов 6 максимальное 16.
+          </span>
+        </span>
+        <label
+          htmlFor="toggle_input_password"
+          style={{
+            fontSize: "1.5em",
+            position: "relative",
+            top: "-35px",
+            left: "215px",
+            width: "25px",
+            height: "32px",
+            margin: "0px",
+            padding: "0px",
+            cursor: "pointer",
+            backgroundImage: `url(${passwordShowed ? closseEye : openEye})`,
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat"
           }}
-        >
-          👁
-        </button>
-
-        {inputPasswordValid ? null : inputPasswordValue ? (
-          <span id="e_text_for_alert">Incorrect password</span>
-        ) : (
-          <span id="e_text_for_alert">Enter password</span>
-        )}
-      </div>
-    </div>
-  );
+        ></label>
+        <input
+          type="checkbox"
+          onChange={() => this.togglePasswordShowed()}
+          value={passwordShowed}
+          id="toggle_input_password"
+          style={{ visibility: "hidden" }}
+        />
+      </>
+    );
+  }
 }
+
+export default InputPassword;

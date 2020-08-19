@@ -1,0 +1,57 @@
+#settings {
+  > div {
+    padding: 20px;
+  }
+
+  > section {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0;
+
+    > div {
+      height: auto;
+    }
+
+    > div:first-child {
+      width: 50%;
+      color: var(--black);
+      background-color: var(--white);
+
+      > form {
+        > div {
+          padding: 20px;
+          border-bottom: 1px solid var(--black_gray);
+        }
+
+        p {
+          margin-bottom: 15px;
+        }
+
+      }
+      input[type="submit"] {
+        margin: 20px;
+      }
+
+      input{
+        padding: 0px 10px;
+        line-height: 30px;
+        font-size: 18px;
+      }
+
+      label {
+        display: block;
+        margin: 20px 0px 10px;
+      }
+    }
+
+    > div:last-child {
+      width: calc(50% - 40px);
+      padding: 20px;
+      height: auto;
+      color: var(--white);
+      background-color: var(--black);
+      border-bottom: 74px solid var(--white);
+    }
+  }
+}
