@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import Recaptcha from "react-recaptcha";
 import { connect } from "react-redux";
 
-import Contact from "../../components/contact";
+import Contact from "../components/contact";
 import "./style.scss";
 
-import { onLoadedRecaptcha, onVerifyRecaptcha } from "../../actions/";
+import { onLoadedRecaptcha, onVerifyRecaptcha } from "../actions";
 
 const mapStateToProps = (store) => ({
   recaptchaIsVerify: store.forms.recaptchaIsVerify,

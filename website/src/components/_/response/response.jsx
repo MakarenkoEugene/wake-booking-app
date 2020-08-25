@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-import { clearResponse } from "../../actions";
+import { clearResponse } from "../../../actions";
 
 const mapStateToProps = (store) => ({
   response: store.forms.response,

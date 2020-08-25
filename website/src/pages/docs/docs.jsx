@@ -9,8 +9,6 @@ import Security from "./module/security";
 import MoreServices from "./module/more_services";
 import AboutProject from "./about/about_project";
 
-import "./style.scss";
-
 export default function () {
   return (
     <div id="docs">

@@ -1,34 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
+import "./i18n/";
+import "./assets/style/index.scss";
+
+import Root from "./root";
 import serverAction from "./middleware/server_action";
 import rootReducers from "./reducers";
-
-import "./style/reset.scss";
-import "./style/loader.scss";
 
 function configureStore() {
   // return createStore(rootReducers, composeWithDevTools());
   return createStore(rootReducers, composeWithDevTools(applyMiddleware(serverAction)));
 }
 
-import HeadNav from "./components/nav/head/";
-import Pages from "./pages";
-import Footer from "./components/footer/footer";
+ReactDOM.render(
+  <Provider store={configureStore()}>
+    <Root />
+  </Provider>,
+  document.getElementById("root")
+);
 
-function App() {
-  return (
-    <Provider store={configureStore()}>
-      <Router>
-        <HeadNav />
-        <Pages />
-        <Footer />
-      </Router>
-    </Provider>
-  );
-}
-
-export default App;
+// callback for google racaptcha
+window.onloadCallback = () => {};

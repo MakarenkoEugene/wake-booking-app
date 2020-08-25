@@ -1,19 +1,9 @@
 import React from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import "./style.scss";
-
-const mapStateToProps = (store) => ({
-});
-
-const mapDispatchToProps = (dispatch) => ({});
-
-function Footer({}) {
+function Footer() {
   return (
-    <footer
-      id="footer"
-    >
+    <footer id="footer">
       <h4>Баг или опечатка?</h4>
       <p>
         Если у вас есть идеи, как улучшить содержимое сайта, пожалуйста, <Link to="/feedback/">напишите</Link>
@@ -35,4 +25,4 @@ function Footer({}) {
   );
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Footer);
+export default Footer;

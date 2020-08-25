@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import InputRecaptcha from "../../components/form/input_recaptcha";
-import InputPassword from "../../components/form/input_password";
-import InputPhone from "../../components/form/input_phone";
-import Response from "../../components/response/response";
+import InputRecaptcha from "../components/form/input_recaptcha";
+import InputPassword from "../components/form/input_password";
+import InputPhone from "../components/form/input_phone";
+import Response from "../components/response/response";
 
-import { signInReq, setLoading } from "../../actions";
+import { signInReq, setLoading } from "../actions";
 
 import "./style.scss";
 

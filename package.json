@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel public/index.html --port 80 --cert localhost.cert --key localhost.key",
     "build-app": "parcel build ./app/index.html --out-dir ./app/build/ --no-source-maps",
-    "dev-app": "parcel ./app/index.html --port 80",
-    "watch": "parcel watch public/index.html",
+    "website": "parcel ./website/public/index.html --port 80",
     "build": "parcel build public/index.html --out-dir build"
   },
   "author": "",

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import TableRow from "./table_row";
 import InputTime from "./input_time";
 
-import { setDurationOfSet } from "../../actions/config";
+import { setDurationOfSet } from "../../../actions/config";
 import "./style.scss";
 
 const mapStateToProps = (store) => ({
