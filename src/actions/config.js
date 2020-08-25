@@ -1,5 +1,16 @@
-const { SET_DURATION_OF_SET, SET_OPEN_WORK_TIME, SET_CLOSSE_WORK_TIME } = require("../constants/config");
+const C = require("../constants/config");
 
-export const setDurationOfSet = (durationOfSet) => ({ type: SET_DURATION_OF_SET, durationOfSet });
-export const setOpenWorkTime = ({ weekDay, minutes }) => ({ type: SET_OPEN_WORK_TIME, weekDay, minutes });
-export const setClosseWorkTime = ({ weekDay, minutes }) => ({ type: SET_CLOSSE_WORK_TIME, weekDay, minutes });
+export const setShowIconsReserved = (showIconsReserved) => ({ type: C.SET_SHOW_ICONS_RESERVED, showIconsReserved });
+export const setDurationOfSet = (durationOfSet) => ({ type: C.SET_DURATION_OF_SET, durationOfSet });
+export const setOpenWorkTime = ({ weekDay, minutes }) => ({ type: C.SET_OPEN_WORK_TIME, weekDay, minutes });
+export const setClosseWorkTime = ({ weekDay, minutes }) => ({ type: C.SET_CLOSSE_WORK_TIME, weekDay, minutes });
+
+// wihches
+export const setWinchData = (winch) => ({ type: C.SET_WINCH_DATA, winch });
+export const addWinch = () => ({ type: C.ADD_WINCH });
+export const removeWinch = (_id) => ({ type: C.REMOVE_WINCH, _id });
+
+// admins
+export const addAdmin = (admin) => ({ type: C.ADD_ADMIN, admin });
+export const setAdminRights = (_id, rights) => ({ type: C.SET_ADMIN_RIGHTS, _id, rights });
+export const removeAdmin = (_id) => ({ type: C.REMOVE_ADMIN, _id });
