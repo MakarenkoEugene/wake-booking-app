@@ -2,7 +2,11 @@ Arguments:
   /usr/local/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add style.scss
 
 PATH: 
+<<<<<<< HEAD
   /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/apple/Documents/GitHub/wakebooking/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+=======
+  /usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/apple/Documents/comercial/wakebooking.space/node_modules/.bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 
 Yarn version: 
   1.22.4
@@ -34,26 +38,35 @@ npm manifest:
     "main": "index.js",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
       "dev": "parcel public/index.html --port 8080 --cert localhost.cert --key localhost.key",
       "build-app": "parcel build ./app/index.html --out-dir ./app/build/ --no-source-maps",
       "dev-app": "parcel ./app/index.html --port 8080",
+=======
+      "dev": "parcel public/index.html --port 1000 --cert localhost.cert --key localhost.key",
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
       "watch": "parcel watch public/index.html",
       "build": "parcel build public/index.html --out-dir build"
     },
     "author": "",
     "license": "ISC",
     "devDependencies": {
+<<<<<<< HEAD
       "@babel/cli": "^7.10.5",
       "@babel/core": "^7.11.1",
       "@babel/plugin-transform-runtime": "^7.11.0",
       "@babel/preset-env": "^7.11.0",
       "@babel/preset-react": "^7.10.4",
+=======
+      "@babel/core": "^7.10.4",
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
       "marked": "^1.1.0",
       "parcel-bundler": "^1.12.4",
       "redux-devtools": "^3.5.0",
       "sass": "^1.26.9"
     },
     "dependencies": {
+<<<<<<< HEAD
       "@babel/polyfill": "^7.10.4",
       "@babel/runtime": "^7.11.2",
       "autoprefixer": "^9.8.4",
@@ -62,6 +75,11 @@ npm manifest:
       "locale": "^0.1.0",
       "moment": "^2.27.0",
       "postcss-modules": "^3.1.0",
+=======
+      "dotenv": "^8.2.0",
+      "i18next": "^19.6.0",
+      "re": "^0.1.4",
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-i18next": "^11.7.0",
@@ -1253,6 +1271,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.10.0.tgz#a17b3a8ea811060e74d47d306122400ad4497ae2"
     integrity sha512-3YDiu347mtVtjpyV3u5kVqQLP242c06zwDOgpeRnybmXlYYsLbtTrUBUm8i8srONt+FWobl5aibnU1030PeeuA==
   
+<<<<<<< HEAD
   babel-helper-builder-react-jsx@^6.24.1:
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-helper-builder-react-jsx/-/babel-helper-builder-react-jsx-6.26.0.tgz#39ff8313b75c8b65dceff1f31d383e0ff2a408a0"
@@ -1262,6 +1281,8 @@ Lockfile:
       babel-types "^6.26.0"
       esutils "^2.0.2"
   
+=======
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
   babel-plugin-dynamic-import-node@^2.3.3:
     version "2.3.3"
     resolved "https://registry.yarnpkg.com/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.3.3.tgz#84fda19c976ec5c6defef57f9427b3def66e17a3"
@@ -1294,16 +1315,21 @@ Lockfile:
       cosmiconfig "^6.0.0"
       resolve "^1.12.0"
   
+<<<<<<< HEAD
   babel-plugin-syntax-flow@^6.18.0:
     version "6.18.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-syntax-flow/-/babel-plugin-syntax-flow-6.18.0.tgz#4c3ab20a2af26aa20cd25995c398c4eb70310c8d"
     integrity sha1-TDqyCiryaqIM0lmVw5jE63AxDI0=
   
   babel-plugin-syntax-jsx@^6.18.0, babel-plugin-syntax-jsx@^6.3.13, babel-plugin-syntax-jsx@^6.8.0:
+=======
+  babel-plugin-syntax-jsx@^6.18.0:
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     version "6.18.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
     integrity sha1-CvMqmm4Tyno/1QaeYtew9Y0NiUY=
   
+<<<<<<< HEAD
   babel-plugin-transform-flow-strip-types@^6.22.0:
     version "6.22.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-flow-strip-types/-/babel-plugin-transform-flow-strip-types-6.22.0.tgz#84cb672935d43714fdc32bce84568d87441cf7cf"
@@ -1371,6 +1397,9 @@ Lockfile:
       babel-preset-flow "^6.23.0"
   
   babel-runtime@^6.11.6, babel-runtime@^6.22.0, babel-runtime@^6.26.0:
+=======
+  babel-runtime@^6.11.6, babel-runtime@^6.26.0:
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
     integrity sha1-llxwWGaOgrVde/4E/yM3vItWR/4=
@@ -1378,7 +1407,11 @@ Lockfile:
       core-js "^2.4.0"
       regenerator-runtime "^0.11.0"
   
+<<<<<<< HEAD
   babel-types@^6.15.0, babel-types@^6.26.0:
+=======
+  babel-types@^6.15.0:
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.26.0.tgz#a3b073f94ab49eb6fa55cd65227a334380632497"
     integrity sha1-o7Bz+Uq0nrb6Vc1lInozQ4BjJJc=

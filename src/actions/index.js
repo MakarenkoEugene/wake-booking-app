@@ -13,7 +13,13 @@ export const setDelaySendingRepeatedSMS = (needToWait) => ({
   needToWait,
 });
 
+<<<<<<< HEAD
 export const setUser = (user) => ({ type: constants.SET_USER, user });
+=======
+
+export const setUser = (user) => ({ type: constants.SET_USER, user });
+export const getUser = () => ({ type: constants.GET_USER });
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 
 export const signInReq = (data) => ({ type: constants.SIGN_IN_REQ, data });
 export const signInRes = (response) => ({ type: constants.SIGN_IN_RES, response });
@@ -22,6 +28,9 @@ export const signUpReq = (data) => ({ type: constants.SIGN_UP_REQ, data });
 export const signUpRes = (response) => ({ type: constants.SIGN_UP_RES, response });
 
 export const clearResponse = () => ({ type: constants.CLEAR_RESPONSE });
+<<<<<<< HEAD
 
 //server action
 export const getClient = (phone) => ({ type: constants.GET_CLIENT, phone });
+=======
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905

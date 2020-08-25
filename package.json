@@ -7,7 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel public/index.html --port 80 --cert localhost.cert --key localhost.key",
     "build-app": "parcel build ./app/index.html --out-dir ./app/build/ --no-source-maps",
+<<<<<<< HEAD
     "dev-app": "parcel ./app/index.html --port 80",
+=======
+    "dev-app": "parcel ./app/index.html --port 8080",
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     "watch": "parcel watch public/index.html",
     "build": "parcel build public/index.html --out-dir build"
   },
@@ -19,8 +23,11 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+<<<<<<< HEAD
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-react": "^6.24.1",
+=======
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     "marked": "^1.1.0",
     "parcel-bundler": "^1.12.4",
     "redux-devtools": "^3.5.0",
@@ -30,11 +37,18 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/runtime": "^7.11.2",
     "autoprefixer": "^9.8.4",
+<<<<<<< HEAD
     "dotenv": "^8.2.0",
     "i18next": "^19.6.0",
     "locale": "^0.1.0",
     "moment": "^2.27.0",
     "postcss-modules": "^3.1.0",
+=======
+    "moment": "^2.27.0",
+    "postcss-modules": "^3.1.0",
+    "dotenv": "^8.2.0",
+    "i18next": "^19.6.0",
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-i18next": "^11.7.0",

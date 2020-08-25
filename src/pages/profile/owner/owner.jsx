@@ -3,6 +3,7 @@ import ListSteps from "../../../components/form/steps";
 import "./style.scss";
 import FormCreate from "./create";
 import Settings from "./settings";
+<<<<<<< HEAD
 import { connect } from "react-redux";
 
 const mapStateToProps = (store) => ({
@@ -45,6 +46,32 @@ class OwnerPage extends React.Component {
 
 export default connect(mapStateToProps, mapDispatchToProps)(OwnerPage);
 /* <div id="select_leng">
+=======
+
+export default function OwnerPage() {
+  return (
+    <div id="owner">
+      <ListSteps
+        steps={[
+          { text: "Основное" },
+          { text: "Время работы" },
+          { text: "Персонал" },
+          { text: "Описание" },
+          { text: "Доп. Опции" },
+          { text: "Внешний вид" },
+          { text: "Оплата" },
+        ]}
+      />
+      <h1>Owner</h1>
+      {/* <FormCreate /> */}
+      <Settings />
+    </div>
+  );
+}
+
+{
+  /* <div id="select_leng">
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 <p>Выберете язык который будет использоватся в програме:</p>
 <Select
   defaultValue={{ value: "en-US", label: "English" }}
@@ -52,4 +79,8 @@ export default connect(mapStateToProps, mapDispatchToProps)(OwnerPage);
   onChange={(e) => i18n.changeLanguage(e.value)}
 />
 </div> */
+<<<<<<< HEAD
 // }
+=======
+}
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905

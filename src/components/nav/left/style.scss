@@ -60,9 +60,13 @@
   padding: 0px;
   border: none;
   box-shadow: none;
+<<<<<<< HEAD
   color: var(--black);
   z-index: 1000;
   background-color: var(--light_gray);
+=======
+  z-index: 1000;
+>>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 
   &:focus,
   &:hover {
