@@ -7,7 +7,7 @@ import InputTime from "./input_time";
 import { setOpenWorkTime, setClosseWorkTime } from "../../actions/config";
 
 const mapStateToProps = (store) => ({
-  durationOfSet: store.config.durationOfSet,
+  durationOfSet: store.appSettings.config.durationOfSet,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   setClosseWorkTime: ({ weekDay, minutes }) => dispatch(setClosseWorkTime({ weekDay, minutes })),
 });
 
-function TableRow({ item: { weekDay, timesList }, durationOfSet, setOpenWorkTime, setClosseWorkTime, setWarning }) {
+function TableRow({ item: { weekDay, timesList }, durationOfSet, setOpenWorkTime, setClosseWorkTime }) {
   if (!weekDay || !timesList) return null;
   const getMinutes = (time) => time.split(":")[0] * 60 + Number(time.split(":")[1]);
   const startTime = timesList.length ? getMinutes(timesList[0].time) : 0;
@@ -23,28 +23,6 @@ function TableRow({ item: { weekDay, timesList }, durationOfSet, setOpenWorkTime
 
   let tableRowRef = null;
 
-  // const activeSetWorkTime = (e) => {
-  //   e.preventDefault();
-  //   const weekDay = e.target.id.split("_")[0];
-  //   const isOpen = e.target.id.split("_")[1] === "open";
-  //   const value = e.target.value;
-  //   const valueInMinute = Number(value.split(":")[0]) * 60 + Number(value.split(":")[1]);
-
-  //   if (valueInMinute % durationOfSet) {
-  //     tableRowRef.title = "The opening and closing times of the wake park must be a multiple of the raiders time.";
-  //     tableRowRef.className = "m_warning";
-  //   } else {
-  //     tableRowRef.className = "";
-  //     tableRowRef.title = "";
-  //   }
-
-  //   if (isOpen) {
-  //     setOpenWorkTime({ weekDay, time: value });
-  //     return;
-  //   }
-
-  //   setClosseWorkTime({ weekDay, time: value });
-  // };
   return (
     <tr ref={(elem) => (tableRowRef = elem)}>
       <td>{weekDay}</td>
