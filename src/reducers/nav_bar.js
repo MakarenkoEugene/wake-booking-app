@@ -1,7 +1,7 @@
 import { NAV_BAR_SHOW, NAV_BAR_CLOSSE } from "../constants";
 
 const init = {
-  isClosse: false,
+  isClosse: true,
 };
 
 export default (state = init, action) => {
