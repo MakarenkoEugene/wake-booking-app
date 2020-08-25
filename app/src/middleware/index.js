@@ -42,12 +42,20 @@ export default (store) => (next) => async (action) => {
   switch (action.type) {
     case C.INIT:
       try {
-        const config = await ServerW.getConfig(action.park);
+        const config = action.config ? action.config : action.park && (await ServerW.getConfig(action.park));
+        if (!config) return;
+
         next(A.setConfig({ ...config, park: action.park }));
 
         const { locale, utcOffset } = config.config;
         next(A.setDateConfig({ locale, utcOffset }));
+      } catch (error) {
+        const { errorMassage } = await errorProcessing(error);
+        next(A.sendAlert(errorMassage));
+      }
 
+      try {
+        if (action.config) break;
         const { title, client } = await ServerW.signIn();
 
         next(A.setClient(client));
@@ -68,10 +76,9 @@ export default (store) => (next) => async (action) => {
         }
 
         if (alertMassage) next(A.sendAlert(alertMassage));
-      } catch (err) {
-        const { errorMassage } = await errorProcessing(err);
+      } catch (error) {
+        const { errorMassage } = await errorProcessing(error);
         next(A.sendAlert(errorMassage));
-        next(A.dataDidNotLoad());
       } finally {
         next(A.setLoading(false));
       }
