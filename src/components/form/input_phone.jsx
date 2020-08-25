@@ -4,9 +4,6 @@ class InputPhone extends Component {
   constructor(props) {
     super(props);
     this.state = { telValue: "+380" };
-
-    this.telInputRef = null;
-    this.setTelInputRef = (element) => (this.telInputRef = element);
   }
 
   onInputValue(e) {
@@ -17,32 +14,36 @@ class InputPhone extends Component {
       e.target.value.length < 14 &&
       e.target.value.length > 3
     ) {
-      this.setState({ telValue: e.target.value });
+      const { onChangeValue } = this.props;
+
+      onChangeValue({ value: e.target.value, valid: e.target.validity.valid });
     }
   }
 
   render() {
     const { telValue } = this.state;
-    const { autoFocus } = this.props;
+    const { autoFocus, label, required, inputRef, value } = this.props;
+
     return (
-      <>
-        <label htmlFor="input_phone">Номер телефона:</label>
+      <label style={{ marginRight: "20px" }}>
+        {label && label}
         <input
           type="tel"
           autoFocus={autoFocus}
-          value={telValue}
+          value={value.value}
           onChange={(e) => this.onInputValue(e)}
-          ref={this.setTelInputRef}
-          id="input_phone"
+          ref={inputRef}
           pattern="^\+380[0-9]{9}$"
           title="+380995693132"
-          required
+          required={required}
         />
 
-        <span className="text_help">
-          ⚠️<span>Обязательное поле.</span>
-        </span>
-      </>
+        {required && (
+          <span className="text_help">
+            ⚠️<span>Обязательное поле.</span>
+          </span>
+        )}
+      </label>
     );
   }
 }
