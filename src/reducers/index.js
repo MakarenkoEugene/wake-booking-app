@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
+import { combineReducers, createStore } from "redux";
 
 import navBar from "./nav_bar";
 import forms from "./forms";
-import config from "./config";
-import dataIsLoading from './loading'
+import appSettings from "./app_settings/index";
+import dataIsLoading from "./loading";
 
-export default combineReducers({ navBar, forms, dataIsLoading, config });
+export default combineReducers({ navBar, forms, dataIsLoading, appSettings });
