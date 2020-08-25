@@ -11,11 +11,8 @@ import Welcome from "./welcome/welcome";
 import Docs from "./docs/docs";
 import ProfileRoute from "./profile/";
 // import FeedBack from "./feedback/feedback";
-<<<<<<< HEAD
 import LogIn from "./log_in/log_in";
-=======
 // import LogIn from "./log_in";
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 // import SignUp from "./sign_up/";
 import license from "../../public/LICENSE.md";
 import Privacy from "./privacy/privacy";
@@ -66,11 +63,8 @@ class Pages extends Component {
 
           {/* <Route exact path="/feedback/" component={FeedBack} /> */}
           {/* <Route path="/profile/" component={ProfileRoute} /> */}
-<<<<<<< HEAD
-          
+
           <Route exact path="/login/" component={LogIn} />
-=======
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
           {/* <SignedClosedRoute exact path="/login/" component={LogIn} /> */}
           {/* <SignedClosedRoute exact path="/signup/" component={SignUp} /> */}
         </Switch>

@@ -2,8 +2,6 @@
   > div {
     padding: 20px;
   }
-
-<<<<<<< HEAD
   h3 {
     color: var(--black_gray);
     margin-bottom: 15px;
@@ -21,8 +19,6 @@
     }
   }
 
-=======
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
   > section {
     display: flex;
     flex-direction: row;
@@ -34,11 +30,7 @@
     }
 
     > div:first-child {
-<<<<<<< HEAD
       width: calc(100% - 360px);
-=======
-      width: 50%;
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
       color: var(--black);
       background-color: var(--white);
 
@@ -51,38 +43,24 @@
         p {
           margin-bottom: 15px;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
       }
+
       input[type="submit"] {
         margin: 20px;
       }
 
-<<<<<<< HEAD
       select,
       input {
-=======
-      input{
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
         padding: 0px 10px;
         line-height: 30px;
         font-size: 18px;
       }
-
-<<<<<<< HEAD
       > label {
-=======
-      label {
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
         display: block;
         margin: 20px 0px 10px;
       }
     }
-
     > div:last-child {
-<<<<<<< HEAD
       position: sticky;
       top: 0px;
       left: 0px;
@@ -100,14 +78,6 @@
       > iframe {
         height: 300vh;
       }
-=======
-      width: calc(50% - 40px);
-      padding: 20px;
-      height: auto;
-      color: var(--white);
-      background-color: var(--black);
-      border-bottom: 74px solid var(--white);
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
     }
   }
 }

@@ -7,7 +7,7 @@ import Response from "../../components/response/response";
 import "./style.scss";
 
 import Profile from "./profile/profile";
-import Owner from "./owner/owner";
+import Owner from "./owner";
 
 export default function ProfileRoute() {
   return (

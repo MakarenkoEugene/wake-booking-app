@@ -14,43 +14,18 @@ const mapDispatchToProps = (dispatch) => ({
   showNavBar: () => dispatch(showNavBar()),
 });
 
-class Welcome extends Component {
-  constructor(props) {
-    super(props);
-    // this.closseNavBar = props.closseNavBar;
-  }
-
-  // componentDidMount() {
-  //   this.closseNavBar();
-  // }
-
-  // componentWillUnmount() {
-  //   this.props.showNavBar();
-  // }
-
-  render() {
-    return (
-      <header id="welcome">
-<<<<<<< HEAD
-        <h1>{"WakeBooking helps \n wake parks and their customers \n avoid wasting time"}</h1>
-        <Link id="welcome_btn_get" to="/profile/">
-          Get Started
-        </Link>
-        <Link id="welcome_btn_more" to="/docs/">
-          See More
-        </Link>
-=======
-          <h1>{'WakeBooking helps \n wake parks and their customers \n avoid wasting time'}</h1>
-          <Link id="welcome_btn_get" to="/profile/">
-            Get Started
-          </Link>
-          <Link id="welcome_btn_more" to="/docs/">
-            See More
-          </Link>
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
-      </header>
-    );
-  }
+function Welcome() {
+  return (
+    <header id="welcome">
+      <h1>{"WakeBooking helps \n wake parks and their customers \n avoid wasting time"}</h1>
+      <Link id="welcome_btn_get" to="/profile/">
+        Get Started
+      </Link>
+      <Link id="welcome_btn_more" to="/docs/">
+        See More
+      </Link>
+    </header>
+  );
 }
 
 export default withTranslation()(connect(mapStateToProps, mapDispatchToProps)(Welcome));

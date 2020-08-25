@@ -9,11 +9,8 @@ import Response from "../../components/response/response";
 
 import { signInReq, setLoading } from "../../actions";
 
-<<<<<<< HEAD
 import "./style.scss";
 
-=======
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 const mapStateToProps = (store) => ({
   dataIsLoading: store.dataIsLoading,
 });
@@ -62,11 +59,9 @@ class LogIn extends Component {
 
           <InputPassword />
 
-<<<<<<< HEAD
           <InputRecaptcha />
-=======
+
           {/* <InputRecaptcha /> */}
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 
           <Response />
 

@@ -1,4 +1,4 @@
-#nav_head{
+#nav_head {
   position: fixed;
   background-color: transparent;
   background-color: var(--white);
@@ -10,13 +10,9 @@
   flex-direction: row;
   justify-content: space-between;
   box-shadow: 0px 0px 7px -3px rgb(105, 105, 105);
-<<<<<<< HEAD
   z-index: 10;
-=======
-  z-index: 1;
->>>>>>> fd73a7a4c780ac691b15ad0cea22a298f1b72905
 
-  ul{
+  ul {
     display: flex;
     flex-direction: row;
     justify-content: space-around;

@@ -1,6 +1,6 @@
 import regeneratorRuntime from "regenerator-runtime";
-import ru from "./node_modules/moment/locale/ru";
-import uk from "./node_modules/moment/locale/uk";
+import ru from "../node_modules/moment/locale/ru";
+import uk from "../node_modules/moment/locale/uk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 import React from "react";

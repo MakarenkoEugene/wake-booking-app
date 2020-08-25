@@ -47,7 +47,7 @@ class InputPassword extends Component {
             cursor: "pointer",
             backgroundImage: `url(${passwordShowed ? closseEye : openEye})`,
             backgroundPosition: "center",
-            backgroundRepeat: "no-repeat"
+            backgroundRepeat: "no-repeat",
           }}
         ></label>
         <input
