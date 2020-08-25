@@ -1,32 +1,46 @@
 {
-  "name": "wake_booking_app",
+  "name": "wakebooking.space",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "parcel build index.html --out-dir build/ --no-source-maps",
-    "build_ontop": "parcel build ./patch/ontop/index.html --out-dir ./build/ --no-source-maps",
-    "ontop": "parcel ./patch/ontop/index.html --port 80",
-    "dev": "parcel ./index.html --port 81"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel public/index.html --port 80 --cert localhost.cert --key localhost.key",
+    "build-app": "parcel build ./app/index.html --out-dir ./app/build/ --no-source-maps",
+    "dev-app": "parcel ./app/index.html --port 80",
+    "watch": "parcel watch public/index.html",
+    "build": "parcel build public/index.html --out-dir build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.10.2",
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "marked": "^1.1.0",
     "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.10"
+    "redux-devtools": "^3.5.0",
+    "sass": "^1.26.9"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.10.4",
+    "@babel/runtime": "^7.11.2",
     "autoprefixer": "^9.8.4",
+    "dotenv": "^8.2.0",
+    "i18next": "^19.6.0",
     "locale": "^0.1.0",
-    "mo": "^1.7.3",
     "moment": "^2.27.0",
     "postcss-modules": "^3.1.0",
-    "react": "^16.8.3",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-redux": "^7.2.1",
+    "react-i18next": "^11.7.0",
+    "react-recaptcha": "^2.3.10",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
-    "redux": "^3.1.0 || ^4.0.0",
+    "react-select": "^3.1.0",
+    "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8"
   }
 }

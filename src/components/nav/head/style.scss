@@ -1,0 +1,26 @@
+#nav_head{
+  position: fixed;
+  background-color: transparent;
+  background-color: var(--white);
+  width: calc(100% - 40px);
+  height: 44px;
+  padding: 0px 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 0px 0px 7px -3px rgb(105, 105, 105);
+  z-index: 10;
+
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 300px;
+  }
+
+  a {
+    line-height: 44px;
+    font-size: 1.15em;
+  }
+}

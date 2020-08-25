@@ -1,0 +1,30 @@
+#set_work_time {
+  table {
+    border-collapse: collapse;
+    width: 300px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 20px 0px;
+    font-size: 1em;
+
+    th {
+      padding-bottom: 10px;
+    }
+
+    td {
+      border: 1px solid var(--black_gray);
+      padding: 5px;
+
+      input {
+        border: none;
+        max-width: 100px;
+      }
+    }
+  }
+
+  .m_warning{
+    margin: 20px 0px;
+    padding: 5px;
+    background: var(--orange);
+  }
+}

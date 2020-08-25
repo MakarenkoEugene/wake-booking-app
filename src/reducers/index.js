@@ -1,21 +1,8 @@
 import { combineReducers, createStore } from "redux";
 
-import * as other from "./other";
-import clientReducer from "./client";
-import formReducer from "./form";
-import config from "./config";
-import buffer from "./buffer";
-import clientNav from "./client_nav";
-import date from "./date";
+import navBar from "./nav_bar";
+import forms from "./forms";
+import appSettings from "./app_settings/index";
+import dataIsLoading from "./loading";
 
-const rootReducer = combineReducers({
-  ...other,
-  date,
-  clientNav,
-  buffer,
-  config,
-  client: clientReducer,
-  form: formReducer,
-});
-
-export default rootReducer;
+export default combineReducers({ navBar, forms, dataIsLoading, appSettings });
