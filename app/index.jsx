@@ -1,36 +1,51 @@
-import regeneratorRuntime from "regenerator-runtime";
-import ru from "./node_modules/moment/locale/ru";
-import uk from "./node_modules/moment/locale/uk";
-import { composeWithDevTools } from "redux-devtools-extension";
+// import regeneratorRuntime from "regenerator-runtime";
+import ru from "../node_modules/moment/locale/ru";
+import uk from "../node_modules/moment/locale/uk";
+// import { composeWithDevTools } from "redux-devtools-extension";
 
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-
-import rootReducers from "./src/reducers";
-import middleware from "./src/middleware/";
-import middlewareSecond from "./src/middleware/second";
-import middlewareThird from "./src/middleware/third";
+import configureStore from "./src/configure_store";
 
 import App from "./src/";
 
-const composeEnhancers =
-  typeof window === "object" && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
-    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ actionsBlacklist: ["SET_NOW_TIME"] })
-    : null;
+const container = document.getElementById("_wakebooking");
 
-function configureStore() {
-  // return createStore(rootReducers, composeWithDevTools());
-  return createStore(rootReducers, composeEnhancers(applyMiddleware(middleware, middlewareSecond, middlewareThird)));
+if (container) {
+  // const park = container.attributes["park"].value;
+
+  ReactDOM.render(
+    <Provider store={configureStore()}>
+      <App container={container} />
+    </Provider>,
+    container
+  );
 }
 
-const container = document.getElementById("_wakebooking");
-const parkName = container.attributes["park"].value;
+export default () => {
+  return (
+    <iframe
+      src="./app.html"
+      scrolling="no"
+      width="320"
+      height="100%"
+      frameBorder="0"
+    ></iframe>
+  );
+};
 
-ReactDOM.render(
-  <Provider store={configureStore()}>
-    <App park={parkName} container={container} />
-  </Provider>,
-  container
-);
+// export default ({ container, config }) => {
+//   return (
+//     <Frame
+//       width="320px"
+//       height="100%"
+//       frameBorder="0"
+//       initialContent='<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width, initial-scale=1.0" />></head><body><div id="_wakebooking"></div></body></html>'
+//     >
+//       <Provider store={configureStore()}>
+//         <App container={container} park="Wake Booking" _config={config} />
+//       </Provider>
+//     </Frame>
+//   );
+// };
