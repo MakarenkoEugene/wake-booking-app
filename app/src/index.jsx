@@ -13,16 +13,38 @@ import Form from "./components/form/form";
 import Alert from "./components/alert";
 
 import "./style/style.scss";
+import "./style/reset.scss";
+
+// window.addEventListener("message", (message ) =>
+//   console.log(message)
+// );
 
 class App extends Component {
   constructor(props) {
     super(props);
-    const { park, init } = this.props;
-    init(park);
+    // const { init } = this.props;
+
+    // init();
+    this.massageListner = this.massageListner.bind(this);
+  }
+
+  massageListner({ data }) {
+    const { init } = this.props;
+    init(data);
+    console.log(data);
+  }
+
+  componentDidMount() {
+    window.addEventListener("message", this.massageListner);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("message", this.massageListner);
   }
 
   render() {
     const { loading, showClinetNav, config, container, accessDenied } = this.props;
+
     if (accessDenied)
       return (
         <div style={{ textTransform: "none" }}>
@@ -78,7 +100,7 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  init: (park) => dispatch(init(park)),
+  init: (data) => dispatch(init(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
