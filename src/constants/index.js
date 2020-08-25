@@ -16,4 +16,6 @@ export const RECAPTCHA_ON_VERIFY = "RECAPTCHA_ON_VERIFY";
 export const SET_DELAY_SENDING_REPEATED_SMS = "SET_DELAY_SENDING_REPEATED_SMS";
 
 export const SET_USER = "SET_USER";
-export const GET_USER = "GET_USER";
+
+//server action
+export const GET_CLIENT = "GET_CLIENT";

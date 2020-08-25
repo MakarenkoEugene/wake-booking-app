@@ -31,13 +31,13 @@ class Welcome extends Component {
   render() {
     return (
       <header id="welcome">
-          <h1>{'WakeBooking helps \n wake parks and their customers \n avoid wasting time'}</h1>
-          <Link id="welcome_btn_get" to="/profile/">
-            Get Started
-          </Link>
-          <Link id="welcome_btn_more" to="/docs/">
-            See More
-          </Link>
+        <h1>{"WakeBooking helps \n wake parks and their customers \n avoid wasting time"}</h1>
+        <Link id="welcome_btn_get" to="/profile/">
+          Get Started
+        </Link>
+        <Link id="welcome_btn_more" to="/docs/">
+          See More
+        </Link>
       </header>
     );
   }

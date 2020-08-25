@@ -1,6 +1,6 @@
 import * as C from "../constants";
 
-export const init = (park) => ({ type: C.INIT, park });
+export const init = ({ config, park }) => ({ type: C.INIT, config, park });
 export const dataDidNotLoad = () => ({ type: C.DATA_DID_NOT_LOAD });
 export const setConfig = (config) => ({ type: C.SET_CONFIG, config });
 export const setLoading = (dataIsLoading) => ({ type: C.SET_LOADING, dataIsLoading });

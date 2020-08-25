@@ -4,7 +4,7 @@ import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import first from "./middleware/first";
+import serverAction from "./middleware/server_action";
 import rootReducers from "./reducers";
 
 import "./style/reset.scss";
@@ -12,9 +12,8 @@ import "./style/loader.scss";
 
 function configureStore() {
   // return createStore(rootReducers, composeWithDevTools());
-  return createStore(rootReducers, composeWithDevTools(applyMiddleware(first)));
+  return createStore(rootReducers, composeWithDevTools(applyMiddleware(serverAction)));
 }
-
 
 import HeadNav from "./components/nav/head/";
 import Pages from "./pages";
