@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-import closseEye from "../../images/eye.svg";
-import openEye from "../../images/openEye.svg";
+import imgClosseEye from "../../assets/img/password_closse_eye.svg";
+import imgOneEye from "../../assets/img/password_open_eye.svg";
 
 class InputPassword extends Component {
   constructor(props) {
@@ -45,7 +45,7 @@ class InputPassword extends Component {
             margin: "0px",
             padding: "0px",
             cursor: "pointer",
-            backgroundImage: `url(${passwordShowed ? closseEye : openEye})`,
+            backgroundImage: `url(${passwordShowed ? imgClosseEye : imgOneEye})`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
           }}
