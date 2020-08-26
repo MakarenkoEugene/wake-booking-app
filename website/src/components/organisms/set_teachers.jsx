@@ -34,7 +34,9 @@ function SetTeachets({ teachers, getClientForTeacher, removeTeacher }) {
                 <br />
                 {teacher.phone}
               </a>
-              <button>Take Off</button>
+              <button onClick={() => removeTeacher(teacher._id)} className="button_text" title="Take Off">
+                ✕
+              </button>
             </li>
           );
         })}
@@ -53,7 +55,7 @@ function SetTeachets({ teachers, getClientForTeacher, removeTeacher }) {
         disabled={!inputTelValue.valid || phoneAlredyTaked}
         onClick={(e) => {
           e.preventDefault();
-          if (!phoneAlredyTaked) getClientForAdmin(inputTelValue.value.slice(1));
+          if (!phoneAlredyTaked) getClientForTeacher(inputTelValue.value.slice(1));
           setInputTelValue({ value: "+380", valid: false });
         }}
       >
