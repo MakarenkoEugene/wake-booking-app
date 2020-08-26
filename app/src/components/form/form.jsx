@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useRef } from "react";
 import { connect } from "react-redux";
 
 import InputPhone from "./input_phone";
@@ -47,17 +47,21 @@ const mapDispatchToProps = (dispatch) => ({
   signIn: () => dispatch(signIn()),
 });
 
-class Form extends Component {
-  constructor(props) {
-    super(props);
-
-    this.inputPasswordRef = null;
-    this.setInputPasswordRef = (element) => (this.inputPasswordRef = element);
-  }
-
-  activeOnSubmit(e) {
+function Form({
+  formState,
+  signUp,
+  signIn,
+  updateClientData,
+  setReservationTime,
+  formIsShow,
+  selectedTimes,
+  inputPasswordValue,
+  changeInputPasswordValue,
+  inputPasswordValid,
+  retrievePassword,
+}) {
+  const activeOnSubmit = (e) => {
     e.preventDefault();
-    const { formState, signUp, signIn, updateClientData, setReservationTime } = this.props;
 
     switch (formState) {
       case SUCCES_LOGIN:
@@ -83,56 +87,44 @@ class Form extends Component {
         console.log(e);
         break;
     }
-  }
+  };
 
-  render() {
-    const {
-      formIsShow,
-      selectedTimes,
-      formState,
-      inputPasswordValue,
-      changeInputPasswordValue,
-      inputPasswordValid,
-      retrievePassword,
-    } = this.props;
+  if (!selectedTimes.length && !formIsShow) return null;
 
-    if (!selectedTimes.length && !formIsShow) return null;
+  return (
+    <form id="form" onSubmit={(e) => activeOnSubmit(e)}>
+      {formState !== SUCCES_LOGIN && <InputPhone />}
 
-    return (
-      <form id="form" onSubmit={(e) => this.activeOnSubmit(e)}>
-        {formState !== SUCCES_LOGIN && <InputPhone />}
+      {(formState === SEND_CODE || formState === SEND_CODE_SIGN_IN) && <BtnSendCode />}
 
-        {(formState === SEND_CODE || formState === SEND_CODE_SIGN_IN) && <BtnSendCode />}
+      {(formState === INPUT_CODE || formState === INPUT_CODE_SIGN_IN) && <InputCodeVerification />}
 
-        {(formState === INPUT_CODE || formState === INPUT_CODE_SIGN_IN) && <InputCodeVerification />}
+      {formState === INPUT_PASSWORD && (
+        <>
+          <InputPassword
+            inputPasswordValue={inputPasswordValue}
+            inputPasswordValid={inputPasswordValid}
+            changeInputPasswordValue={changeInputPasswordValue}
+          />
 
-        {formState === INPUT_PASSWORD && (
-          <>
-            <InputPassword
-              inputPasswordValue={inputPasswordValue}
-              inputPasswordValid={inputPasswordValid}
-              changeInputPasswordValue={changeInputPasswordValue}
-            />
-
-            <div>
-              <div className="border_disabled_WB">
-                <input type="button" onClick={retrievePassword} value="Retrieve Password" />
-                <input type="submit" id="input_submit_WB" value="Log In" />
-              </div>
-            </div>
-          </>
-        )}
-
-        {formState === INPUT_CLIENT_DATA && <SetProfileData />}
-        {formState === SUCCES_LOGIN && (
           <div>
-            {/* <input type="button" value="To Profile" /> */}
-            <input type="submit" value="To Book" />
+            <div className="border_disabled_WB">
+              <input type="button" onClick={retrievePassword} value="Retrieve Password" />
+              <input type="submit" id="input_submit_WB" value="Log In" />
+            </div>
           </div>
-        )}
-      </form>
-    );
-  }
+        </>
+      )}
+
+      {formState === INPUT_CLIENT_DATA && <SetProfileData />}
+      {formState === SUCCES_LOGIN && (
+        <div>
+          {/* <input type="button" value="To Profile" /> */}
+          <input type="submit" value="To Book" />
+        </div>
+      )}
+    </form>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
