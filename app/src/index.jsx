@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 
 import { init } from "./action/";
@@ -15,81 +15,59 @@ import Alert from "./components/alert";
 import "./style/style.scss";
 import "./style/reset.scss";
 
-// window.addEventListener("message", (message ) =>
-//   console.log(message)
-// );
+function App({ init, loading, showClinetNav, config, container, accessDenied }) {
+  useEffect(() => {
+    const listenerMassageEvent = ({ data }) => init(data);
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    // const { init } = this.props;
+    window.addEventListener("message", listenerMassageEvent);
 
-    // init();
-    this.massageListner = this.massageListner.bind(this);
-  }
+    return () => window.removeEventListener("message", listenerMassageEvent);
+  });
 
-  massageListner({ data }) {
-    const { init } = this.props;
-    init(data);
-    console.log(data);
-  }
-
-  componentDidMount() {
-    window.addEventListener("message", this.massageListner);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("message", this.massageListner);
-  }
-
-  render() {
-    const { loading, showClinetNav, config, container, accessDenied } = this.props;
-
-    if (accessDenied)
-      return (
-        <div style={{ textTransform: "none" }}>
-          <br />
-          <h2>🚨 Access Denied...</h2>
-          <br />
-          <p>
-            Please check{" "}
-            <a href="https://wakebooking.space/" style={{ color: "#4285f4" }}>
-              Your setting
-            </a>
-            .
-          </p>
-          <br />
-          <a href="https://wakebooking.space/" style={{ color: "#4285f4" }}>
-            Or subscription passed.
-          </a>
-          <br />
-          <br />
-          <a href="https://wakebooking.space/" style={{ color: "#4285f4", textAlign: "right", fontSize: "9px" }}>
-            Wakebooking
-          </a>
-        </div>
-      );
-    if (!config) return null;
-    for (const key in config.config.color) container.style.setProperty(`--${key}`, `#${config.config.color[key]}`);
-
+  if (accessDenied)
     return (
-      <div className={loading ? "loading" : ""} ref={this.container}>
-        <Info />
-        <Alert />
-        {showClinetNav ? (
-          <ClientNav />
-        ) : (
-          <>
-            <Calendar />
-            <Winch />
-            <Teacher />
-            <TimesList />
-            <Form />
-          </>
-        )}
+      <div style={{ textTransform: "none" }}>
+        <br />
+        <h2>🚨 Access Denied...</h2>
+        <br />
+        <p>
+          Please check{" "}
+          <a href="https://wakebooking.space/" style={{ color: "#4285f4" }}>
+            Your setting
+          </a>
+          .
+        </p>
+        <br />
+        <a href="https://wakebooking.space/" style={{ color: "#4285f4" }}>
+          Or subscription passed.
+        </a>
+        <br />
+        <br />
+        <a href="https://wakebooking.space/" style={{ color: "#4285f4", textAlign: "right", fontSize: "9px" }}>
+          Wakebooking
+        </a>
       </div>
     );
-  }
+  if (!config) return null;
+  for (const key in config.config.color) container.style.setProperty(`--${key}`, `#${config.config.color[key]}`);
+
+  return (
+    <div className={loading ? "loading" : ""} ref={this.container}>
+      <Info />
+      <Alert />
+      {showClinetNav ? (
+        <ClientNav />
+      ) : (
+        <>
+          <Calendar />
+          <Winch />
+          <Teacher />
+          <TimesList />
+          <Form />
+        </>
+      )}
+    </div>
+  );
 }
 
 const mapStateToProps = (store) => ({
