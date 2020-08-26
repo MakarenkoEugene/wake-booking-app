@@ -1,75 +1,52 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import InputRecaptcha from "../components/form/input_recaptcha";
-import InputPassword from "../components/form/input_password";
-import InputPhone from "../components/form/input_phone";
-import Response from "../components/response/response";
+import InputRecaptcha from "../components/atoms/input_recaptcha";
+import InputPassword from "../components/atoms/input_password";
+import InputPhone from "../components/atoms/input_phone";
+// import Response from "../components/response/response";
 
-import { signInReq, setLoading } from "../actions";
+const mapStateToProps = (store) => ({});
 
-import "./style.scss";
+const mapDispatchToProps = (dispatch) => ({});
 
-const mapStateToProps = (store) => ({
-  dataIsLoading: store.dataIsLoading,
-});
+function LogIn() {
+  const [ inputTelValue, setInputTelValue ] = useState('+380')
 
-const mapDispatchToProps = (dispatch) => ({
-  setLoading: (dataIsLoading) => dispatch(setLoading(dataIsLoading)),
-  signInReq: (data) => dispatch(signInReq(data)),
-});
-
-class LogIn extends Component {
-  constructor(props) {
-    super(props);
-    this.props.setLoading(true);
-  }
-
-  componentDidMount() {
-    this.props.setLoading(false);
-  }
-
-  activeOnSubmit(e) {
-    const { signInReq } = this.props;
+  const activeOnSubmit = (e) => {
     e.preventDefault();
 
-    signInReq({
+    console.log({
       phone: e.target["input_phone"].value.slice(1),
       password: e.target["input_password"].value,
     });
-  }
+  };
 
-  render() {
-    const { dataIsLoading } = this.props;
+  return (
+    <section id="log_in">
+      <h1>Log in</h1>
 
-    return (
-      <section id="log_in">
-        <h1>Log in</h1>
+      <span>
+        Еще нету акаунта? <Link to="/signup/">Зарегистрироватся.</Link>
+      </span>
+      <span>
+        <Link to="/restoreprofile/">Забыли пароль?</Link>
+      </span>
 
-        <span>
-          Еще нету акаунта? <Link to="/signup/">Зарегистрироватся.</Link>
-        </span>
-        <span>
-          <Link to="/restoreprofile/">Забыли пароль?</Link>
-        </span>
+      <form onSubmit={activeOnSubmit}>
+        <InputPhone autoFocus={true} value={inputTelValue} onChangeValue={setInputTelValue} />
 
-        <form onSubmit={(e) => this.activeOnSubmit(e)} className={dataIsLoading ? "loading" : null}>
-          <InputPhone autoFocus={true} />
+        <InputPassword />
 
-          <InputPassword />
+        <InputRecaptcha />
 
-          <InputRecaptcha />
+        {/* <Response /> */}
 
-          {/* <InputRecaptcha /> */}
-
-          <Response />
-
-          <input type="submit" value="Вход" />
-        </form>
-      </section>
-    );
-  }
+        <input type="submit" value="Вход" />
+      </form>
+    </section>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

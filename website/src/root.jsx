@@ -15,9 +15,9 @@ import DetailedNav from "./components/organisms/detailed_nav";
 import Welcome from "./pages/welcome";
 import Profile from "./pages/profile";
 // import Docs from "./docs/docs";
+
 import FeedBack from "./pages/feed_back";
-// import LogIn from "./log_in/log_in";
-// import LogIn from "./log_in";
+import LogIn from "./pages/log_in";
 // import SignUp from "./sign_up/";
 
 //static 
@@ -62,7 +62,7 @@ function Root({ leftNavClosse }) {
           <Route exact path="/feedback/" component={FeedBack} />
           {/* <Route path="/profile/" component={ProfileRoute} /> */}
 
-          {/* <Route exact path="/login/" component={LogIn} /> */}
+          <Route exact path="/login/" component={LogIn} />
           {/* <SignedClosedRoute exact path="/login/" component={LogIn} /> */}
           {/* <SignedClosedRoute exact path="/signup/" component={SignUp} /> */}
         </Switch>
