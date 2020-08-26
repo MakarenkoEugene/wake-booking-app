@@ -1,14 +1,13 @@
 import React from "react";
-import "./style.scss";
-import Select from "react-select";
-import InputToggle from "../../../../components/form/input_toggle";
-import SetWorkTime from "../../../../components/set_work_time";
-import SetWinches from "../../../../components/set_winches";
-import SetAdmins from "../../../../components/set_admins";
-
 import { connect } from "react-redux";
 
-import { setShowIconsReserved } from "../../../../actions/config";
+import Select from "react-select";
+import InputToggle from "../atoms/input_toggle";
+import SetWorkTime from "../organisms/set_work_time";
+import SetWinches from "../organisms/set_winches";
+import SetAdmins from "../organisms/set_admins";
+
+import { setShowIconsReserved } from "../../actions/config";
 
 const mapStateToProps = (store) => ({
   showIconsReserved: store.appSettings.config.showIconsReserved,

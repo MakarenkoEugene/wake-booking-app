@@ -9,12 +9,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 // component
 import HeadNav from "./components/organisms/head_nav";
 import Footer from "./components/templates/footer";
-// import LeftNav from "../components/nav/left";
+import DetailedNav from "./components/organisms/detailed_nav";
 
 // pages
 import Welcome from "./pages/welcome";
+import Profile from "./pages/profile";
 // import Docs from "./docs/docs";
-// import ProfileRoute from "./profile/";
 // import FeedBack from "./feedback/feedback";
 // import LogIn from "./log_in/log_in";
 // import LogIn from "./log_in";
@@ -47,16 +47,16 @@ function Root({ leftNavClosse }) {
     <Router>
       <HeadNav />
       <main id="main" className={leftNavClosse ? "" : "nav_open"}>
-        {/* <Route exact path={["/docs/", "/profile/*"]} component={LeftNav} /> */}
+        <Route exact path={["/docs/", "/profile/*"]} component={DetailedNav} />
+
         <Switch>
           <Route exact path="/" component={Welcome} />
 
-          
           <Route exact path="/privacy/" component={() => convertText('privacy', Privacy)} />
           <Route exact path="/license/" component={() => convertText('license', License)} />
 
+          <Route path="/profile/" component={Profile} />
           {/* <Route path="/docs/" component={Docs} /> */}
-          {/* <Route path="/profile/" component={ProfileRoute} /> */}
           {/* <PrivatRoute path="/profile/" component={ProfileRoute} /> */}
 
           {/* <Route exact path="/feedback/" component={FeedBack} /> */}

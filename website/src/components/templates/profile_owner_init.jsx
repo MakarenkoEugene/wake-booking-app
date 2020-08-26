@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.scss";
 import Select from "react-select";
 
 export default function OwnerPage() {

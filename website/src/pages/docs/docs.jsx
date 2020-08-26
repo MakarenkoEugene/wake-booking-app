@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import Introduce from "./module/introduce";
 import WhyNeed from "./module/why_need";
-import HowWorks from "./how_works/";
+import HowWorks from "./how_works";
 import GrowPlan from "./module/grow_plan";
 import Security from "./module/security";
 import MoreServices from "./module/more_services";

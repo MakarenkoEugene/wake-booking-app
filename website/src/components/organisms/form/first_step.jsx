@@ -6,7 +6,7 @@ import Response from "../../components/response/response";
 import InputPhone from "../../components/form/input_phone";
 import InputRecaptcha from "../../components/form/input_recaptcha";
 
-import { signUpReq, setLoading, setDelaySendingRepeatedSMS } from "../../actions/";
+import { signUpReq, setLoading, setDelaySendingRepeatedSMS } from "../../../actions";
 
 const mapStateToProps = (store) => ({
   needToWait: store.forms.needToWait,

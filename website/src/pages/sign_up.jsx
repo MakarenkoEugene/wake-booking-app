@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ListSteps from '../../components/form/steps'
-import FirstStep from "./first_step";
+import FirstStep from "../components/organisms/form/first_step";
 
 import "./sing_up.scss";
 

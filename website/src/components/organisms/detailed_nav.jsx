@@ -1,17 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Select from "react-select";
-
 import { Switch, Route } from "react-router-dom";
-
-import "./style.scss";
-
 import { useTranslation } from "react-i18next";
-import DocsNavBar from "../docs_nav_bar";
-import ProfileNavBar from "../profile_nav_bar";
 
-import { closseNavBar, showNavBar } from "../../../actions";
+import Select from "react-select";
+import Docs from "../molecules/detailed_nav_docs";
+import Profile from "../molecules/detailed_nav_profile";
+
+import { closseNavBar, showNavBar } from "../../actions";
 
 const mapStateToProps = (store) => ({
   isClosse: store.navBar.isClosse,
@@ -24,7 +21,12 @@ const mapDispatchToProps = (dispatch) => ({
 
 function NavBar({ isClosse, closseNavBar, showNavBar, ...props }) {
   const { t, i18n } = useTranslation();
-  if (isClosse) return <button id="nav_btn_show" onClick={() => showNavBar()}>❯</button>;
+  if (isClosse)
+    return (
+      <button id="nav_btn_show" onClick={() => showNavBar()}>
+        ❯
+      </button>
+    );
 
   return (
     <nav id="left_nav">
@@ -32,8 +34,8 @@ function NavBar({ isClosse, closseNavBar, showNavBar, ...props }) {
         ← {t("Close navigation")}
       </button>
       <Switch>
-        <Route path="/docs/" component={DocsNavBar} />
-        <Route path="/profile/" component={ProfileNavBar} />
+        <Route path="/docs/" component={Docs} />
+        <Route path="/profile/" component={Profile} />
       </Switch>
 
       <ul>

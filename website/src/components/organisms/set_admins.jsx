@@ -1,10 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-import InputPhone from "../form/input_phone";
 
-import { addAdmin, setAdminRights, removeAdmin } from "../../../actions/config";
-import { getClient } from "../../../actions/config";
-import "./style.scss";
+import InputPhone from "../atoms/input_phone";
+
+import { addAdmin, setAdminRights, removeAdmin, getClient } from "../../actions/config";
 
 const mapStateToProps = (store) => ({
   admins: store.appSettings.admins,

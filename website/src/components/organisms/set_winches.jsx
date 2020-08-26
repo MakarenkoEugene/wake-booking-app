@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { setWinchData, addWinch, removeWinch } from "../../../actions/config";
-import "./style.scss";
+import { setWinchData, addWinch, removeWinch } from "../../actions/config";
 
 const mapStateToProps = (store) => ({
   winches: store.appSettings.winches,
