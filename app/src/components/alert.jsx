@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 
 import { resClearAlert } from "../action";
@@ -11,41 +11,33 @@ const mapDispatchToProps = (dispatch) => ({
   resClearAlert: () => dispatch(resClearAlert()),
 });
 
-class Alert extends Component {
-  constructor(props) {
-    super(props);
-    this.timer = null;
+function Alert({ alertMassage, resClearAlert }) {
+  if (!alertMassage) return null;
+
+  const [timer, setTimer] = useState(null);
+
+  if (alertMassage.status) {
+    clearInterval(timer);
+    setTimer(setTimeout(() => resClearAlert(), 10000));
+  } else {
+    clearInterval(timer);
   }
-  render() {
-    const { alertMassage, resClearAlert } = this.props;
-    if (!alertMassage) return null;
 
-    if (alertMassage.status) {
-      clearInterval(this.timer);
-      this.timer = setTimeout(() => resClearAlert(), 10000);
-    } else {
-      clearInterval(this.timer);
-    }
+  const classN = ((status) => {
+    if (status === "ERROR") return "m_error_WB";
+    if (status === "WARNING") return "m_warning_WB";
+    if (status === "SUCCESS") return "m_success_WB";
+    return "";
+  })(alertMassage.status);
 
-    return (
-      <div id="alert">
-        <div
-          className={
-            alertMassage.status === "ERROR"
-              ? "m_error_WB"
-              : alertMassage.status === "WARNING"
-              ? "m_warning_WB"
-              : alertMassage.status === "SUCCESS"
-              ? "m_success_WB"
-              : ""
-          }
-        >
-          {alertMassage.title}
-          <button onClick={() => resClearAlert()}>⌫</button>
-        </div>
+  return (
+    <div id="alert">
+      <div className={classN}>
+        {alertMassage.title}
+        <button onClick={() => resClearAlert()}>⌫</button>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Alert);
