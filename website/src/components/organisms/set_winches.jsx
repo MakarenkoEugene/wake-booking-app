@@ -58,7 +58,7 @@ function SetWinches({ winches, addWinch, removeWinch, setWinchData }) {
                 </label>
               </div>
               <button
-                className="button_remove"
+                className="button_text"
                 onClick={(e) => {
                   e.preventDefault();
                   removeWinch(item._id);

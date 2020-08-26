@@ -15,3 +15,8 @@ export const getClientForAdmin = (phone) => ({ type: C.GET_CLIENT_FOR_ADMIN, pho
 export const addAdmin = (admin) => ({ type: C.ADD_ADMIN, admin });
 export const setAdminRights = (_id, rights) => ({ type: C.SET_ADMIN_RIGHTS, _id, rights });
 export const removeAdmin = (_id) => ({ type: C.REMOVE_ADMIN, _id });
+
+// teachers
+export const getClientForTeacher = (phone) => ({ type: C.GET_CLIENT_FOR_TEACHER, phone });
+export const addTeacher = (teacher) => ({ type: C.ADD_TEACHER, teacher });
+export const removeTeacher = (_id) => ({ type: C.REMOVE_TEACHER, _id });

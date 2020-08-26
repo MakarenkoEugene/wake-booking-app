@@ -13,3 +13,8 @@ export const GET_CLIENT_FOR_ADMIN = "GET_CLIENT_FOR_ADMIN";
 export const ADD_ADMIN = "ADD_ADMIN";
 export const SET_ADMIN_RIGHTS = "SET_ADMIN_RIGHTS";
 export const REMOVE_ADMIN = "REMOVE_ADMIN";
+
+// teachers
+export const GET_CLIENT_FOR_TEACHER = "GET_CLIENT_FOR_TEACHER";
+export const ADD_TEACHER = "ADD_TEACHER";
+export const REMOVE_TEACHER = "REMOVE_TEACHER";

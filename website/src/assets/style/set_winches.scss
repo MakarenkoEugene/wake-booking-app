@@ -49,15 +49,4 @@
     font-size: 0.9em;
     white-space: nowrap;
   }
-
-  .button_remove {
-    background-color: transparent;
-    color: black;
-    border: none;
-
-    &:hover,
-    &:focus {
-      color: var(--red);
-    }
-  }
 }
