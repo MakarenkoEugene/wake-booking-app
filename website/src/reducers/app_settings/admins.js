@@ -1,4 +1,4 @@
-import { ADD_ADMIN, SET_ADMIN_RIGHTS, REMOVE_ADMIN } from "../../constants/config";
+import { ADD_ADMIN, SET_ADMIN_RIGHTS, REMOVE_ADMIN } from "../../constants/app_settings";
 import pattern from "./pattern.json";
 
 const { admins } = pattern;

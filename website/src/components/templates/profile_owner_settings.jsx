@@ -7,7 +7,7 @@ import SetWorkTime from "../organisms/set_work_time";
 import SetWinches from "../organisms/set_winches";
 import SetAdmins from "../organisms/set_admins";
 
-import { setShowIconsReserved } from "../../actions/config";
+import { setShowIconsReserved } from "../../actions/app_settings";
 
 const mapStateToProps = (store) => ({
   showIconsReserved: store.appSettings.config.showIconsReserved,

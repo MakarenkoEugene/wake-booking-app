@@ -1,4 +1,4 @@
-import * as C from "../../constants/config";
+import * as C from "../../constants/app_settings";
 import pattern from "./pattern.json";
 
 const { config } = pattern;

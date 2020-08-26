@@ -23,6 +23,3 @@ export const signUpReq = (data) => ({ type: constants.SIGN_UP_REQ, data });
 export const signUpRes = (response) => ({ type: constants.SIGN_UP_RES, response });
 
 export const clearResponse = () => ({ type: constants.CLEAR_RESPONSE });
-
-//server action
-export const getClient = (phone) => ({ type: constants.GET_CLIENT, phone });

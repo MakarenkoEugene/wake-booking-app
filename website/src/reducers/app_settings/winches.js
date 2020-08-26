@@ -1,4 +1,4 @@
-import { SET_WINCH_DATA, ADD_WINCH, REMOVE_WINCH } from "../../constants/config";
+import { SET_WINCH_DATA, ADD_WINCH, REMOVE_WINCH } from "../../constants/app_settings";
 import pattern from "./pattern.json";
 
 const { winches } = pattern;

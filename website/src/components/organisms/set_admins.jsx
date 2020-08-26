@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import InputPhone from "../atoms/input_phone";
 
-import { addAdmin, setAdminRights, removeAdmin, getClient } from "../../actions/config";
+import { getClientForAdmin, setAdminRights, removeAdmin } from "../../actions/app_settings";
 
 const mapStateToProps = (store) => ({
   admins: store.appSettings.admins,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getClient: (phone) => dispatch(getClient(phone)),
-  addAdmin: (admin) => dispatch(addAdmin(admin)),
+  getClientForAdmin: (phone) => dispatch(getClientForAdmin(phone)),
   setAdminRights: (_id, rights) => dispatch(setAdminRights(_id, rights)),
   removeAdmin: (_id) => dispatch(removeAdmin(_id)),
 });
 
-function SetAdmins({ admins, getClient, addAdmin, setAdminRights, removeAdmin }) {
+function SetAdmins({ admins, getClientForAdmin, setAdminRights, removeAdmin }) {
   const HasMoreOneOwner = !!(admins.filter((admin) => admin.rights.includes("OWNER")).length - 1);
-  const [inputTelValue, onChangeInputTelValue] = React.useState({ value: "+380", valid: false });
+
+  const [inputTelValue, setInputTelValue] = useState({ value: "+380", valid: false });
+  const [phoneAlredyTaked, setPhoneAlredyTaked] = useState(false);
+
+  useEffect(() => {
+    setPhoneAlredyTaked(() => !!admins.find((item) => item.phone === inputTelValue.value.slice(1)));
+  });
 
   return (
     <div id="set_admins">
@@ -31,9 +36,7 @@ function SetAdmins({ admins, getClient, addAdmin, setAdminRights, removeAdmin })
         <li>
           OWNER - с этой способность администратор может изменять настройки приложения ( назначать тренеров, других
           администраторов, изменять время работы, и внешний вид ).
-          <big style={{ backgroundColor: "var(--orange)" }}>
-            ВАЖНО: Не давайте эту возможность не провереным людям, они могут завладеть вашей програмой.
-          </big>
+          <big>ВАЖНО: Не давайте эту возможность не провереным людям, они могут завладеть вашей програмой.</big>
         </li>
       </ul>
 
@@ -115,16 +118,16 @@ function SetAdmins({ admins, getClient, addAdmin, setAdminRights, removeAdmin })
       </p>
       <label>
         Введите номер телефона клиента, которому вы хотите предоставить права администратора. <br />
+        {phoneAlredyTaked && <big>Администратор с таким номером телефона уже добавлен</big>}
         <br />
-        <InputPhone value={inputTelValue} onChangeValue={onChangeInputTelValue} />
+        <InputPhone value={inputTelValue} onChangeValue={setInputTelValue} />
       </label>
       <button
-        disabled={!inputTelValue.valid}
+        disabled={!inputTelValue.valid || phoneAlredyTaked}
         onClick={(e) => {
           e.preventDefault();
-          console.log(e.target.validity.valid);
-          console.log(e.target.value);
-          // getClient();
+          if (!phoneAlredyTaked) getClientForAdmin(inputTelValue.value.slice(1));
+          setInputTelValue({ value: "+380", valid: false });
         }}
       >
         Give Rights

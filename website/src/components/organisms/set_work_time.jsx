@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import TableRow from "../molecules/set_work_time_table_row";
 
-import { setDurationOfSet } from "../../actions/config";
+import { setDurationOfSet } from "../../actions/app_settings";
 
 const mapStateToProps = (store) => ({
   workWeekDayList: store.appSettings.config.workWeekDayList,

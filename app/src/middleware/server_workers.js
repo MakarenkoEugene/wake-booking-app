@@ -1,5 +1,5 @@
 // const serverPath = "https://93.78.248.60:80/wbapp/";
-const serverPath = "https://localhost:80/wbapp/";
+const serverPath = "https://localhost:8080/wb/";
 
 import { stringify } from "./function";
 

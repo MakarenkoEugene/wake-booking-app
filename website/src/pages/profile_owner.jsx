@@ -17,7 +17,7 @@ function OwnerPage({ config }) {
 
   return (
     <div id="owner">
-      <ul>
+      <ul style={{ marginLeft: "20px" }}>
         <li>Основное</li>
         <li>Время работы</li>
         <li>Персонал</li>

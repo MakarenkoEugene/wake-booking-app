@@ -9,6 +9,7 @@ export const ADD_WINCH = "ADD_WINCH";
 export const REMOVE_WINCH = "REMOVE_WINCH";
 
 // admins 
+export const GET_CLIENT_FOR_ADMIN = "GET_CLIENT_FOR_ADMIN";
 export const ADD_ADMIN = "ADD_ADMIN";
 export const SET_ADMIN_RIGHTS = "SET_ADMIN_RIGHTS";
 export const REMOVE_ADMIN = "REMOVE_ADMIN";

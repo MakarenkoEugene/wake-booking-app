@@ -8,12 +8,12 @@ import "./i18n/";
 import "./assets/style/index.scss";
 
 import Root from "./root";
-import serverAction from "./middleware/server_action";
+import appSettings from "./middleware/app_settings";
 import rootReducers from "./reducers";
 
 function configureStore() {
   // return createStore(rootReducers, composeWithDevTools());
-  return createStore(rootReducers, composeWithDevTools(applyMiddleware(serverAction)));
+  return createStore(rootReducers, composeWithDevTools(applyMiddleware(appSettings)));
 }
 
 ReactDOM.render(

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import InputTime from "../atoms/input_time";
 
-import { setOpenWorkTime, setClosseWorkTime } from "../../actions/config";
+import { setOpenWorkTime, setClosseWorkTime } from "../../actions/app_settings";
 
 const mapStateToProps = (store) => ({
   durationOfSet: store.appSettings.config.durationOfSet,

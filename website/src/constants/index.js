@@ -1,9 +1,6 @@
 export const NAV_BAR_SHOW = "NAV_BAR_SHOW";
 export const NAV_BAR_CLOSSE = "NAV_BAR_CLOSSE";
 
-//server action
-export const GET_CLIENT = "GET_CLIENT";
-
 export const SIGN_IN_REQ = "SIGN_IN_REQ";
 export const SIGN_IN_RES = "SIGN_IN_RES";
 
