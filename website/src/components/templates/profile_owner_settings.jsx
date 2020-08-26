@@ -6,6 +6,8 @@ import InputToggle from "../atoms/input_toggle";
 import SetWorkTime from "../organisms/set_work_time";
 import SetWinches from "../organisms/set_winches";
 import SetAdmins from "../organisms/set_admins";
+import SetTeachers from "../organisms/set_teachers";
+
 
 import { setShowIconsReserved } from "../../actions/app_settings";
 
@@ -47,9 +49,7 @@ function Settings({ showIconsReserved, setShowIconsReserved }) {
 
             <SetAdmins />
 
-            <div>
-              <h3>Teachers</h3>
-            </div>
+            <SetTeachers />
 
             <SetWorkTime />
 
