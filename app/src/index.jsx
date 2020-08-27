@@ -48,11 +48,12 @@ function App({ init, loading, showClinetNav, config, container, accessDenied }) 
         </a>
       </div>
     );
+
   if (!config) return null;
   for (const key in config.config.color) container.style.setProperty(`--${key}`, `#${config.config.color[key]}`);
 
   return (
-    <div className={loading ? "loading" : ""} ref={this.container}>
+    <div className={loading ? "loading" : ""}>
       <Info />
       <Alert />
       {showClinetNav ? (

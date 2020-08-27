@@ -20,3 +20,7 @@ export const removeAdmin = (_id) => ({ type: C.REMOVE_ADMIN, _id });
 export const getClientForTeacher = (phone) => ({ type: C.GET_CLIENT_FOR_TEACHER, phone });
 export const addTeacher = (teacher) => ({ type: C.ADD_TEACHER, teacher });
 export const removeTeacher = (_id) => ({ type: C.REMOVE_TEACHER, _id });
+
+// nonWorkingDays
+export const addNonWorkingDate = (date) => ({ type: C.ADD_NON_WORKING_DATE, date });
+export const removeNonWorkingDate = (date) => ({ type: C.REMOVE_NON_WORKING_DATE, date });
