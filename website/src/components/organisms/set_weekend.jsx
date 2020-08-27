@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 
-import { addNonWorkingDays, removeNonWorkingDays } from "../../actions/app_settings";
+import { addNonWorkingDate, removeNonWorkingDate } from "../../actions/app_settings";
 import InputSelectDate from "../molecules/input_select_date";
 
 const mapStateToProps = (store) => ({
@@ -9,12 +9,14 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addNonWorkingDays: (date) => dispatch(addNonWorkingDays(date)),
-  removeNonWorkingDays: (date) => dispatch(removeNonWorkingDays(date)),
+  addNonWorkingDate: (date) => dispatch(addNonWorkingDate(date)),
+  removeNonWorkingDate: (date) => dispatch(removeNonWorkingDate(date)),
 });
 
-function SetWeekend({ nonWorkingDays, addNonWorkingDays, removeNonWorkingDays }) {
-  const [inputDateValue, setInputDateValue] = useState("");
+function SetWeekend({ nonWorkingDays, addNonWorkingDate, removeNonWorkingDate }) {
+  const [inputDateValue, setInputDateValue] = useState(
+    `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`
+  );
   const [inputDateValid, setInputDateValid] = useState(null);
 
   return (
@@ -46,7 +48,7 @@ function SetWeekend({ nonWorkingDays, addNonWorkingDays, removeNonWorkingDays })
               style={{ padding: " 5px", fontSize: "0.8em" }}
               onClick={(e) => {
                 e.preventDefault();
-                removeNonWorkingDays(item);
+                removeNonWorkingDate(item);
               }}
             >
               ✕
@@ -67,7 +69,7 @@ function SetWeekend({ nonWorkingDays, addNonWorkingDays, removeNonWorkingDays })
         disabled={!inputDateValid}
         onClick={(e) => {
           e.preventDefault();
-          addNonWorkingDays(inputDateValue);
+          addNonWorkingDate(inputDateValue);
         }}
       >
         Add Date
