@@ -19,7 +19,7 @@ export default (state = init, action) => {
   switch (action.type) {
     case C.SET_SHOW_ICONS_RESERVED:
       return { ...state, showIconsReserved: !!action.showIconsReserved };
-      
+
     case C.SET_DURATION_OF_SET:
       return {
         ...state,
@@ -82,6 +82,12 @@ export default (state = init, action) => {
         console.log(error);
         return state;
       }
+
+    case C.ADD_NON_WORKING_DATE:
+      return { ...state, nonWorkingDays: [...state.nonWorkingDays, action.date] };
+
+    case C.REMOVE_NON_WORKING_DATE:
+      return { ...state, nonWorkingDays: state.nonWorkingDays.filter((item) => item !== action.date) };
 
     default:
       return state;
