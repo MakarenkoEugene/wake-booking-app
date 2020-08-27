@@ -1,8 +1,10 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export default function InputSelectDate({ date, valid, onChangeDate, onChangeValid }) {
+  const yearRef = useRef(null);
   const monthRef = useRef(null);
   const dayRef = useRef(null);
+  const [massage, setMassage] = useState(null);
 
   const nowDate = new Date();
   const yearRange = 2;
@@ -10,11 +12,13 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
   useEffect(() => {
     if (!date) {
       onChangeValid(null);
+      setMassage(null);
       return;
     }
 
     if (!date.match(/^\d{4}-\d{1,2}-\d{1,2}$/)) {
       onChangeValid(false);
+      setMassage("Incorrect Date");
       return;
     }
 
@@ -22,26 +26,44 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
 
     if (!year || year > nowDate.getFullYear() + yearRange || year < nowDate.getFullYear()) {
       onChangeValid(false);
+      setMassage("Incorrect Year In Date");
       return;
     }
 
     const month = +date.split("-")[1];
+
+    if (!month || month > 12 || month < 1) {
+      onChangeValid(false);
+      setMassage("Incorrect Month In Date");
+      return;
+    }
+
     const isNowYear = nowDate.getFullYear() == year;
 
-    if (!month || month > 12 || isNowYear ? month < nowDate.getMonth() + 1 : month < 1) {
+    if (isNowYear && month < nowDate.getMonth() + 1) {
       onChangeValid(false);
+      setMassage("Month Is Passed");
       return;
     }
 
     const day = +date.split("-")[2];
-    const isNowMonth = isNowYear && nowDate.getMonth() + 1 == month;
     const dayInMonth = new Date(year, month, 0).getDate();
 
-    if (!day || day > dayInMonth || isNowMonth ? day < nowDate.getDate() : day < 1) {
+    if (!day || day > dayInMonth || day < 1) {
       onChangeValid(false);
+      setMassage("Incorrect Day In Date");
       return;
     }
 
+    const isNowMonth = isNowYear && nowDate.getMonth() + 1 == month;
+
+    if (isNowMonth && day < nowDate.getDate()) {
+      onChangeValid(false);
+      setMassage("Day Is Passed");
+      return;
+    }
+
+    setMassage(null);
     onChangeValid(true);
   }, [date]);
 
@@ -52,7 +74,7 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
   return (
     <div
       style={{
-        margin: "20px 10px 0px 0px",
+        margin: "20px 10px 40px 0px",
         borderRadius: "5px",
         border: `2px solid var(--${typeof valid === "boolean" ? (valid ? "blue" : "red") : "black"})`,
         padding: "1px",
@@ -73,6 +95,7 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
         style={{ border: "3px solid transparent", borderRadius: "5px", width: "56px" }}
         type="number"
         name=""
+        ref={yearRef}
         min={nowDate.getFullYear()}
         max={nowDate.getFullYear() + yearRange}
         value={year}
@@ -93,6 +116,11 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
         name=""
         ref={monthRef}
         value={month}
+        onKeyDown={(e) => {
+          if (e.key === "Backspace" && !month) {
+            yearRef.current.focus();
+          }
+        }}
         onChange={(e) => {
           e.preventDefault();
 
@@ -112,6 +140,11 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
         name=""
         ref={dayRef}
         value={day}
+        onKeyDown={(e) => {
+          if (e.key === "Backspace" && !day) {
+            monthRef.current.focus();
+          }
+        }}
         onChange={(e) => {
           e.preventDefault();
 
@@ -122,6 +155,20 @@ export default function InputSelectDate({ date, valid, onChangeDate, onChangeVal
           onChangeDate(`${date.split("-")[0] || ""}-${date.split("-")[1] || ""}-${value}`);
         }}
       />
+
+      {massage && (
+        <span
+          style={{
+            position: "absolute",
+            bottom: "-40px",
+            padding: "5px 10px",
+            left: "0px",
+            backgroundColor: "var(--red)",
+          }}
+        >
+          {massage}
+        </span>
+      )}
     </div>
   );
 }
