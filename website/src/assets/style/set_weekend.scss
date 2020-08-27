@@ -1,0 +1,27 @@
+#set_weekend {
+  > ul {
+    margin: 0px 20px 20px 0px;
+
+    > li {
+      margin: 0px 10px 0px 0px;
+      padding: 4px;
+      width: 200px;
+      border: 1px solid var(--black_gray);
+      border-top: none;
+      display: flex;
+      justify-content: space-between;
+
+      > span {
+        line-height: 30px;
+      }
+
+      > button {
+        padding: 5px;
+        font-size: 0.8em;
+      }
+    }
+    > li:first-child {
+      border-top: 1px solid var(--black_gray);
+    }
+  }
+}

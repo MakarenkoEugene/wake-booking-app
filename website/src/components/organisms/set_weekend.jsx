@@ -24,28 +24,12 @@ function SetWeekend({ nonWorkingDays, addNonWorkingDate, removeNonWorkingDate })
       <h3>Weekend</h3>
 
       <p>Список уже назначиных выходных дней:</p>
-      <ul
-        style={{
-          margin: "0px 20px 20px",
-        }}
-      >
+      <ul>
         {nonWorkingDays.map((item) => (
-          <li
-            style={{
-              margin: "0px 10px 0px 0px",
-              padding: "3px",
-              width: "200px",
-              borderLeft: "1px solid var(--black_gray)",
-              borderBottom: "1px solid var(--black_gray)",
-              display: "flex",
-              justifyContent: "space-between",
-            }}
-            key={item}
-          >
-            <span style={{ lineHeight: "30px" }}>{item}</span>
+          <li key={item}>
+            <span>{item}</span>
             <button
               className="button_text"
-              style={{ padding: " 5px", fontSize: "0.8em" }}
               onClick={(e) => {
                 e.preventDefault();
                 removeNonWorkingDate(item);
