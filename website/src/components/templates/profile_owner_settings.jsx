@@ -7,6 +7,7 @@ import SetWorkTime from "../organisms/set_work_time";
 import SetWinches from "../organisms/set_winches";
 import SetAdmins from "../organisms/set_admins";
 import SetTeachers from "../organisms/set_teachers";
+import SetWeekend from "../organisms/set_weekend";
 
 
 import { setShowIconsReserved } from "../../actions/app_settings";
@@ -53,9 +54,7 @@ function Settings({ showIconsReserved, setShowIconsReserved }) {
 
             <SetWorkTime />
 
-            <div>
-              <h3>Weekend</h3>
-            </div>
+            <SetWeekend />
 
             <div>
               <h3>Price</h3>
