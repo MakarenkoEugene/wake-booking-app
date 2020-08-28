@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    min-width: 780px;
     padding: 0;
 
     > div {
@@ -31,6 +32,7 @@
 
     > div:first-child {
       width: calc(100% - 360px);
+      min-width: 420px;
       color: var(--black);
       background-color: var(--white);
 
