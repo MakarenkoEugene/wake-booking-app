@@ -3,6 +3,10 @@ export const SET_OPEN_WORK_TIME = "SET_OPEN_WORK_TIME";
 export const SET_CLOSSE_WORK_TIME = "SET_CLOSSE_WORK_TIME";
 export const SET_SHOW_ICONS_RESERVED = "SET_SHOW_ICONS_RESERVED";
 
+// config color
+export const DISCARD_SETTINGS_COLOR = "DISCARD_SETTINGS_COLOR";
+export const SET_VALUE_FOR_COLOR = "SET_VALUE_FOR_COLOR";
+
 // winches
 export const SET_WINCH_DATA = "SET_WINCH_DATA";
 export const ADD_WINCH = "ADD_WINCH";
