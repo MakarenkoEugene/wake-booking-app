@@ -89,6 +89,11 @@ export default (state = init, action) => {
     case C.REMOVE_NON_WORKING_DATE:
       return { ...state, nonWorkingDays: state.nonWorkingDays.filter((item) => item !== action.date) };
 
+    case C.SET_VALUE_FOR_COLOR:
+      return { ...state, color: { ...state.color, [action.color]: action.value } };
+
+    case C.DISCARD_SETTINGS_COLOR:
+      return { ...state, color: config.color };
     default:
       return state;
   }
