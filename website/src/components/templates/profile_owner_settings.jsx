@@ -2,24 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 
 import Select from "react-select";
-import InputToggle from "../atoms/input_toggle";
+
 import SetWorkTime from "../organisms/set_work_time";
 import SetWinches from "../organisms/set_winches";
 import SetAdmins from "../organisms/set_admins";
 import SetTeachers from "../organisms/set_teachers";
 import SetWeekend from "../organisms/set_weekend";
+import SetVisualAppearance from "../organisms/set_visual_appearance";
 
+const mapStateToProps = (store) => ({});
+const mapDispatchToProps = (dispatch) => ({});
 
-import { setShowIconsReserved } from "../../actions/app_settings";
-
-const mapStateToProps = (store) => ({
-  showIconsReserved: store.appSettings.config.showIconsReserved,
-});
-const mapDispatchToProps = (dispatch) => ({
-  setShowIconsReserved: (showIconsReserved) => dispatch(setShowIconsReserved(showIconsReserved)),
-});
-
-function Settings({ showIconsReserved, setShowIconsReserved }) {
+function Settings() {
   return (
     <div id="settings">
       <div>
@@ -58,16 +52,10 @@ function Settings({ showIconsReserved, setShowIconsReserved }) {
 
             <div>
               <h3>Price</h3>
+              <hr />
             </div>
 
-            <div>
-              <h3>Visual Appearance</h3>
-              <InputToggle
-                label={"Show Icons Reserved for teachers, winches and client: "}
-                checked={showIconsReserved}
-                onChangeChecked={setShowIconsReserved}
-              />
-            </div>
+            <SetVisualAppearance />
 
             <input type="submit" value="Подтвердить Изменения" />
           </form>

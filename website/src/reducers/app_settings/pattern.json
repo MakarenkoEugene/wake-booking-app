@@ -5,6 +5,17 @@
     "utcOffset": "180",
     "locale": "uk",
     "calculateAmount": false,
+    "color": {
+      "white": "ffffff",
+      "light_gray": "e6e6e6",
+      "gray": "bbbbbb",
+      "black_gray": "4f4e58",
+      "black": "282c34",
+      "orange": "e2aa01",
+      "red": "ea4335",
+      "blue": "4285f4",
+      "green": "34a853"
+    },
     "nonWorkingDays": ["2020-8-22", "2020-8-12", "2020-9-1"],
     "showIconsReserved": true,
     "autoSelectTeacher": true,
