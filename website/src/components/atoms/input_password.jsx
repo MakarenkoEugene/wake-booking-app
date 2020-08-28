@@ -1,56 +1,48 @@
 import React, { Component, useState } from "react";
 
-import imgClosseEye from "../../assets/img/password_closse_eye.svg";
-import imgOneEye from "../../assets/img/password_open_eye.svg";
-
-function InputPassword() {
-  const [ passwordShowed, setPasswordShowed ] = useState(false);
+export default function InputPassword({
+  title,
+  label,
+  value,
+  valid,
+  onChangeValue,
+  onChangeValid,
+  required,
+  pattern,
+  placeholder,
+}) {
+  const [passwordShowed, setPasswordShowed] = useState(false);
 
   return (
-    <>
-      <label htmlFor="input_password">Пароль:</label>
+    <div className={`input_password${valid ? "" : " m_alert"}`}>
+      {label && <label htmlFor={label}>{label}</label>}
       <input
         type={passwordShowed ? "text" : "password"}
-        id="input_password"
-        autoComplete="current-password"
-        title="Ведите код подтверждения телефона либо пароль. Вводить можно: a-z, A-Z, 0-9. Максимальное количество 6, минимальное 16"
-        pattern="[0-9a-zA-Z]{6,16}"
-        required
-      />
-      <span className="text_help">
-        ⚠️
-        <span>
-          Обязательное поле. Ведите код подтверждения телефона либо пароль. Вводить можно символы латинского алфавита:
-          "a-z" "A-Z" и цифры "0-9". Минимальное количество символов 6 максимальное 16.
-        </span>
-      </span>
-      <label
-        htmlFor="toggle_input_password"
-        style={{
-          fontSize: "1.5em",
-          position: "relative",
-          top: "-35px",
-          left: "215px",
-          width: "25px",
-          height: "32px",
-          margin: "0px",
-          padding: "0px",
-          cursor: "pointer",
-          backgroundImage: `url(${passwordShowed ? imgClosseEye : imgOneEye})`,
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
+        id={label}
+        value={value}
+        onChange={(e) => {
+          onChangeValue(e.target.value);
+          if (onChangeValid) onChangeValid(e.target.validity.valid);
         }}
-      ></label>
-      <input
-        type="checkbox"
-        onChange={() => setPasswordShowed(!passwordShowed)}
-        value={passwordShowed}
-        id="toggle_input_password"
-        style={{ visibility: "hidden" }}
+        title={
+          title ||
+          "You need set your password. You can enter numbers, Latin alphabet in lower and upper case. 0-9 a-z A-Z"
+        }
+        pattern={pattern || "[a-zA-Z0-9]*"}
+        minLength="8"
+        maxLength="16"
+        required={required}
+        placeholder={placeholder || ""}
       />
-    </>
+
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setPasswordShowed(!passwordShowed);
+        }}
+      >
+        👁
+      </button>
+    </div>
   );
 }
-
-
-export default InputPassword;

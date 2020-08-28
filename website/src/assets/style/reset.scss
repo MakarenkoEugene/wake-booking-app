@@ -85,7 +85,12 @@ button {
   min-height: 100vh;
   width: 100%;
   background-color: var(--white);
+
+  > section {
+    padding: 70px 20px 0px;
+  }
 }
+
 .nav_open {
   > div,
   > section {
@@ -96,7 +101,7 @@ button {
   font-size: 1em;
 }
 
-big{
+big {
   display: block;
   background-color: var(--orange);
   font-weight: 600;

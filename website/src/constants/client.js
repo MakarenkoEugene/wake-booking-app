@@ -1,0 +1,1 @@
+export const LOG_IN_CHECK_PHONE = "LOG_IN_CHECK_PHONE";

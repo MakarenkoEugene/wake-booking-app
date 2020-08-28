@@ -1,38 +1,55 @@
 #log_in {
+  background-color: var(--light_gray);
+  min-height: calc(100vh - 70px);
+
   h1 {
-    margin-bottom: 20px;
+    float: left;
   }
 
-  > span {
-    text-align: right;
-    display: block;
-    margin: 20px auto;
+  .log_in_links {
+    float: right;
   }
 
   form {
-    margin-top: 100px;
+    background-color: var(--white);
+    border-radius: 5px;
+    border: 2px solid var(--blue);
+    box-shadow: 0px 0px 5px 0px var(--gray);
+    margin: 100px auto;
+    width: 300px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
 
-    label {
-      margin: 30px 0px 10px;
-      display: block;
+    > div {
+      margin-bottom: 30px;
     }
 
-    span {
-      display: none;
-    }
+    > div:first-child {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
 
-    input {
-      font-size: 1em;
-      padding: 10px 20px;
+      .react-tel-input {
+        font-family: inherit;
+        .form-control {
+          padding: 15px 15px 15px 55px;
+          width: inherit;
+        }
+
+        input:disabled{
+          background-color: var(--light_gray);
+        }
+      }
     }
 
     input[type="checkbox"] {
       display: none;
     }
+
     input[type="submit"] {
-      margin-top: 40px;
-      background-color: var(--blue);
-      color: white;
+      align-self: flex-end;
+      margin-top: 10px;
       border: none;
     }
   }
