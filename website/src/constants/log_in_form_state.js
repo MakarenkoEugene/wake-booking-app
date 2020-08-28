@@ -1,0 +1,2 @@
+export const CHECK_PHONE = "CHECK_PHONE";
+export const CHECK_PASSWORD = "CHECK_PASSWORD";
