@@ -9,11 +9,12 @@ import "./assets/style/index.scss";
 
 import Root from "./root";
 import appSettings from "./middleware/app_settings";
+import client from "./middleware/client";
 import rootReducers from "./reducers";
 
 function configureStore() {
   // return createStore(rootReducers, composeWithDevTools());
-  return createStore(rootReducers, composeWithDevTools(applyMiddleware(appSettings)));
+  return createStore(rootReducers, composeWithDevTools(applyMiddleware(client, appSettings)));
 }
 
 ReactDOM.render(

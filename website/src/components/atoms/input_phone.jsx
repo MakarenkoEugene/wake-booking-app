@@ -14,8 +14,8 @@ function InputPhone({ autoFocus, label, required, inputRef, value, onChangeValue
   };
 
   return (
-    <label style={{ marginRight: "20px" }}>
-      {label && label}
+    <label style={{ marginRight: "20px", position: "relative" }}>
+      {label && <p style={{ marginBottom: "10px" }}>{label}</p>}
       <input
         type="tel"
         autoFocus={autoFocus}
