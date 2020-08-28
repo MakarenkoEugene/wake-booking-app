@@ -1,0 +1,14 @@
+#set_visual_appearance {
+  table {
+    margin: 15px 0px;
+    border-collapse: collapse;
+
+    td {
+      border: 1px solid var(--black);
+      padding: 8px 16px;
+    }
+  }
+  button {
+    margin: 10px 0px;
+  }
+}
