@@ -19,7 +19,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'assets/js/[name].[contenthash:8].js',
-    publicPath: '/',
+    publicPath: isDevelopment ? '/' : '/client/',
   },
 
   resolve: {
@@ -87,7 +87,7 @@ module.exports = {
       })
     ),
     new CleanWebpackPlugin(),
-    new DotenvPlugin(),
+    new DotenvPlugin({ path: isProduction ? '.env.production' : '.env' }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title,
