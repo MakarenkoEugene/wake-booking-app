@@ -1,0 +1,15 @@
+.advertisers {
+  .header {
+    padding: 20px 0;
+
+    > div {
+      button {
+        min-width: 88px;
+
+        &:first-child {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}

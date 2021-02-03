@@ -1,0 +1,26 @@
+.table-root {
+  width: 100%;
+
+  .container {
+    max-height: 550px;
+  }
+
+  tbody {
+    td {
+      cursor: pointer;
+    }
+  }
+
+  .header-cell {
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .cell-value {
+    //width: column.width;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

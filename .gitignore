@@ -1,0 +1,9 @@
+# macOS Files
+.DS_Store
+
+node_modules
+dist
+
+.cache
+.env
+.idea
