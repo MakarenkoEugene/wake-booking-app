@@ -1,11 +1,14 @@
 import { makeAutoObservable } from 'mobx';
 
 export default class UserStore {
-  isLoggedIn = true;
-
-  user = {};
+  user = window.user && JSON.parse(window.user);
+  isLoggedIn = !!this.user;
 
   constructor() {
     makeAutoObservable(this);
+  }
+
+  get name() {
+    return this.user.email.split('@')[0];
   }
 }

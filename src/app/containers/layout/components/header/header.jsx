@@ -7,14 +7,8 @@ import { Button } from '@components/ui';
 import { Logo } from './logo';
 import useStyles from './header.styles';
 
-const Header = ({ rootStore: { ui, user }}) => {
+const Header = ({ rootStore: { user }}) => {
   const classes = useStyles();
-
-  const openLogin = () => {};
-  // const openLogin = () => ui.showModal({
-  //   title: 'Login',
-  //   component: <GitProviders onClick={user.login} />
-  // });
 
   return (
     <header className={classes.root}>
@@ -34,9 +28,10 @@ const Header = ({ rootStore: { ui, user }}) => {
             ))}
           </Box>
 
-          <a href='/login'>
-            <Button variant='text' color='inherit' onClick={openLogin}>Login</Button>
-          </a>
+          {user.isLoggedIn
+            ? <div>Hi, {user.name}</div>
+            : <a href={`${process.env.API_URL}/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>
+          }
         </Toolbar>
       </AppBar>
     </header>

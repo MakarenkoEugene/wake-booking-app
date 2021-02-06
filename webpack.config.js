@@ -92,6 +92,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title,
       version,
+      user: isProduction ? '<%- user %>' : '{"email":"maxim.sinyakov@ironsrc.com","isSuperAdmin":true,"roles":{}}',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CopyPlugin({
