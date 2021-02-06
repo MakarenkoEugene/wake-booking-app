@@ -5,7 +5,7 @@ import { inject } from 'mobx-react';
 const GuardedRoute = ({ component: Component, rootStore, ...rest }) => (
   <Route
     {...rest}
-    render={(props) => (rootStore.userStore.isLoggedIn
+    render={(props) => (rootStore.user.isLoggedIn
       ? <Component {...props} />
       : <Redirect to='/' />
     )}

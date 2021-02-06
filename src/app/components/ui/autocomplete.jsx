@@ -2,6 +2,9 @@ import React from 'react';
 import MaterialAutocomplete from '@material-ui/lab/Autocomplete';
 import { Input } from './input';
 
+const getUserLabel = ({ username }) =>
+  username.split('.').map(i => i.charAt(0).toUpperCase() + i.slice(1)).join(' ');
+
 export function Autocomplete({
   options,
   optionLabel = 'title',
@@ -15,21 +18,29 @@ export function Autocomplete({
   onChange,
   disabled,
   defaultValue,
+  getOptionLabel,
+  multiple,
+  size,
+  loading,
+  users,
 }) {
   return (
     <MaterialAutocomplete
+      multiple={multiple}
+      size={size || 'small'}
+      loading={loading}
       options={options}
       name={name}
       id={id}
       value={value}
       disabled={disabled}
       groupBy={groupBy}
-      onChange={onChange}
+      onChange={(e, value) => onChange(value)}
       disableClearable
       blurOnSelect
       openOnFocus
       defaultValue={defaultValue}
-      getOptionLabel={(option) => option[optionLabel] || option}
+      getOptionLabel={users ? getUserLabel : ((option) => option[optionLabel] || option)}
       renderInput={(params) => (
         <Input
           {...params}

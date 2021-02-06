@@ -1,14 +1,16 @@
 .advertisers {
+  position: relative;
+
   .header {
-    padding: 20px 0;
+    position: absolute;
+    bottom: 7px;
+    left: 15px;
 
-    > div {
-      button {
-        min-width: 88px;
+    button {
+      min-width: 88px;
 
-        &:first-child {
-          margin-right: 20px;
-        }
+      &:first-child {
+        margin-right: 20px;
       }
     }
   }

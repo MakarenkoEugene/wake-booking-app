@@ -43,7 +43,7 @@ export default class AdvertisersStore {
         this.list = this.list.concat(data);
       }
 
-      this.rootStore.uiStore.showAlert({
+      this.rootStore.ui.showAlert({
         type: 'success',
         msg: `Advertiser "${advertiser.advertiser}" successfully ${_id ? 'saved' : 'added'}`,
         delay: 3000,
@@ -57,7 +57,7 @@ export default class AdvertisersStore {
       11000: 'Duplicate Advertiser Id',
     };
 
-    this.rootStore.uiStore.showAlert({
+    this.rootStore.ui.showAlert({
       type: 'error',
       msg: messages[res.error.code] || 'Error occurred',
       delay: 3000,
