@@ -55,7 +55,16 @@ export function Table({ data, columns, pagination, onEdit, id, ...props }) {
     setOrderBy(property);
   };
 
-  let sortedData = stableSort(data, getComparator(order, orderBy));
+  const onFilter = (id) => (value) => {
+    setFilters(s => ({ ...s, [id]: value }));
+  };
+
+  const filter = data => data.filter(row =>
+    Object.entries(filters).every(([id, val]) => row[id].toLowerCase().includes(val.toLowerCase()))
+  );
+
+  const filteredData = filter(data);
+  let sortedData = stableSort(filteredData, getComparator(order, orderBy));
   sortedData = pagination ? sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedData;
 
   return (
@@ -76,10 +85,19 @@ export function Table({ data, columns, pagination, onEdit, id, ...props }) {
                     onClick={createSortHandler(column.id)}
                     className='header-cell'
                   >
-                    {column.label}
+                    {column.filter
+                      ? <Input
+                          margin='dense'
+                          variant='outlined'
+                          placeholder={column.label}
+                          value={filters[column.id] || ''}
+                          onClick={(e) => e.stopPropagation()}
+                          onChange={onFilter(column.id)}
+                      />
+                      : column.label
+                    }
                   </TableSortLabel>
 
-                  {/* <Input margin='dense' style={{ width: '100%' }} variant='outlined' value='' onChange={() => {}}/> */}
                 </TableCell>
               ))}
             </TableRow>
@@ -110,13 +128,13 @@ export function Table({ data, columns, pagination, onEdit, id, ...props }) {
         <TablePagination
           rowsPerPageOptions={[10, 25, 100]}
           component='div'
-          count={data.length}
+          count={filteredData.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onChangePage={handleChangePage}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
-        )}
+      )}
     </Paper>
   );
 }

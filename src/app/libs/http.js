@@ -25,7 +25,7 @@ class Http {
       url = `${url}?${query}`;
     }
 
-    const response = await fetch(`${this.BASE_URL}/${url}`, {
+    const response = await fetch(this.getUrl(url), {
       method,
       body: ['PUT', 'POST'].includes(method) ? JSON.stringify(data) : undefined,
       headers: {
@@ -46,6 +46,12 @@ class Http {
     }
 
     return null;
+  }
+
+  getUrl(url) {
+    return url.startsWith('http')
+      ? url
+      :`${this.BASE_URL}/${url}`;
   }
 }
 

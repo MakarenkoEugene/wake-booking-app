@@ -14,7 +14,7 @@ const squads = [
 
 const checkValid = (data) => Object.values(data).every((v) => !!v.toString().trim());
 
-const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
+const Component = ({ rootStore: { advertisers }, data, onClose }) => {
   const [state, setState] = useState(data || {
     advertiser: '',
     advertiserId: '',
@@ -43,7 +43,7 @@ const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
   };
 
   const submit = async () => {
-    const success = await advertisersStore.save(state);
+    const success = await advertisers.save(state);
 
     if (success) onClose();
   };
@@ -51,10 +51,10 @@ const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
   return (
     <Grid container className='add-new-advertiser' spacing={3}>
       <Grid item xs={6}>
-        <Input label='Advertiser' onChange={onChange('advertiser')} value={state.advertiser} disabled={advertisersStore.saving} />
+        <Input label='Advertiser' onChange={onChange('advertiser')} value={state.advertiser} disabled={advertisers.saving} />
       </Grid>
       <Grid item xs={6}>
-        <Input label='Advertiser ID' onChange={onChange('advertiserId')} value={state.advertiserId} disabled={advertisersStore.saving} />
+        <Input label='Advertiser ID' onChange={onChange('advertiserId')} value={state.advertiserId} disabled={advertisers.saving} />
       </Grid>
 
       <Grid item xs={6}>
@@ -64,7 +64,7 @@ const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
           type='number'
           inputProps={{ min: 1 }}
           onChange={onChange('tier')}
-          disabled={advertisersStore.saving}
+          disabled={advertisers.saving}
         />
       </Grid>
 
@@ -75,7 +75,7 @@ const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
           value={squads.find((s) => s.id === state.squad) || null}
           options={squads}
           optionLabel='id'
-          disabled={advertisersStore.saving}
+          disabled={advertisers.saving}
           onChange={(e, value) => onChange('squad')(value.id)}
         />
       </Grid>
@@ -85,17 +85,17 @@ const Component = ({ rootStore: { advertisersStore }, data, onClose }) => {
           label='Skip Approval?'
           checked={state.skipApproval}
           onChange={onChange('skipApproval')}
-          disabled={advertisersStore.saving}
+          disabled={advertisers.saving}
         />
       </Grid>
 
       <Grid item container justify='flex-end' alignItems='center' xs={6}>
-        <Button className='submit' disabled={!isValid || advertisersStore.saving} onClick={submit}>
+        <Button className='submit' disabled={!isValid || advertisers.saving} onClick={submit}>
           {state._id ? 'Save' : 'Add'}
         </Button>
       </Grid>
 
-      {advertisersStore.saving && <Loading />}
+      {advertisers.saving && <Loading />}
     </Grid>
   );
 };
