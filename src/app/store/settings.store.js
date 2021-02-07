@@ -12,6 +12,7 @@ export default class SettingsStore {
   }
 
   async fetch() {
+    const a = 1;
     const [users, settings] = await Promise.all([
       http.get('users'),
       http.get('settings'),
