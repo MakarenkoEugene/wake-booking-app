@@ -51,7 +51,7 @@ class Http {
   getUrl(url) {
     return url.startsWith('http')
       ? url
-      :`${this.BASE_URL}/${url}`;
+      : `${this.BASE_URL}/${url}`;
   }
 }
 

@@ -7,7 +7,7 @@ import { Button } from '@components/ui';
 import { Logo } from './logo';
 import useStyles from './header.styles';
 
-const Header = ({ rootStore: { user }}) => {
+const Header = ({ rootStore: { user } }) => {
   const classes = useStyles();
 
   return (
@@ -22,16 +22,20 @@ const Header = ({ rootStore: { user }}) => {
             {headerMenu.map((item) => (
               <NavLink to={item.href} className='nav-link' key={item.href}>
                 <Button variant='text' color='inherit'>
-                    {item.title}
+                  {item.title}
                 </Button>
               </NavLink>
             ))}
           </Box>
 
           {user.isLoggedIn
-            ? <div>Hi, {user.name}</div>
-            : <a href={`${process.env.API_URL}/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>
-          }
+            ? (
+              <div>
+                Hi,
+                {user.name}
+              </div>
+            )
+            : <a href={`${process.env.API_URL}/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>}
         </Toolbar>
       </AppBar>
     </header>

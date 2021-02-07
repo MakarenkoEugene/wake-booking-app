@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
     '& a': {
       color: 'white',
       textDecoration: 'none',
-    }
+    },
   },
 
   menuButton: {
@@ -32,6 +32,6 @@ export default makeStyles((theme) => ({
 
     '& a.active button': {
       backgroundColor: 'rgba(0, 0, 0, 0.2)',
-    }
+    },
   },
 }));

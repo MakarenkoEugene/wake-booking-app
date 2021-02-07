@@ -15,8 +15,7 @@ const Routes = (
         <Route exact path='/' component={Home} />
 
         <GuardedRoute path='/advertisers' component={Advertisers} />
-        <GuardedRoute path='/settings/:id?' component={Settings} />
-        <GuardedRoute path='/settings/:id?' component={Settings} />
+        <GuardedRoute path='/settings/:tab?' component={Settings} />
 
         <Route exact path='/test' component={TestPage} />
 

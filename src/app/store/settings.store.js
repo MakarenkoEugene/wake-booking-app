@@ -3,6 +3,7 @@ import { http } from '@libs/http';
 
 export default class SettingsStore {
   users = null;
+
   data = null;
 
   constructor() {
@@ -12,7 +13,6 @@ export default class SettingsStore {
   }
 
   async fetch() {
-    const a = 1;
     const [users, settings] = await Promise.all([
       http.get('users'),
       http.get('settings'),
@@ -27,6 +27,6 @@ export default class SettingsStore {
 
   setSettings(settings, users) {
     this.data = settings;
-    this.users = users.sort((a, b) => a.username > b.username ? 1 : -1);
+    this.users = users.sort((a, b) => (a.username > b.username ? 1 : -1));
   }
 }

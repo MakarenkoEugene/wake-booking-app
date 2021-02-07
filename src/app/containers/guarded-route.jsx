@@ -7,10 +7,13 @@ const GuardedRoute = ({ component: Component, rootStore, ...rest }) => (
     {...rest}
     render={(props) => (rootStore.user.isLoggedIn
       ? <Component {...props} />
-      : <Route render={() => {
+      : (
+        <Route render={() => {
           window.location.href = `${process.env.API_URL}/auth/google?redirect=${encodeURI(location.href)}`;
           return null;
-        }} />
+        }}
+        />
+      )
     )}
   />
 );

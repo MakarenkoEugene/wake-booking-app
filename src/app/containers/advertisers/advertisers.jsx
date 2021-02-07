@@ -6,7 +6,7 @@ import { AdvertiserModal } from './components/advertiser-modal';
 import './advertisers.scss';
 
 const columns = [
-  { id: 'advertiserId', label: 'Advertiser ID', filter: true, },
+  { id: 'advertiserId', label: 'Advertiser ID', filter: true },
   { id: 'advertiser', label: 'Advertiser', width: 300, filter: true },
   { id: 'squad', label: 'Squad', width: 100 },
   { id: 'tier', label: 'Tier' },
@@ -29,9 +29,6 @@ const Advertisers = ({ rootStore: { advertisers, ui, user } }) => {
   });
 
   const uploadCsv = (data) => advertisers.bulkUpdate(data);
-
-  const a = 11;
-  const b = 11;
 
   return (
     <div className='advertisers'>

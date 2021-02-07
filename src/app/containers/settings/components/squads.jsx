@@ -9,17 +9,17 @@ export const Squads = ({ data, users, onChange }) => {
   const squads = Object.keys(data);
   const curSquad = squads[curTab];
 
-  const handleChange = (squad, group) => value => {
+  const handleChange = (squad, group) => (value) => {
     const newState = {
       ...state,
       [squad]: {
-        [group]: value.map(u => u.username),
+        [group]: value.map((u) => u.username),
       },
     };
 
     setState(newState);
     onChange(newState);
-  }
+  };
 
   const handleTabChange = (event, tab) => setCurTab(tab);
 
@@ -41,19 +41,19 @@ export const Squads = ({ data, users, onChange }) => {
         <Autocomplete
           multiple
           options={users}
-          value={users.filter(u => data[curSquad].gameDesigners.includes(u.username))}
+          value={users.filter((u) => data[curSquad].gameDesigners.includes(u.username))}
           label='Game Designers'
           onChange={handleChange(curSquad, 'gameDesigners')}
-          users={true}
+          users
         />
 
         <Autocomplete
           multiple
           options={users}
-          value={users.filter(u => data[curSquad].designers.includes(u.username))}
+          value={users.filter((u) => data[curSquad].designers.includes(u.username))}
           label='Designers'
           onChange={handleChange(curSquad, 'designers')}
-          users={true}
+          users
         />
       </div>
     </Paper>
