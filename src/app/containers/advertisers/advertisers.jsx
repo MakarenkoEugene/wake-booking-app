@@ -29,7 +29,9 @@ const Advertisers = ({ rootStore: { advertisers, ui, user } }) => {
   });
 
   const uploadCsv = (data) => advertisers.bulkUpdate(data);
+
   const a = 11;
+  const b = 11;
 
   return (
     <div className='advertisers'>
