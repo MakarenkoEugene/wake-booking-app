@@ -86,6 +86,6 @@
     }
   },
   "lint-staged": {
-    "*.js": "npm run lint"
+    "*.jsx?": "npm run lint"
   }
 }
