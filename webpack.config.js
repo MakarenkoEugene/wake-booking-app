@@ -93,6 +93,7 @@ module.exports = {
       title,
       version,
       user: isProduction ? '<%- user %>' : '{"email":"maxim.sinyakov@ironsrc.com","isSuperAdmin":true,"roles":{}}',
+      // user: isProduction ? '<%- user %>' : 'null',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CopyPlugin({

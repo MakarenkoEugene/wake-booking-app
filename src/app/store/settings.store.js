@@ -13,7 +13,7 @@ export default class SettingsStore {
 
   async fetch() {
     const [users, settings] = await Promise.all([
-      http.get('settings/users'),
+      http.get('users'),
       http.get('settings'),
     ]);
 

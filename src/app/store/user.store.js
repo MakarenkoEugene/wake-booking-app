@@ -11,4 +11,9 @@ export default class UserStore {
   get name() {
     return this.user.email.split('@')[0];
   }
+
+  hasAccess(page) {
+    // return this.user.isSuperAdmin || this.user.roles[page].isWrite;
+    return this.user.roles[page]?.isWrite;
+  }
 }

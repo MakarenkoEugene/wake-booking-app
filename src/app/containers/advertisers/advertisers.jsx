@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Button, FileUpload, Table } from '@components/ui';
 import { Loading } from '@components/loading/loading';
-import { Grid } from '@material-ui/core';
 import { AdvertiserModal } from './components/advertiser-modal';
 import './advertisers.scss';
 
@@ -14,7 +13,7 @@ const columns = [
   { id: 'skipApproval', label: 'Skip Approval' },
 ];
 
-const Advertisers = ({ rootStore: { advertisers, ui } }) => {
+const Advertisers = ({ rootStore: { advertisers, ui, user } }) => {
   useEffect(() => {
     if (!advertisers.list.length) {
       advertisers.fetch();
@@ -42,13 +41,15 @@ const Advertisers = ({ rootStore: { advertisers, ui } }) => {
         order='asc'
         orderBy='advertiser'
         id='advertiserId'
-        onEdit={openModal}
+        onRowClick={user.hasAccess('advertiser') && openModal}
       />
 
-      <div className='header'>
-        <FileUpload onChange={uploadCsv} color='secondary'>Bulk update</FileUpload>
-        <Button onClick={() => openModal()}>Add</Button>
-      </div>
+      {user.hasAccess('advertiser') && (
+        <div className='header'>
+          <FileUpload onChange={uploadCsv} color='secondary'>Bulk update</FileUpload>
+          <Button onClick={() => openModal()}>Add</Button>
+        </div>
+      )}
     </div>
   );
 };

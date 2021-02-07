@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { inject } from 'mobx-react';
 
 const GuardedRoute = ({ component: Component, rootStore, ...rest }) => (
@@ -7,7 +7,10 @@ const GuardedRoute = ({ component: Component, rootStore, ...rest }) => (
     {...rest}
     render={(props) => (rootStore.user.isLoggedIn
       ? <Component {...props} />
-      : <Redirect to='/' />
+      : <Route render={() => {
+          window.location.href = `${process.env.API_URL}/auth/google?redirect=${encodeURI(location.href)}`;
+          return null;
+        }} />
     )}
   />
 );

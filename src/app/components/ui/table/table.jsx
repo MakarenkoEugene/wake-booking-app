@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import { Paper, TableSortLabel, TableHead, TableRow, TableBody, TableCell, TableContainer, TablePagination, Table as MatTable, IconButton } from '@material-ui/core';
 import { Checkbox } from '@components/ui/checkbox';
 import { Input } from '@components/ui/input';
-import { Edit } from '@material-ui/icons';
 import './table.scss';
 
-export function Table({ data, columns, pagination, onEdit, id, ...props }) {
+export function Table({ data, columns, pagination, onRowClick, id, ...props }) {
   const [page, setPage] = useState(0);
   const [order, setOrder] = useState(props.order);
   const [orderBy, setOrderBy] = useState(props.orderBy);
@@ -54,6 +53,8 @@ export function Table({ data, columns, pagination, onEdit, id, ...props }) {
     setOrder(isAsc ? 'desc' : 'asc');
     setOrderBy(property);
   };
+
+  const onRowClicked = row => onRowClick && onRowClick(row);
 
   const onFilter = (id) => (value) => {
     setFilters(s => ({ ...s, [id]: value }));
@@ -104,7 +105,7 @@ export function Table({ data, columns, pagination, onEdit, id, ...props }) {
           </TableHead>
           <TableBody>
             {sortedData.map((row) => (
-              <TableRow hover role='checkbox' tabIndex={-1} key={row[id]} onClick={() => onEdit(row)}>
+              <TableRow hover role='checkbox' tabIndex={-1} key={row[id]} onClick={onRowClicked}>
                 {columns.map((column) => {
                   const value = row[column.id];
 
