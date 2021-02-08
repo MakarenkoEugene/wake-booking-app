@@ -1,3 +1,4 @@
+/* eslint-disable */
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -87,7 +88,7 @@ module.exports = {
       })
     ),
     new CleanWebpackPlugin(),
-    new DotenvPlugin({ path: isProduction ? '.env.production' : '.env' }),
+    new DotenvPlugin({ path: isProduction ? ( process.env.STAGING ? '.env.staging' : '.env.production' ) : '.env' }),
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       title,

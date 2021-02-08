@@ -12,7 +12,7 @@ const squads = [
   { id: 'SuperSonic' },
 ];
 
-const checkValid = (data) => Object.values(data).every((v) => !!v.toString().trim());
+const checkValid = (data) => Object.values(data).every((v) => v && !!v.toString().trim());
 
 const Component = ({ rootStore: { advertisers }, data, onClose }) => {
   const [state, setState] = useState(data || {
