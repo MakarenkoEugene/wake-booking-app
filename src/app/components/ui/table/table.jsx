@@ -105,7 +105,7 @@ export function Table({ data, columns, pagination, onRowClick, id, ...props }) {
           </TableHead>
           <TableBody>
             {sortedData.map((row) => (
-              <TableRow hover role='checkbox' tabIndex={-1} key={row[id]} onClick={onRowClicked}>
+              <TableRow hover role='checkbox' tabIndex={-1} key={row[id]} onClick={() => onRowClicked(row)}>
                 {columns.map((column) => {
                   const value = row[column.id];
 
