@@ -29,12 +29,7 @@ const Header = ({ rootStore: { user } }) => {
           </Box>
 
           {user.isLoggedIn
-            ? (
-              <div>
-                Hi,
-                {user.name}
-              </div>
-            )
+            ? <div>Hi, {user.name}</div>
             : <a href={`${process.env.API_URL}/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>}
         </Toolbar>
       </AppBar>
