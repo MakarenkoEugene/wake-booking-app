@@ -1,12 +1,12 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 
 const Home = () => (
-  <div>
-    <Typography variant='h3'>Welcome to Playworks admin panel</Typography>
+  <Grid container justify='center'>
+    <Typography variant='h3'>Welcome to Komodo (plwx admin panel)</Typography>
 
-    <img src='https://st2.depositphotos.com/1025317/10718/i/950/depositphotos_107182268-stock-photo-the-komodo-dragon-varanus-komodoensis.jpg' />
-  </div>
+    <img style={{ borderRadius: 10, marginTop: 20 }} src='/public/img/komodo.png' />
+  </Grid>
 );
 
 export default Home;
