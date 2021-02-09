@@ -48,15 +48,6 @@ export const EmailGroups = ({ data, users, onChange, hasAccess }) => {
       />
 
       <Autocomplete
-        multiple
-        options={users}
-        value={users.filter((u) => state.weeklyMailer.includes(u.username))}
-        label='Weekly Mailer'
-        onChange={handleChange('weeklyMailer')}
-        users
-      />
-
-      <Autocomplete
         options={users}
         value={users.find((u) => state.plwxQaLead === u.username)}
         label='Playworks QA Lead'
