@@ -11,7 +11,7 @@ const Mailer = ({ rootStore: { ui } }) => {
   const preview = async () => {
     setState({ ...state, loading: true });
 
-    const content = await http.get('settings/mailer');
+    const content = await http.get('mailer');
 
     setState({ content });
   };
@@ -19,7 +19,7 @@ const Mailer = ({ rootStore: { ui } }) => {
   const sendMail = async () => {
     setState({ ...state, loading: true });
 
-    await http.post('settings/mailer');
+    await http.post('mailer');
 
     setState({ ...state, loading: false });
 
