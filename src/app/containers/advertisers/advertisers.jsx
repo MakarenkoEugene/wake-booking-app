@@ -41,10 +41,10 @@ const Advertisers = ({ rootStore: { advertisers, ui, user } }) => {
         order='asc'
         orderBy='advertiser'
         id='advertiserId'
-        onRowClick={user.hasAccess('advertiser') && openModal}
+        onRowClick={user.canEdit('advertiser') && openModal}
       />
 
-      {user.hasAccess('advertiser') && (
+      {user.canEdit('advertiser') && (
         <div className='header'>
           <FileUpload onChange={uploadCsv} color='secondary'>Bulk update</FileUpload>
           <Button onClick={() => openModal()}>Add</Button>

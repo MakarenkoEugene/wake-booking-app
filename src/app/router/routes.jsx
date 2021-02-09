@@ -15,9 +15,9 @@ const Routes = (
       <Switch>
         <Route exact path='/' component={Home} />
 
-        <GuardedRoute path='/advertisers' component={Advertisers} />
-        <GuardedRoute path='/mailer' component={Mailer} />
-        <GuardedRoute path='/settings/:tab?' component={Settings} />
+        <GuardedRoute path='/advertisers' role='advertiser' component={Advertisers} />
+        <GuardedRoute path='/mailer' role='mailer' component={Mailer} />
+        <GuardedRoute path='/settings/:tab?' role='settings' component={Settings} />
 
         <Route exact path='/test' component={TestPage} />
 

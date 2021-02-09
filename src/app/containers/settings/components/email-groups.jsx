@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Autocomplete } from '@components/ui';
 
-export const EmailGroups = ({ data, users, onChange, hasAccess }) => {
+export const EmailGroups = ({ data, users, onChange, canEdit }) => {
   const [state, setState] = useState(data);
 
   const handleChange = (group) => (value) => {
@@ -18,7 +18,7 @@ export const EmailGroups = ({ data, users, onChange, hasAccess }) => {
 
   return (
     <div>
-      {!hasAccess && <div className='overlay' />}
+      {!canEdit && <div className='overlay' />}
 
       <Autocomplete
         multiple
