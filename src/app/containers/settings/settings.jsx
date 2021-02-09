@@ -26,11 +26,12 @@ const tabContentProps = (tab) => ({
   'aria-labelledby': `vertical-tab-${tab}`,
 });
 
-const Settings = ({ rootStore: { settings } }) => {
+const Settings = ({ rootStore: { settings, user } }) => {
   const classes = useStyles();
   const { tab } = useParams();
   const history = useHistory();
   const [curTab, setCurTab] = useState(tab ? tabs.findIndex((t) => t.id === tab) : 0);
+  const [hasAccess] = useState(user.hasAccess('settings'));
 
   useEffect(() => {
     if (!settings.data) settings.fetch();
@@ -64,6 +65,7 @@ const Settings = ({ rootStore: { settings } }) => {
               data={settings.data[id]}
               users={settings.users}
               onChange={(data) => settings.update({ [id]: data })}
+              hasAccess={hasAccess}
             />
             )}
           </div>

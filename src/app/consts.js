@@ -4,6 +4,10 @@ export const headerMenu = [
     href: '/advertisers',
   },
   {
+    title: 'Mailer',
+    href: '/mailer',
+  },
+  {
     title: 'Settings',
     href: '/settings',
   },

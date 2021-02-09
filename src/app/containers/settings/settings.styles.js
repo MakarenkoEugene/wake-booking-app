@@ -29,5 +29,12 @@ export default makeStyles((theme) => ({
     '& .MuiAutocomplete-root': {
       marginBottom: 15,
     },
+
+    '& .overlay': {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+      zIndex: 1,
+    },
   },
 }));
