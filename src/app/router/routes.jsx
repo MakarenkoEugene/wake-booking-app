@@ -3,6 +3,7 @@ import { Redirect, Router, Route, Switch } from 'react-router-dom';
 import GuardedRoute from '@app/containers/guarded-route';
 import Home from '@app/containers/home/home';
 import Advertisers from '@app/containers/advertisers/advertisers';
+import Mailer from '@app/containers/mailer/mailer';
 import Settings from '@app/containers/settings/settings';
 import TestPage from '@app/containers/test-page';
 import Layout from '@app/containers/layout/layout';
@@ -15,6 +16,7 @@ const Routes = (
         <Route exact path='/' component={Home} />
 
         <GuardedRoute path='/advertisers' component={Advertisers} />
+        <GuardedRoute path='/mailer' component={Mailer} />
         <GuardedRoute path='/settings/:tab?' component={Settings} />
 
         <Route exact path='/test' component={TestPage} />

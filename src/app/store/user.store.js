@@ -14,6 +14,6 @@ export default class UserStore {
   }
 
   hasAccess(page) {
-    return this.user.isSuperAdmin || this.user.roles[page].isWrite;
+    return this.user.isSuperAdmin || this.user.roles[page]?.isWrite;
   }
 }

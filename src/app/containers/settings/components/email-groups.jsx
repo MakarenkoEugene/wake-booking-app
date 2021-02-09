@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Autocomplete } from '@components/ui';
 
-export const EmailGroups = ({ data, users, onChange }) => {
+export const EmailGroups = ({ data, users, onChange, hasAccess }) => {
   const [state, setState] = useState(data);
 
   const handleChange = (group) => (value) => {
@@ -18,6 +18,8 @@ export const EmailGroups = ({ data, users, onChange }) => {
 
   return (
     <div>
+      {!hasAccess && <div className='overlay' />}
+
       <Autocomplete
         multiple
         options={users}
@@ -42,6 +44,15 @@ export const EmailGroups = ({ data, users, onChange }) => {
         value={users.filter((u) => state.pttDuplicate.includes(u.username))}
         label='PTT Duplicate'
         onChange={handleChange('pttDuplicate')}
+        users
+      />
+
+      <Autocomplete
+        multiple
+        options={users}
+        value={users.filter((u) => state.weeklyMailer.includes(u.username))}
+        label='Weekly Mailer'
+        onChange={handleChange('weeklyMailer')}
         users
       />
 

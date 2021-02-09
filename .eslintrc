@@ -48,6 +48,7 @@
     "jsx-a11y/alt-text": "off",
     "class-methods-use-this": "off",
     "no-restricted-globals": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/iframe-has-title": "off"
   }
 }

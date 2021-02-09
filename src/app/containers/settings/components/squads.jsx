@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Autocomplete } from '@components/ui';
 import { Paper, AppBar, Tabs, Tab } from '@material-ui/core';
 
-export const Squads = ({ data, users, onChange }) => {
+export const Squads = ({ data, users, onChange, hasAccess }) => {
   const [curTab, setCurTab] = useState(0);
   const [state, setState] = useState(data);
 
@@ -38,6 +38,8 @@ export const Squads = ({ data, users, onChange }) => {
       </AppBar>
 
       <div style={{ padding: 20 }}>
+        {!hasAccess && <div className='overlay' />}
+
         <Autocomplete
           multiple
           options={users}
