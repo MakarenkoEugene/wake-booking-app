@@ -18,17 +18,17 @@ const Header = ({ rootStore: { user } }) => {
             <NavLink to='/'><Logo /></NavLink>
           </Typography>
 
-          {user.isLoggedIn && (
-            <Box flexDirection='row' display='flex' className={classes.menu}>
-              {headerMenu.map((item) => (
-                <NavLink to={item.href} className='nav-link' key={item.href}>
+          <Box flexDirection='row' display='flex' className={classes.menu}>
+            {headerMenu
+              .filter((i) => user.canView(i.role))
+              .map((i) => (
+                <NavLink to={i.href} className='nav-link' key={i.href}>
                   <Button variant='text' color='inherit'>
-                    {item.title}
+                    {i.title}
                   </Button>
                 </NavLink>
               ))}
-            </Box>
-          )}
+          </Box>
 
           {user.isLoggedIn
             ? <div>Hi, {user.name}</div>

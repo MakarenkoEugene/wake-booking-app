@@ -31,7 +31,7 @@ const Settings = ({ rootStore: { settings, user } }) => {
   const { tab } = useParams();
   const history = useHistory();
   const [curTab, setCurTab] = useState(tab ? tabs.findIndex((t) => t.id === tab) : 0);
-  const [hasAccess] = useState(user.hasAccess('settings'));
+  const [canEdit] = useState(user.canEdit('settings'));
 
   useEffect(() => {
     if (!settings.data) settings.fetch();
@@ -65,7 +65,7 @@ const Settings = ({ rootStore: { settings, user } }) => {
               data={settings.data[id]}
               users={settings.users}
               onChange={(data) => settings.update({ [id]: data })}
-              hasAccess={hasAccess}
+              canEdit={canEdit}
             />
             )}
           </div>

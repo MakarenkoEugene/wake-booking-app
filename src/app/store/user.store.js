@@ -13,7 +13,11 @@ export default class UserStore {
     return this.user.email.split('@')[0];
   }
 
-  hasAccess(page) {
-    return this.user.isSuperAdmin || this.user.roles[page]?.isWrite;
+  canView(page) {
+    return this.isLoggedIn && (this.user.isSuperAdmin || this.user.roles[page]);
+  }
+
+  canEdit(page) {
+    return this.isLoggedIn && (this.user.isSuperAdmin || !!this.user.roles[page]?.isEdit);
   }
 }
