@@ -13,6 +13,7 @@ export const Squads = ({ data, users, onChange, canEdit }) => {
     const newState = {
       ...state,
       [squad]: {
+        ...state[squad],
         [group]: value.map((u) => u.username),
       },
     };
@@ -43,7 +44,7 @@ export const Squads = ({ data, users, onChange, canEdit }) => {
         <Autocomplete
           multiple
           options={users}
-          value={users.filter((u) => data[curSquad].gameDesigners.includes(u.username))}
+          value={users.filter((u) => state[curSquad].gameDesigners.includes(u.username))}
           label='Game Designers'
           onChange={handleChange(curSquad, 'gameDesigners')}
           users
@@ -52,7 +53,7 @@ export const Squads = ({ data, users, onChange, canEdit }) => {
         <Autocomplete
           multiple
           options={users}
-          value={users.filter((u) => data[curSquad].designers.includes(u.username))}
+          value={users.filter((u) => state[curSquad].designers.includes(u.username))}
           label='Designers'
           onChange={handleChange(curSquad, 'designers')}
           users
