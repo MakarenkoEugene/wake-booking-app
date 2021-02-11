@@ -19,34 +19,17 @@ export function Table({ data, columns, pagination, onRowClick, id, ...props }) {
     setPage(0);
   };
 
-  function descendingComparator(a, b, orderBy) {
-    if (b[orderBy] < a[orderBy]) {
-      return -1;
+  const ascComparator = (a, b, id) => {
+    if (typeof a[id] === 'string') {
+      return a[id].toLowerCase() > b[id].toLowerCase() ? 1 : -1;
     }
 
-    if (b[orderBy] > a[orderBy]) {
-      return 1;
-    }
+    return a[id] > b[id] ? 1 : -1
+  };
 
-    return 0;
-  }
-
-  function getComparator(order, orderBy) {
-    return order === 'desc'
-      ? (a, b) => descendingComparator(a, b, orderBy)
-      : (a, b) => -descendingComparator(a, b, orderBy);
-  }
-
-  function stableSort(array, comparator) {
-    const stabilizedThis = array.map((el, index) => [el, index]);
-    stabilizedThis.sort((a, b) => {
-      const order = comparator(a[0], b[0]);
-      if (order !== 0) return order;
-      return a[1] - b[1];
-    });
-
-    return stabilizedThis.map((el) => el[0]);
-  }
+  const getComparator = (order, orderBy) => order === 'asc'
+    ? (a, b) => ascComparator(a, b, orderBy)
+    : (a, b) => -ascComparator(a, b, orderBy);
 
   const createSortHandler = (property) => (event) => {
     const isAsc = orderBy === property && order === 'asc';
@@ -56,16 +39,14 @@ export function Table({ data, columns, pagination, onRowClick, id, ...props }) {
 
   const onRowClicked = row => onRowClick && onRowClick(row);
 
-  const onFilter = (id) => (value) => {
-    setFilters(s => ({ ...s, [id]: value }));
-  };
+  const onFilter = (id) => (value) => setFilters(s => ({ ...s, [id]: value }));
 
   const filter = data => data.filter(row =>
-    Object.entries(filters).every(([id, val]) => row[id].toLowerCase().includes(val.toLowerCase()))
+    Object.entries(filters).every(([id, val]) => row[id].toString().toLowerCase().includes(val.toLowerCase()))
   );
 
   const filteredData = filter(data);
-  let sortedData = stableSort(filteredData, getComparator(order, orderBy));
+  let sortedData = filteredData.sort(getComparator(order, orderBy));
   sortedData = pagination ? sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) : sortedData;
 
   return (
