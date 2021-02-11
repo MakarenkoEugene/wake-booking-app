@@ -6,7 +6,8 @@ export default class SettingsStore {
 
   data = null;
 
-  constructor() {
+  constructor(rootStore) {
+    this.rootStore = rootStore;
     this.update = this.update.bind(this);
 
     makeAutoObservable(this);
@@ -21,8 +22,14 @@ export default class SettingsStore {
     this.setSettings(settings, users);
   }
 
-  update(data) {
-    http.post('settings', data);
+  async update(data) {
+    await http.post('settings', data);
+
+    this.rootStore.ui.showAlert({
+      type: 'success',
+      msg: 'Successfully saved!',
+      delay: 1500,
+    });
   }
 
   setSettings(settings, users) {
