@@ -1,12 +1,26 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
+import { inject } from 'mobx-react';
 import { Grid, Typography } from '@material-ui/core';
 
-const Home = () => (
-  <Grid container justify='center'>
-    <Typography variant='h3'>Welcome to Komodo (plwx admin panel)</Typography>
+const Home = ({ rootStore: { ui } }) => {
+  const q = new URLSearchParams(useLocation().search);
 
-    <img style={{ borderRadius: 10, marginTop: 20 }} src={`${process.env.PUBLIC_PATH}/assets/img/komodo.png`} />
-  </Grid>
-);
+  if (q.has('error')) {
+    ui.showAlert({
+      type: 'error',
+      msg: 'Komodo does not allow you to use this system :(',
+      delay: 6000,
+    });
+  }
 
-export default Home;
+  return (
+    <Grid container justify='center'>
+      <Typography variant='h3'>Welcome to Komodo (admin panel)</Typography>
+
+      <img style={{ borderRadius: 10, marginTop: 20 }} src={`${process.env.PUBLIC_PATH}/assets/img/komodo.png`} />
+    </Grid>
+  );
+};
+
+export default inject('rootStore')(Home);
