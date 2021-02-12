@@ -95,6 +95,7 @@ module.exports = {
       version,
       user: isProduction ? '<%- user %>' : '{"email":"maxim.sinyakov@ironsrc.com","isSuperAdmin":true,"roles":{}}',
       // user: isProduction ? '<%- user %>' : 'null',
+      publicPath: isDevelopment ? '/' : '/client/',
       template: path.resolve(__dirname, 'public/index.html'),
     }),
     new CopyPlugin({
@@ -104,9 +105,8 @@ module.exports = {
       }],
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(
-        isProduction ? 'production' : 'development',
-      ),
+      'process.env.NODE_ENV': JSON.stringify(isProduction ? 'production' : 'development'),
+      'process.env.PUBLIC_PATH': JSON.stringify(isDevelopment ? '' : '/client'),
     }),
   ].filter(Boolean),
   devServer: {

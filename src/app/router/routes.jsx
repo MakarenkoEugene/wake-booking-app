@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import GuardedRoute from '@app/containers/guarded-route';
 import Home from '@app/containers/home/home';
 import Advertisers from '@app/containers/advertisers/advertisers';
@@ -20,8 +20,6 @@ const Routes = (
         <GuardedRoute path='/settings/:tab?' role='settings' component={Settings} />
 
         <Route exact path='/test' component={TestPage} />
-
-        <Redirect to='/advertisers' />
       </Switch>
     </Layout>
   </Router>
