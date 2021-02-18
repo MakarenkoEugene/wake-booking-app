@@ -39,7 +39,7 @@ const Settings = ({ rootStore: { settings, user } }) => {
 
   const handleTabChange = (event, newTab) => {
     setCurTab(newTab);
-    history.replace(`/settings/${tabs[newTab].id}`);
+    history.replace(`/admin/settings/${tabs[newTab].id}`);
   };
 
   if (!settings.data) return <Loading />;

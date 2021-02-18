@@ -38,7 +38,7 @@ class Http {
     if (response.status === 200) {
       const contentType = response.headers.get('Content-Type');
 
-      if (contentType.startsWith('application/json')) {
+      if (contentType && contentType.startsWith('application/json')) {
         return response.json();
       }
 

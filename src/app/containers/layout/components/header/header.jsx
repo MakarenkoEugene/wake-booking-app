@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject } from 'mobx-react';
 import { NavLink } from 'react-router-dom';
-import { headerMenu } from '@app/consts';
+import { adminMenu } from '@app/consts';
 import { AppBar, Toolbar, Typography, Box } from '@material-ui/core';
 import { Button } from '@components/ui';
 import { Logo } from './logo';
@@ -15,11 +15,11 @@ const Header = ({ rootStore: { user } }) => {
       <AppBar position='fixed'>
         <Toolbar>
           <Typography variant='h5' className={classes.logo}>
-            <NavLink to='/'><Logo /></NavLink>
+            <NavLink to='/admin'><Logo /></NavLink>
           </Typography>
 
           <Box flexDirection='row' display='flex' className={classes.menu}>
-            {headerMenu
+            {adminMenu
               .filter((i) => user.canView(i.role))
               .map((i) => (
                 <NavLink to={i.href} className='nav-link' key={i.href}>

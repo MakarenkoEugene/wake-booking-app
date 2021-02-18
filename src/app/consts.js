@@ -1,17 +1,17 @@
-export const headerMenu = [
+export const adminMenu = [
   {
     title: 'Advertisers',
-    href: '/advertisers',
+    href: '/admin/advertisers',
     role: 'advertiser',
   },
   {
     title: 'Mailer',
-    href: '/mailer',
+    href: '/admin/mailer',
     role: 'mailer',
   },
   {
     title: 'Settings',
-    href: '/settings',
+    href: '/admin/settings',
     role: 'settings',
   },
 ];

@@ -15,15 +15,15 @@ export default class SettingsStore {
 
   async fetch() {
     const [users, settings] = await Promise.all([
-      http.get('users'),
-      http.get('settings'),
+      http.get('api/users'),
+      http.get('api/settings'),
     ]);
 
     this.setSettings(settings, users);
   }
 
   async update(data) {
-    await http.post('settings', data);
+    await http.post('api/settings', data);
 
     this.rootStore.ui.showAlert({
       type: 'success',
