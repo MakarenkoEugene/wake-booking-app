@@ -4,6 +4,8 @@ import { makeAutoObservable } from 'mobx';
 export default class CreativesStore {
   data = {};
 
+  loading = true;
+
   selectVersion = {};
 
   orientation = 'portrait' // landscape, portrait
@@ -12,7 +14,9 @@ export default class CreativesStore {
 
   isOpen = true
 
-  constructor() {
+  constructor(rootStore) {
+    this.rootStore = rootStore;
+
     this.onChangeOrientation = this.onChangeOrientation.bind(this);
     this.onChangeIsOpen = this.onChangeIsOpen.bind(this);
     this.reloard = this.reloard.bind(this);
@@ -31,6 +35,8 @@ export default class CreativesStore {
     } catch (error) {
       this.data = null;
     }
+
+    this.loading = false;
   }
 
   setUserDevice(device) {

@@ -5,7 +5,7 @@ import { useRouteMatch } from 'react-router-dom';
 /* eslint-disable import/no-unresolved */
 import { useWindowSize } from '@hooks';
 import PlayworksLogo from '@public/img/playworks-logo.svg';
-import { Phone, Version, CreativeStatus } from '@components/';
+import { Phone, Version, CreativeStatus, Loading } from '@components/';
 import './demo.scss';
 
 const Demo = ({ rootStore: { creatives } }) => {
@@ -25,6 +25,8 @@ const Demo = ({ rootStore: { creatives } }) => {
   useEffect(() => {
     if (params.id) creatives.get(params.id);
   }, [params?.id]);
+
+  if (creatives.loading) return <Loading />;
 
   return (
     <>
