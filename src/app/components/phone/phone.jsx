@@ -12,6 +12,8 @@ import './phone.scss';
 
 const Phone = ({ rootStore: { creatives } }) => {
   const { orientation, selectVersion, onChangeOrientation, userDevice, isOpen } = creatives;
+  const { isFreeOrientation } = creatives.data;
+
   const iframeRef = useRef(null);
 
   const forceUpdateIframe = () => {
@@ -42,14 +44,9 @@ const Phone = ({ rootStore: { creatives } }) => {
         <button type='button' onClick={forceUpdateIframe}>
           <ImageRload />
         </button>
-        <button
-          type='button'
-          onClick={
-            userDevice !== 'phone' ? onChangeOrientation : creatives.onChangeIsOpen
-          }
-        >
-          { userDevice !== 'phone' ? <ImageRotate /> : <ImageClose /> }
-        </button>
+        {userDevice !== 'phone'
+          ? <button type='button' disabled={!isFreeOrientation} onClick={onChangeOrientation}> <ImageRotate /> </button>
+          : <button type='button' onClick={creatives.onChangeIsOpen}> <ImageClose /> </button>}
       </div>
     </Grid>
   );

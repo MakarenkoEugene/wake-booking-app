@@ -98,13 +98,18 @@
       margin-left: 1em;
     }
 
-    button:hover{
+    button:not(:disabled):hover{
       *[class$="to_white"] {
         fill: white;
       }
       *[class$="to_blue"] {
         fill: #0210A1;
       }
+    }
+
+    button:disabled{
+      opacity: 0.4;
+      cursor: not-allowed;
     }
 
     svg{
