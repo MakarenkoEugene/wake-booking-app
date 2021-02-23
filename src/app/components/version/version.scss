@@ -1,0 +1,142 @@
+@keyframes sweep {
+  0% { transform: skew(-25deg) translateX(-150%); }
+  45% { transform: skew(-25deg) translateX(-0.5em); }
+  100% { transform: skew(-25deg) translateX(-150%); }
+}
+
+@keyframes sweepInner {
+  0% { fill: #0210A1; }
+  45% { fill: #fff; }
+  100% { fill: #0210A1; }
+}
+
+.version{
+  align-self: flex-start;
+  width: min-content;
+  margin: 0px 2em 4em 0px;
+
+  p {
+    font-family: "HelveticaNeue", sans-serif;
+    font-size: 1em;
+    text-transform: none;
+  }
+  
+  > p {
+    margin-bottom: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  
+  button{
+    font-size: inherit;
+    width: -webkit-fill-available;
+    border: 0.2em solid white;
+    border-radius: 1.5em;
+    padding: 1em 1.5em;
+
+    &:hover{
+      background-color: white;
+      box-shadow: 0.2em 1px 6px rgb(0 0 0 / 18%);
+      border: 0.2em solid white;
+    }
+
+    span {
+      color: #0210A1;
+      text-align: start;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-family: "HelveticaNeue", sans-serif;
+      font-size: 1em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 0.9;
+      display: initial;
+      text-align: left;
+    }
+  }
+
+  button:not(:last-of-type) {
+    margin-bottom: 1em;
+  }
+
+  .select_version{
+    background-color: #0210A1;
+
+    span{
+      color: white;
+    }
+
+    &:hover{
+      background-color: #0210A1;
+      box-shadow: 0.2em 0.1em 0.5em rgb(0 0 0 / 18%);
+    }
+  }
+
+  .phone{
+    padding: 0.5em;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+
+
+    p{
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 0.2em;
+    }
+
+    &:hover{
+      background-color: inherit;
+      box-shadow: none;
+      border: none;
+    }
+
+    .play_icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      float: left;
+      margin-right: 0.8em;
+      width: 3em;
+      height: 3em;
+      background-color: white;
+      border-radius: 50%;
+      box-shadow: 2px 1px 6px 0 rgb(0 0 0 / 13%);
+      position: relative;
+      overflow: hidden;
+      will-change: transform;
+
+      svg{
+        position: relative;
+        width: 1em;
+        height: 1em;
+        margin-left: 0.2em;
+        fill: #0210A1;
+        z-index: 2;
+
+        animation: sweepInner 4s infinite cubic-bezier(0.86, 0, 0.07, 1);
+      }
+
+      &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        width: 5em;
+        height: 3em;
+
+        background-color: #af42f3;
+        z-index: 1;
+        background-blend-mode: inherit;
+
+        animation: sweep 4s infinite cubic-bezier(0.86, 0, 0.07, 1);
+      }
+    }
+
+    &.select_version span{
+        color: #0210A1;
+    }
+  }
+}
