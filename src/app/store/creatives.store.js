@@ -21,11 +21,16 @@ export default class CreativesStore {
   }
 
   async get(id) {
-    const res = await http.get(`creatives/${id}`);
-    this.data = res;
+    try {
+      const res = await http.get(`creatives/${id}`);
 
-    this.orientation = this.data?.defaultOrientation || 'portrait';
-    this.onSelectVersion(this.data?.demos[0] || null);
+      this.data = res;
+
+      this.orientation = this.data?.defaultOrientation || 'portrait';
+      this.onSelectVersion(this.data?.demos[0] || null);
+    } catch (error) {
+      this.data = null;
+    }
   }
 
   setUserDevice(device) {

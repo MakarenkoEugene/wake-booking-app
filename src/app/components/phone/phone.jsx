@@ -6,6 +6,7 @@ import PhoneFrame from '@public/img/iphone.svg';
 import ImageRload from '@public/img/reload.svg';
 import ImageRotate from '@public/img/rotate.svg';
 import ImageClose from '@public/img/close.svg';
+import TVNoise from '@public/img/tv-noise.gif';
 
 import './phone.scss';
 
@@ -31,7 +32,11 @@ const Phone = ({ rootStore: { creatives } }) => {
     >
       <div id='phone' className={orientation}>
         { userDevice !== 'phone' && <PhoneFrame className='phone_frame' />}
-        { selectVersion?.url && <iframe ref={iframeRef} className='phone_content' src={selectVersion.url} frameBorder='0' /> }
+        {
+          selectVersion?.url
+            ? <iframe ref={iframeRef} className='phone_content' src={selectVersion.url} frameBorder='0' />
+            : <div className='phone_content' style={{ backgroundImage: `url(${TVNoise})` }} />
+        }
       </div>
       <div className='phone_controle'>
         <button type='button' onClick={forceUpdateIframe}>

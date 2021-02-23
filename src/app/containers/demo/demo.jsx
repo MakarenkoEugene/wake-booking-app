@@ -31,14 +31,16 @@ const Demo = ({ rootStore: { creatives } }) => {
       { width <= 1200 && <CreativeStatus /> }
       <Grid id='demo' spacing={1} container direction='column' justify='space-between' wrap='nowrap'>
         <div className='creative-metadata'>
-          { advertiserName && (
-            <p>{advertiserName} ● {issueType?.name}
-              (
-              <a href={`https://jira.ironsrc.com/jira/browse/${issueKey}`}>{issueKey}</a>
-              )
-            </p>
-          )}
-          <h1>{titleAppName}</h1>
+          { creatives?.data
+            ? (
+              <>
+                <p>{advertiserName} ● {issueType?.name}
+                  (<a href={`https://jira.ironsrc.com/jira/browse/${issueKey}`}>{issueKey}</a>)
+                </p>
+                <h1>{titleAppName}</h1>
+              </>
+            )
+            : <h1>No creative data</h1>}
         </div>
 
         <Grid spacing={1} item container wrap='nowrap' justify='space-between' alignItems='center' className='demo_main'>
