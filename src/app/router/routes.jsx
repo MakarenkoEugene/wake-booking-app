@@ -7,7 +7,7 @@ import Mailer from '@app/containers/mailer/mailer';
 import Settings from '@app/containers/settings/settings';
 import TestPage from '@app/containers/test-page';
 import LayoutAdmin from '@app/containers/layout/admin';
-import LayoutDemo from '@app/containers/layout/demo';
+import Demo from '@app/containers/demo/demo';
 import history from './history';
 
 const AdminRoute = () => {
@@ -40,7 +40,7 @@ const Routes = (
     <Switch>
       <Route exact path='/' component={H} />
       <Route path='/admin' component={AdminRoute} />
-      <Route path='/creatives/:id'><LayoutDemo /></Route>
+      <Route path='/creatives/:id'><Demo /></Route>
       <Route exact path='/test' component={TestPage} />
     </Switch>
   </Router>
