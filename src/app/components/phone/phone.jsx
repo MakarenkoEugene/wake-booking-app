@@ -1,50 +1,53 @@
-import React, { useState } from 'react';
+import React, { useRef } from 'react';
 import { Grid } from '@material-ui/core';
+import { inject, observer } from 'mobx-react';
+/* eslint-disable import/no-unresolved */
+import PhoneFrame from '@public/img/iphone.svg';
+import ImageRload from '@public/img/reload.svg';
+import ImageRotate from '@public/img/rotate.svg';
+import ImageClose from '@public/img/close.svg';
+
 import './phone.scss';
 
-export const Phone = ({ activeVersion, assets }) => {
-  const [orientation, setOrientation] = useState('portrait');
+const Phone = ({ rootStore: { creatives } }) => {
+  const { orientation, selectVersion, onChangeOrientation, userDevice, isOpen } = creatives;
+  const iframeRef = useRef(null);
 
-  if (!assets || !activeVersion) return null;
-  console.log(orientation);
+  const forceUpdateIframe = () => {
+    iframeRef.current.src = selectVersion.url;
+  };
+
+  if (userDevice === 'phone' && !isOpen) return null;
 
   return (
     <Grid
-      item
       container
       direction='column'
       wrap='nowrap'
       alignItems='center'
-      className='phone_container'
+      justify='center'
+      alignContent='center'
+      className={`phone_container ${userDevice === 'phone' ? 'device_is_phone' : ''}`}
     >
       <div id='phone' className={orientation}>
-        <div className='screen3'>
-          <div className='screen2'>
-            <div className='screen'>
-              <div className='notch'>
-                <div className='speaker' />
-                <div className='fcamera' />
-              </div>
-              <iframe
-                id='pa'
-                style={orientation === 'portrait'
-                  ? { width: '300px', height: '666px' }
-                  : { width: '666px', height: '300px' }}
-                src={assets.find((e) => e.id === activeVersion).url}
-                frameBorder='0'
-              />
-            </div>
-          </div>
-        </div>
+        { userDevice !== 'phone' && <PhoneFrame className='phone_frame' />}
+        { selectVersion?.url && <iframe ref={iframeRef} className='phone_content' src={selectVersion.url} frameBorder='0' /> }
       </div>
-      <div className='controle'>
+      <div className='phone_controle'>
+        <button type='button' onClick={forceUpdateIframe}>
+          <ImageRload />
+        </button>
         <button
           type='button'
-          onClick={() => setOrientation(orientation === 'lendscape' ? 'portrait' : 'lendscape')}
+          onClick={
+            userDevice !== 'phone' ? onChangeOrientation : creatives.onChangeIsOpen
+          }
         >
-          rotate
+          { userDevice !== 'phone' ? <ImageRotate /> : <ImageClose /> }
         </button>
       </div>
     </Grid>
   );
 };
+
+export default inject('rootStore')(observer(Phone));
