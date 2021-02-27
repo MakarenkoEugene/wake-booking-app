@@ -11,8 +11,8 @@ import TVNoise from '@public/img/tv-noise.gif';
 import './phone.scss';
 
 const Phone = ({ rootStore: { creatives } }) => {
-  const { orientation, selectVersion, onChangeOrientation, userDevice, isOpen } = creatives;
-  const { isFreeOrientation } = creatives.data;
+  const { orientation, selectVersion, onChangeOrientation, userDevice, isOpen, data } = creatives;
+  const isFreeOrientation = data ? data.isFreeOrientation : true;
 
   const iframeRef = useRef(null);
 
@@ -36,7 +36,7 @@ const Phone = ({ rootStore: { creatives } }) => {
         { userDevice !== 'phone' && <PhoneFrame className='phone_frame' />}
         {
           selectVersion?.url
-            ? <iframe ref={iframeRef} className='phone_content' src={selectVersion.url} frameBorder='0' />
+            ? <iframe ref={iframeRef} className='phone_content' src={data.type === 'iec' ? `https://demo.ironsrc.mobi/demo/snippets/dapiHijacker.html?adUrl=${selectVersion.url}` : selectVersion.url} frameBorder='0' />
             : <div className='phone_content' style={{ backgroundImage: `url(${TVNoise})` }} />
         }
       </div>
