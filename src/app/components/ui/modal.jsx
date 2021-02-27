@@ -3,14 +3,16 @@ import { Dialog, DialogContent, DialogTitle, DialogContentText, DialogActions } 
 import { Button } from '@components/ui/button';
 
 export const Modal = ({
-  onClose, component: C, title, cancelBtnTitle, confirmBtnTitle, ...props
+  onClose, component: C, title, cancelBtnTitle, confirmBtnTitle, SVG, ...props
 }) => (
   <Dialog
     open={props.isOpen}
     fullWidth={props.fullWidth}
     maxWidth={props.fullWidth && 'xl'}
     onClose={() => onClose(false)}
+    className={props.className}
   >
+    {SVG && <SVG /> }
     {title && <DialogTitle>{title}</DialogTitle>}
 
     <DialogContent>
