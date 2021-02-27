@@ -35,6 +35,7 @@ const Phone = ({ rootStore: { creatives } }) => {
       <div id='phone' className={orientation}>
         { userDevice !== 'phone' && <PhoneFrame className='phone_frame' />}
         {
+          // TODO fix url dapiHijacker
           selectVersion?.url
             ? <iframe ref={iframeRef} className='phone_content' src={data.type === 'iec' ? `https://demo.ironsrc.mobi/demo/snippets/dapiHijacker.html?adUrl=${selectVersion.url}` : selectVersion.url} frameBorder='0' />
             : <div className='phone_content' style={{ backgroundImage: `url(${TVNoise})` }} />

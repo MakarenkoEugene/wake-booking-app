@@ -11,7 +11,7 @@ export const Pending = () => (
 export const Approved = () => (
   <>
     <span className='badge approved'>APPROVED</span>
-    <h2>Creative approved!</h2>
+    <h2 style={{ whiteSpace: 'nowrap' }}>Creative approved!</h2>
     <p>Hang tight to see it live shortly.</p>
   </>
 );
@@ -19,7 +19,7 @@ export const Approved = () => (
 export const Paused = () => (
   <>
     <span className='badge paused'>PAUSED</span>
-    <h2>Creative paused.</h2>
+    <h2 style={{ whiteSpace: 'nowrap' }}>Creative paused.</h2>
     <p>Creative is paused. Please contact your AM for detals.</p>
   </>
 );
@@ -35,7 +35,7 @@ export const ResponseError = () => (
 export const Live = () => (
   <>
     <span className='badge live'>LIVE</span>
-    <h2>This ad is live!</h2>
+    <h2 style={{ whiteSpace: 'nowrap' }}>This ad is live!</h2>
     <p>Awesome! It`s out there.</p>
   </>
 );
