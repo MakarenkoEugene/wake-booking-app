@@ -4,6 +4,10 @@ import { makeAutoObservable } from 'mobx';
 export default class CreativesStore {
   data = {};
 
+  isInfoState = true;
+
+  state = 'internal-pa-labels';
+
   loading = true;
 
   selectVersion = {};
@@ -13,6 +17,8 @@ export default class CreativesStore {
   userDevice = '' // 'phone', ''
 
   isOpen = true
+
+  showModal = false
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -37,6 +43,18 @@ export default class CreativesStore {
     }
 
     this.loading = false;
+  }
+
+  setShowModal(showModal) {
+    this.showModal = showModal;
+  }
+
+  setStatus(state) {
+    this.state = state;
+  }
+
+  setIsInfoState(isInfoState) {
+    this.isInfoState = isInfoState;
   }
 
   setUserDevice(device) {
