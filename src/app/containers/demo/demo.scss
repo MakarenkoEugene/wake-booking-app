@@ -60,7 +60,7 @@ body{
     flex-grow: 1;
 
     > div {
-      flex: 1 1 50%;
+      flex: 1 1 auto;
     }
 
     .phone_container{
@@ -73,5 +73,37 @@ body{
     height: 2.8em;
     bottom: 1.5em;
     left: 1.5em;
+  }
+}
+
+.click_detected{
+  .MuiPaper-root{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 41px 18px 37px;
+    box-shadow: 3px 3px 12px rgb(0 0 0 / 10%);
+
+    h2 {
+      font-size: 2em;
+      color: #0210A1;
+      font-weight: 700;
+    } 
+
+    p {
+      font-size: 1.2em;
+      color: #0210A1;
+      white-space: break-spaces;
+      text-align: center;
+    }
+
+    button {
+      background-color: #8a66f0;
+      border-color: #8a66f0;
+      padding: 12px 40px;
+      color: white;
+      border-radius: 100px;
+    }
   }
 }

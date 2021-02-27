@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Grid } from '@material-ui/core';
-import { useRouteMatch } from 'react-router-dom';
+// import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 /* eslint-disable import/no-unresolved */
 import { useWindowSize } from '@hooks';
 import PlayworksLogo from '@public/img/playworks-logo.svg';
+import Rocket from '@public/img/rocket.svg';
 import { Phone, Version, CreativeStatus, Loading } from '@components/';
+import { Modal } from '@components/ui';
 import './demo.scss';
 
 const Demo = ({ rootStore: { creatives } }) => {
-  const { params } = useRouteMatch();
-  const { titleAppName, advertiserName, issueKey, issueType } = creatives.data || {};
-  const { userDevice } = creatives;
+  const { id } = useParams();
+  const { titleAppName, advertiserName, issueKey, issueType, type } = creatives.data || {};
+  const { userDevice, isInfoState, showModal } = creatives;
   const [width, height] = useWindowSize();
+
+  // const query = new URLSearchParams(useLocation().search);
+  // console.log(query.get('feedback'), query.get('reviewer'));
 
   useEffect(() => {
     if (width < 540 || (height < 540 && width < 820)) {
@@ -23,14 +29,40 @@ const Demo = ({ rootStore: { creatives } }) => {
   }, [width]);
 
   useEffect(() => {
-    if (params.id) creatives.get(params.id);
-  }, [params?.id]);
+    if (id) creatives.get(id);
+  }, [id]);
+
+  useEffect(() => {
+    const func = ({ data }) => {
+      try {
+        if (type === 'pa' && JSON.parse(data.substring('<->'.length)).event_type === 'Convert') creatives.setShowModal(true);
+        if (JSON.parse(data.substring('!!!'.length)).name === 'openUrlCalled') creatives.setShowModal(true);
+      } catch (err) {
+        // console.log(err);
+      }
+    };
+
+    window.addEventListener('message', func);
+
+    return () => {
+      window.removeEventListener('message', func);
+    };
+  }, [type]);
 
   if (creatives.loading) return <Loading />;
 
   return (
     <>
-      { width <= 1200 && <CreativeStatus /> }
+      <Modal
+        isOpen={showModal}
+        SVG={Rocket}
+        className='click_detected'
+        onClose={() => creatives.setShowModal(false)}
+        confirmBtnTitle='Got it'
+        title='Wooshhh!'
+        subTitle={'Click has been successfully \n detected!'}
+      />
+      { width <= 1200 && isInfoState && <CreativeStatus /> }
       <Grid id='demo' spacing={1} container direction='column' justify='space-between' wrap='nowrap'>
         <div className='creative-metadata'>
           { creatives?.data
@@ -48,8 +80,9 @@ const Demo = ({ rootStore: { creatives } }) => {
         <Grid spacing={1} item container wrap='nowrap' justify='space-between' alignItems='center' className='demo_main'>
           <Version />
           <Phone />
-          { width > 1200 && <CreativeStatus /> }
+          { width > 1200 && <CreativeStatus className='right_modal' /> }
         </Grid>
+        { width <= 1200 && !isInfoState && <CreativeStatus /> }
 
         <PlayworksLogo />
       </Grid>
