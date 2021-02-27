@@ -30,6 +30,22 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
           { userDevice === 'phone' && <span>{version.id}</span>}
         </Button>
       ))}
+
+      {/* TODO remove */}
+      <select onChange={(e) => creatives.setStatus(e.target.value)}>
+        <option label='approved' value='approved' />
+        <option label='pending' value='pending' />
+        <option label='paused' value='paused' />
+        <option label='live' value='live' />
+        <option label='internal-review' value='internal-review' />
+        <option label='internal-pa-review' value='internal-pa-review' />
+        <option label='internal-pa-labels' value='internal-pa-labels' />
+        <option label='internal-iec-rewiew' value='internal-iec-rewiew' />
+        <option label='error' value='error' />
+        <option label='thanks' value='thanks' />
+        <option label='thanks-iec-rewiev' value='thanks-iec-rewiev' />
+        <option label='none' value='none' />
+      </select>
     </div>
   );
 };
