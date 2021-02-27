@@ -30,6 +30,7 @@ const Settings = ({ rootStore: { settings, user } }) => {
   const classes = useStyles();
   const { tab } = useParams();
   const history = useHistory();
+
   const [curTab, setCurTab] = useState(tab ? tabs.findIndex((t) => t.id === tab) : 0);
   const [canEdit] = useState(user.canEdit('settings'));
 
