@@ -27,7 +27,7 @@ export function Autocomplete({
       multiple={multiple}
       size={size || 'small'}
       loading={loading}
-      options={options}
+      options={options || []}
       name={name}
       id={id}
       value={value}
