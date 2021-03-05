@@ -4,7 +4,7 @@ import { ReadyToGo } from './ready-to-go';
 import { VariationsLabel } from './variations-label';
 import { SendButton } from './send-button';
 
-export const InternalIECReview = (data) => {
+export const InternalIEC = (data) => {
   const [state, setState] = useState({
     iecLabels: data.iecLabels || [],
     plaVariationsToUpload: data.plaVariationsToUpload || [],
@@ -17,7 +17,7 @@ export const InternalIECReview = (data) => {
   const hendleOnSubmit = (e) => {
     e.preventDefault();
 
-    console.log('InternalIECReview', state);
+    console.log('InternalIEC', state);
   };
 
   const { defaultCreativeLabels } = state.variationsLabels;

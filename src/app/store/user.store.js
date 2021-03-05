@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 
 export default class UserStore {
-  user = window.user && JSON.parse(window.user);
+  user = window.data && JSON.parse(window.data);
 
   isLoggedIn = !!this.user;
 

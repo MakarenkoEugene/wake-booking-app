@@ -3,7 +3,7 @@ import { Autocomplete } from '@components/ui';
 import { VariationsLabel } from './variations-label';
 import { SendButton } from './send-button';
 
-export const InternalPALabels = (data) => {
+export const InternalPA = (data) => {
   const [state, setState] = useState(data.variationsLabels || {});
 
   const { defaultCreativeLabels, ...variationsLabels } = state;
@@ -15,7 +15,7 @@ export const InternalPALabels = (data) => {
   const hendleOnSubmit = (e) => {
     e.preventDefault();
 
-    console.log('InternalPALabels', state);
+    console.log('InternalPA', state);
   };
 
   return (

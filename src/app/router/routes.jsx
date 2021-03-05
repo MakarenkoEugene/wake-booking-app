@@ -30,7 +30,7 @@ const H = () => (
   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
     <ul>
       <li><h2><Link to='/admin/'>Admin</Link></h2></li>
-      <li><h2><Link to='/creatives/:id'>Demo</Link></h2></li>
+      <li><h2><Link to='/creatives/'>Demo</Link></h2></li>
     </ul>
   </div>
 );
@@ -40,7 +40,7 @@ const Routes = (
     <Switch>
       <Route exact path='/' component={H} />
       <Route path='/admin' component={AdminRoute} />
-      <Route path='/creatives/:id'><Demo /></Route>
+      <Route path='/creatives/:id?'><Demo /></Route>
       <Route exact path='/test' component={TestPage} />
     </Switch>
   </Router>

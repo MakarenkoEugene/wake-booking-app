@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Grid } from '@material-ui/core';
 import { inject, observer } from 'mobx-react';
+import clsx from 'clsx';
 /* eslint-disable import/no-unresolved */
 import PhoneFrame from '@public/img/iphone.svg';
 import ImageRload from '@public/img/reload.svg';
@@ -11,7 +12,7 @@ import TVNoise from '@public/img/tv-noise.gif';
 import './phone.scss';
 
 const Phone = ({ rootStore: { creatives } }) => {
-  const { orientation, selectVersion, onChangeOrientation, userDevice, isOpen, data } = creatives;
+  const { orientation, selectVersion, changeOrientation, userDevice, isOpen, data } = creatives;
   const isFreeOrientation = data ? data.isFreeOrientation : true;
 
   const iframeRef = useRef(null);
@@ -30,7 +31,7 @@ const Phone = ({ rootStore: { creatives } }) => {
       alignItems='center'
       justify='center'
       alignContent='center'
-      className={`phone_container ${userDevice === 'phone' ? 'device_is_phone' : ''}`}
+      className={clsx('phone_container', userDevice === 'phone' && 'device_is_phone')}
     >
       <div id='phone' className={orientation}>
         { userDevice !== 'phone' && <PhoneFrame className='phone_frame' />}
@@ -46,8 +47,8 @@ const Phone = ({ rootStore: { creatives } }) => {
           <ImageRload />
         </button>
         {userDevice !== 'phone'
-          ? <button type='button' disabled={!isFreeOrientation} onClick={onChangeOrientation}> <ImageRotate /> </button>
-          : <button type='button' onClick={creatives.onChangeIsOpen}> <ImageClose /> </button>}
+          ? <button type='button' disabled={!isFreeOrientation} onClick={changeOrientation}> <ImageRotate /> </button>
+          : <button type='button' onClick={creatives.changeIsOpen}> <ImageClose /> </button>}
       </div>
     </Grid>
   );

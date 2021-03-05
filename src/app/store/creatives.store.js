@@ -1,18 +1,27 @@
-import { http } from '@libs/http';
 import { makeAutoObservable } from 'mobx';
 
+const getCreatives = () => {
+  try {
+    return JSON.parse(window.data) || null;
+  } catch (error) {
+    return null;
+  }
+};
+
 export default class CreativesStore {
-  data = {};
+  data = getCreatives();
+
+  query = {};
 
   isInfoState = true;
 
-  state = 'internal-pa-labels';
-
   loading = true;
 
-  selectVersion = {};
+  selectVersion = (this.data?.demos && this.data.demos[0]) || null;
 
-  orientation = 'portrait' // landscape, portrait
+  orientation = this.data?.defaultOrientation || 'portrait'; // landscape, portrait
+
+  state = this.data.state;
 
   userDevice = '' // 'phone', ''
 
@@ -23,33 +32,18 @@ export default class CreativesStore {
   constructor(rootStore) {
     this.rootStore = rootStore;
 
-    this.onChangeOrientation = this.onChangeOrientation.bind(this);
-    this.onChangeIsOpen = this.onChangeIsOpen.bind(this);
+    this.changeOrientation = this.changeOrientation.bind(this);
+    this.changeIsOpen = this.changeIsOpen.bind(this);
     this.reloard = this.reloard.bind(this);
 
     makeAutoObservable(this);
-  }
-
-  async get(id) {
-    try {
-      const res = await http.get(`creatives/${id}`);
-
-      this.data = res;
-
-      this.orientation = this.data?.defaultOrientation || 'portrait';
-      this.onSelectVersion(this.data?.demos[0] || null);
-    } catch (error) {
-      this.data = null;
-    }
-
-    this.loading = false;
   }
 
   setShowModal(showModal) {
     this.showModal = showModal;
   }
 
-  setStatus(state) {
+  setState(state) {
     this.state = state;
   }
 
@@ -57,24 +51,29 @@ export default class CreativesStore {
     this.isInfoState = isInfoState;
   }
 
+  setQuery(query) {
+    this.query = { ...this.query, ...query };
+    // console.log(JSON.stringify(this.query));
+  }
+
   setUserDevice(device) {
     this.userDevice = device;
   }
 
-  onChangeIsOpen() {
+  changeIsOpen() {
     this.isOpen = !this.isOpen;
   }
 
-  onSelectVersion(version) {
+  selectVersion(version) {
     this.selectVersion = version;
     this.isOpen = true;
   }
 
-  onChangeOrientation() {
+  changeOrientation() {
     this.orientation = this.orientation === 'portrait' ? 'landscape' : 'portrait';
   }
 
   reloard() {
-    this.onSelectVersion(null);
+    this.selectVersion(null);
   }
 }

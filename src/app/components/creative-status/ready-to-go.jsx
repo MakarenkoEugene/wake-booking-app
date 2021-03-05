@@ -9,8 +9,8 @@ export const ReadyToGo = ({ onChange }) => (
       <input onChange={() => onChange(true)} type='radio' name='ready' id='appruved' />
       <label htmlFor='appruved'>Appruved</label>
 
-      <input onChange={() => onChange(false)} type='radio' name='ready' id='not_appruved' />
-      <label htmlFor='not_appruved'>Not approved</label>
+      <input onChange={() => onChange(false)} type='radio' name='ready' id='disappruved' />
+      <label htmlFor='disappruved'>Not approved</label>
     </div>
 
   </div>

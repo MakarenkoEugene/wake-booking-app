@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Button } from '@components/ui/button';
 import { inject, observer } from 'mobx-react';
 import { Typography } from '@material-ui/core';
@@ -20,9 +21,9 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
           key={version.id}
           variant='outlined'
           color='primary'
-          className={`${userDevice} ${version.id === selectVersion.id ? 'select_version' : ''}`}
+          className={clsx(userDevice, version.id === selectVersion.id && 'select_version')}
           onClick={() => {
-            creatives.onSelectVersion(version);
+            creatives.selectVersion(version);
           }}
         >
           { userDevice === 'phone' && <div className='play_icon'><ImagePlay /></div> }
@@ -32,15 +33,15 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
       ))}
 
       {/* TODO remove */}
-      <select onChange={(e) => creatives.setStatus(e.target.value)}>
+      <select onChange={(e) => creatives.setState(e.target.value)}>
         <option label='approved' value='approved' />
         <option label='pending' value='pending' />
         <option label='paused' value='paused' />
         <option label='live' value='live' />
-        <option label='internal-review' value='internal-review' />
-        <option label='internal-pa-review' value='internal-pa-review' />
-        <option label='internal-pa-labels' value='internal-pa-labels' />
-        <option label='internal-iec-rewiew' value='internal-iec-rewiew' />
+        <option label='advApproval' value='advApproval' />
+        <option label='review' value='review' />
+        <option label='internalPA' value='internalPA' />
+        <option label='internalIEC' value='internalIEC' />
         <option label='error' value='error' />
         <option label='thanks' value='thanks' />
         <option label='thanks-iec-rewiev' value='thanks-iec-rewiev' />

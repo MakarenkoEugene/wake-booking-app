@@ -18,7 +18,7 @@ export default class AdvertisersStore {
 
   async fetch() {
     this.loading = true;
-    const advertisers = await http.get('api/advertisers');
+    const advertisers = await http.get('advertisers');
 
     this.setList(advertisers);
   }
@@ -27,8 +27,8 @@ export default class AdvertisersStore {
     this.saving = true;
 
     const { data, ...res } = _id
-      ? await http.put(`api/advertisers/${_id}`, advertiser)
-      : await http.post('api/advertisers', advertiser);
+      ? await http.put(`advertisers/${_id}`, advertiser)
+      : await http.post('advertisers', advertiser);
 
     this.saving = false;
 
@@ -69,7 +69,7 @@ export default class AdvertisersStore {
   async bulkUpdate(data) {
     this.loading = true;
 
-    const advertisers = await http.post('api/advertisers/bulk-update', data);
+    const advertisers = await http.post('advertisers/bulk-update', data);
     this.setList(advertisers);
   }
 

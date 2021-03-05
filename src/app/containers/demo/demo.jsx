@@ -1,24 +1,27 @@
 import React, { useEffect } from 'react';
 import { inject, observer } from 'mobx-react';
 import { Grid } from '@material-ui/core';
-// import { useLocation, useParams } from 'react-router-dom';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 /* eslint-disable import/no-unresolved */
 import { useWindowSize } from '@hooks';
 import PlayworksLogo from '@public/img/playworks-logo.svg';
 import Rocket from '@public/img/rocket.svg';
-import { Phone, Version, CreativeStatus, Loading } from '@components/';
+import { Phone, Version, CreativeStatus } from '@components/';
 import { Modal } from '@components/ui';
 import './demo.scss';
 
 const Demo = ({ rootStore: { creatives } }) => {
-  const { id } = useParams();
   const { titleAppName, advertiserName, issueKey, issueType, type } = creatives.data || {};
   const { userDevice, isInfoState, showModal } = creatives;
   const [width, height] = useWindowSize();
+  const query = new URLSearchParams(useLocation().search);
 
-  // const query = new URLSearchParams(useLocation().search);
-  // console.log(query.get('feedback'), query.get('reviewer'));
+  useEffect(() => {
+    const feedback = query.get('feedback');
+    const reviewer = query.get('reviewer');
+
+    creatives.setQuery({ reviewer, feedback });
+  }, [query]);
 
   useEffect(() => {
     if (width < 540 || (height < 540 && width < 820)) {
@@ -27,10 +30,6 @@ const Demo = ({ rootStore: { creatives } }) => {
       creatives.setUserDevice('');
     }
   }, [width]);
-
-  useEffect(() => {
-    if (id) creatives.get(id);
-  }, [id]);
 
   useEffect(() => {
     const func = ({ data }) => {
@@ -48,8 +47,6 @@ const Demo = ({ rootStore: { creatives } }) => {
       window.removeEventListener('message', func);
     };
   }, [type]);
-
-  if (creatives.loading) return <Loading />;
 
   return (
     <>
@@ -69,7 +66,7 @@ const Demo = ({ rootStore: { creatives } }) => {
             ? (
               <>
                 <p>{advertiserName} ● {issueType?.name}
-                  (<a href={`https://jira.ironsrc.com/jira/browse/${issueKey}`}>{issueKey}</a>)
+                  (<a href={`https://jira.ironsrc.com/jira/browse/${issueKey}`} target='_blank' rel='noreferrer'>{issueKey}</a>)
                 </p>
                 <h1>{titleAppName}</h1>
               </>

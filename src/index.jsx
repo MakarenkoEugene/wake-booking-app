@@ -6,10 +6,9 @@ import App from '@app/app';
 import routes from '@app/router/routes';
 import store from '@store';
 
-const renderApp = () => render(
-  <App store={store} routes={routes} />,
-  document.getElementById('root'),
-);
+const renderApp = async () => {
+  render(<App store={store} routes={routes} />, document.getElementById('root'));
+};
 
 renderApp();
 
