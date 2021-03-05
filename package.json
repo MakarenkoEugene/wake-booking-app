@@ -8,6 +8,7 @@
     "start": "webpack serve --mode development",
     "deploy:staging": "STAGING=true webpack --mode production && ./bin/deploy-staging.sh",
     "build": "webpack --mode production",
+    "build:move": "webpack --mode production && ./bin/move.sh",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix",
     "build:server": "bin/build.sh"
