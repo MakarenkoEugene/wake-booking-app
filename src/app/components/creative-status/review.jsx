@@ -3,15 +3,18 @@ import { TextArea } from '@components/ui';
 import { http } from '@libs/http';
 import { SendButton } from './send-button';
 
-export const Review = ({ _id, reviewer, ...res }) => {
-  console.log(reviewer, res);
+export const Review = ({ id, reviewer, setState, setLoading }) => {
   const [comment, setComment] = useState(null);
 
   const hendleOnSubmit = async (e) => {
     e.preventDefault();
 
-    const asd = await http.post('creatives/', { action: 'review', reviewer, id: _id, comment });
-    console.log(asd);
+    setLoading(true);
+
+    const response = await http.post('creatives/', { action: 'review', reviewer, id, comment });
+
+    setState(response === 'OK' ? 'thanks' : 'error');
+    setLoading(false);
   };
 
   return (

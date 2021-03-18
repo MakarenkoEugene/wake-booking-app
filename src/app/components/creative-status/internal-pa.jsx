@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Autocomplete } from '@components/ui';
+import { http } from '@libs/http';
 import { VariationsLabel } from './variations-label';
 import { SendButton } from './send-button';
 
-export const InternalPA = (data) => {
+export const InternalPA = ({ id, ...data }) => {
   const [state, setState] = useState(data.variationsLabels || {});
 
   const { defaultCreativeLabels, ...variationsLabels } = state;
@@ -12,10 +13,19 @@ export const InternalPA = (data) => {
     setState({ ...state, [path]: value });
   };
 
-  const hendleOnSubmit = (e) => {
+  const hendleOnSubmit = async (e) => {
     e.preventDefault();
 
-    console.log('InternalPA', state);
+    data.setLoading(true);
+    // internal-pa
+    const response = await http.post('creatives/', {
+      action: 'internal-pa',
+      id,
+      variationsLabels: state,
+    });
+
+    data.setState(response === 'OK' ? 'thanks' : 'error');
+    data.setLoading(false);
   };
 
   return (
