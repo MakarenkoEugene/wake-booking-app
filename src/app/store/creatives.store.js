@@ -17,11 +17,11 @@ export default class CreativesStore {
 
   loading = true;
 
-  selectVersion = (this.data?.demos && this.data.demos[0]) || null;
+  selectedVersion = (this.data?.demos && this.data.demos[0]) || null;
 
   orientation = this.data?.defaultOrientation || 'portrait'; // landscape, portrait
 
-  state = this.data.state;
+  state = this.data?.state || undefined;
 
   userDevice = '' // 'phone', ''
 
@@ -35,6 +35,7 @@ export default class CreativesStore {
     this.changeOrientation = this.changeOrientation.bind(this);
     this.changeIsOpen = this.changeIsOpen.bind(this);
     this.reloard = this.reloard.bind(this);
+    this.setState = this.setState.bind(this);
 
     makeAutoObservable(this);
   }
@@ -53,7 +54,6 @@ export default class CreativesStore {
 
   setQuery(query) {
     this.query = { ...this.query, ...query };
-    // console.log(JSON.stringify(this.query));
   }
 
   setUserDevice(device) {
@@ -65,7 +65,7 @@ export default class CreativesStore {
   }
 
   selectVersion(version) {
-    this.selectVersion = version;
+    this.selectedVersion = version;
     this.isOpen = true;
   }
 
@@ -74,6 +74,6 @@ export default class CreativesStore {
   }
 
   reloard() {
-    this.selectVersion(null);
+    this.selectedVersion(null);
   }
 }
