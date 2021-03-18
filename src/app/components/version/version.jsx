@@ -8,10 +8,25 @@ import ImagePlay from '@public/img/play.svg';
 import './version.scss';
 
 const LayoutDemo = ({ rootStore: { creatives } }) => {
-  const { selectVersion, data, userDevice } = creatives;
+  const { selectedVersion, data, userDevice } = creatives;
   const { demos: versions } = data || {};
 
-  if (!versions) return null;
+  // if (!versions) {
+  //   return (
+  //     <select onChange={(e) => creatives.setState(e.target.value)}>
+  //       <option label='internalPA' value='internalPA' />
+  //       <option label='internalIEC' value='internalIEC' />
+  //       <option label='review' value='review' />
+  //       <option label='advApproval' value='advApproval' />
+  //       <option label='approved' value='approved' />
+  //       <option label='disapproved' value='disapproved' />
+  //       <option label='out' value='out' />
+  //       <option label='done' value='done' />
+  //       <option label='error' value='error' />
+  //       <option label='thanks' value='thanks' />
+  //     </select>
+  //   );
+  // }
 
   return (
     <div className='version'>
@@ -21,7 +36,7 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
           key={version.id}
           variant='outlined'
           color='primary'
-          className={clsx(userDevice, version.id === selectVersion.id && 'select_version')}
+          className={clsx(userDevice, version.id === selectedVersion.id && 'select_version')}
           onClick={() => {
             creatives.selectVersion(version);
           }}
@@ -33,20 +48,18 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
       ))}
 
       {/* TODO remove */}
-      <select onChange={(e) => creatives.setState(e.target.value)}>
-        <option label='approved' value='approved' />
-        <option label='pending' value='pending' />
-        <option label='paused' value='paused' />
-        <option label='live' value='live' />
-        <option label='advApproval' value='advApproval' />
-        <option label='review' value='review' />
+      {/* <select onChange={(e) => creatives.setState(e.target.value)}>
         <option label='internalPA' value='internalPA' />
         <option label='internalIEC' value='internalIEC' />
+        <option label='review' value='review' />
+        <option label='advApproval' value='advApproval' />
+        <option label='approved' value='approved' />
+        <option label='disapproved' value='disapproved' />
+        <option label='out' value='out' />
+        <option label='done' value='done' />
         <option label='error' value='error' />
         <option label='thanks' value='thanks' />
-        <option label='thanks-iec-rewiev' value='thanks-iec-rewiev' />
-        <option label='none' value='none' />
-      </select>
+      </select> */}
     </div>
   );
 };
