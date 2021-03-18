@@ -19,8 +19,9 @@ const Demo = ({ rootStore: { creatives } }) => {
   useEffect(() => {
     const feedback = query.get('feedback');
     const reviewer = query.get('reviewer');
+    const approver = query.get('approver');
 
-    creatives.setQuery({ reviewer, feedback });
+    creatives.setQuery({ reviewer, feedback, approver });
   }, [query]);
 
   useEffect(() => {
