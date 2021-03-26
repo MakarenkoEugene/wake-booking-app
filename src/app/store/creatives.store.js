@@ -15,8 +15,6 @@ export default class CreativesStore {
 
   isInfoState = true;
 
-  loading = true;
-
   selectedVersion = (this.data?.demos && this.data.demos[0]) || null;
 
   orientation = this.data?.defaultOrientation || 'portrait'; // landscape, portrait
