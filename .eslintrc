@@ -22,7 +22,8 @@
           ["@app", "./src/app"],
           ["@libs", "./src/app/libs"],
           ["@components", "./src/app/components"],
-          ["@store", "./src/app/store"]
+          ["@store", "./src/app/store"],
+          ["@utils", "./src/app/utils"]
         ],
         "extensions": [".js", ".jsx"]
       }
@@ -42,6 +43,7 @@
     "jsx-quotes": ["error", "prefer-single"],
     "object-curly-newline": "off",
     "no-underscore-dangle": "off",
+    "lines-between-class-members": "off",
     "react/destructuring-assignment": "off",
     "react/jsx-props-no-spreading": "off",
     "react-hooks/exhaustive-deps": "off",

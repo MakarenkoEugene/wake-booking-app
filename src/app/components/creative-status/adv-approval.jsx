@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextArea } from '@components/ui';
 import { http } from '@libs/http';
+import { replaceEmoji } from '@utils';
 import { SendButton } from './send-button';
 import { ReadyToGo } from './ready-to-go';
 
@@ -12,12 +13,13 @@ export const AdvApproval = ({ id, setState, setLoading }) => {
     e.preventDefault();
 
     setLoading(true);
+
     // adv-approve
     const response = await http.post('creatives/', {
       action: 'adv-approve',
       id,
       isApproved: readyToGo,
-      comment,
+      comment: replaceEmoji(comment),
     });
 
     setState(response === 'OK' ? 'thanks' : 'error');
