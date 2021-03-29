@@ -3,7 +3,6 @@ import { http } from '@libs/http';
 
 export default class SettingsStore {
   users = null;
-
   data = null;
 
   constructor(rootStore) {

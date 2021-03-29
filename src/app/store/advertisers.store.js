@@ -3,11 +3,8 @@ import { http } from '@libs/http';
 
 export default class AdvertisersStore {
   list = [];
-
   saving = false;
-
   loading = false;
-
   error = null;
 
   constructor(rootStore) {

@@ -10,7 +10,6 @@ const getUser = () => {
 
 export default class UserStore {
   user = getUser();
-
   isLoggedIn = !!this.user;
 
   constructor() {

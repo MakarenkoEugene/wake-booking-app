@@ -2,7 +2,6 @@ import { makeAutoObservable } from 'mobx';
 
 export default class UIStore {
   modal = { isOpen: false };
-
   alert = {};
 
   constructor() {
