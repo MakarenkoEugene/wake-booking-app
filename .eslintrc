@@ -22,8 +22,7 @@
           ["@app", "./src/app"],
           ["@libs", "./src/app/libs"],
           ["@components", "./src/app/components"],
-          ["@store", "./src/app/store"],
-          ["@utils", "./src/app/utils"]
+          ["@store", "./src/app/store"]
         ],
         "extensions": [".js", ".jsx"]
       }

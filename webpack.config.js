@@ -31,7 +31,6 @@ module.exports = {
       '@app': path.resolve(__dirname, 'src/app/'),
       '@libs': path.resolve(__dirname, 'src/app/libs/'),
       '@components': path.resolve(__dirname, 'src/app/components/'),
-      '@utils': path.resolve(__dirname, 'src/app/utils/'),
       '@hooks': path.resolve(__dirname, 'src/app/hooks/'),
       '@store': path.resolve(__dirname, 'src/app/store/'),
       'react-dom': '@hot-loader/react-dom',

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { TextArea } from '@components/ui';
 import { http } from '@libs/http';
-import { replaceEmoji } from '@utils';
 import { SendButton } from './send-button';
 import { ReadyToGo } from './ready-to-go';
 
@@ -19,7 +18,7 @@ export const AdvApproval = ({ id, setState, setLoading }) => {
       action: 'adv-approve',
       id,
       isApproved: readyToGo,
-      comment: replaceEmoji(comment),
+      comment,
     });
 
     setState(response === 'OK' ? 'thanks' : 'error');

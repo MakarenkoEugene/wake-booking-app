@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Autocomplete, Checkbox, TextArea } from '@components/ui';
 import { http } from '@libs/http';
-import { replaceEmoji } from '@utils';
 import { ReadyToGo } from './ready-to-go';
 import { VariationsLabel } from './variations-label';
 import { SendButton } from './send-button';
@@ -25,7 +24,7 @@ export const InternalIEC = (data) => {
       action: 'internal-iec',
       id: data.id,
       approver: data.approver,
-      comment: replaceEmoji(state.comment),
+      comment: state.comment,
       isApproved: state.isApproved,
       variations: state.variationsToUpload,
       plaVariations: state.plaVariationsToUpload,
