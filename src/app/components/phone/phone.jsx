@@ -44,7 +44,7 @@ const Phone = ({ rootStore: { creatives } }) => {
         {
           // TODO fix url dapiHijacker move it to server
           selectedVersion?.url
-            ? <iframe ref={iframeRef} className='phone_content' src={data.type === 'iec' ? `https://demo.ironsrc.mobi/demo/snippets/dapiHijacker.html?adUrl=${selectedVersion.url}` : selectedVersion.url} frameBorder='0' />
+            ? <iframe ref={iframeRef} className='phone_content' src={data.type === 'iec' ? `${process.env.API_URL}/demo/snippets/dapiHijacker.html?adUrl=${selectedVersion.url}` : selectedVersion.url} frameBorder='0' />
             : <div className='phone_content' style={{ backgroundImage: `url(${TVNoise})` }} />
         }
       </div>

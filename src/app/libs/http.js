@@ -2,7 +2,7 @@ import { stringify } from 'query-string';
 
 class Http {
   constructor() {
-    this.BASE_URL = process.env.API_URL;
+    this.BASE_URL = `${process.env.API_URL}/api`;
   }
 
   get(url, data, headers) {

@@ -9,7 +9,7 @@ const GuardedRoute = ({ component: Component, rootStore, ...rest }) => (
       ? <Component {...props} />
       : (
         <Route render={() => {
-          window.location.href = `${process.env.API_URL}/auth/google?redirect=${encodeURI(location.href)}`;
+          window.location.href = `${process.env.API_URL}/api/auth/google?redirect=${encodeURI(location.href)}`;
           return null;
         }}
         />

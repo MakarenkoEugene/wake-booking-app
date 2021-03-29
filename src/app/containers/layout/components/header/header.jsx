@@ -32,7 +32,7 @@ const Header = ({ rootStore: { user } }) => {
 
           {user.isLoggedIn
             ? <div>Hi, {user.name}</div>
-            : <a href={`${process.env.API_URL}/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>}
+            : <a href={`${process.env.API_URL}/api/auth/google`}><Button variant='text' color='inherit'>Login</Button></a>}
         </Toolbar>
       </AppBar>
     </header>
