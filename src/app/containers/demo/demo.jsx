@@ -63,7 +63,7 @@ const Demo = ({ rootStore: { creatives } }) => {
       { width <= 1200 && isInfoState && <CreativeStatus /> }
       <Grid id='demo' spacing={1} container direction='column' justify='space-between' wrap='nowrap'>
         <div className='creative-metadata'>
-          { creatives?.data
+          { creatives?.data?.demos
             ? (
               <>
                 <p>{advertiserName} ● {issueType?.name}

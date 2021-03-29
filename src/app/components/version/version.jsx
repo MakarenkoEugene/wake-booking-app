@@ -28,10 +28,12 @@ const LayoutDemo = ({ rootStore: { creatives } }) => {
   //   );
   // }
 
+  if (!versions || !versions.length) return null;
+
   return (
     <div className='version'>
       { userDevice !== 'phone' && <Typography variant='body1'>VERSION:</Typography> }
-      {versions.map((version) => (
+      { versions.map((version) => (
         <Button
           key={version.id}
           variant='outlined'

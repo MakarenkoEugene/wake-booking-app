@@ -40,7 +40,7 @@ const Routes = (
     <Switch>
       <Route exact path='/' component={H} />
       <Route path='/admin' component={AdminRoute} />
-      <Route path='/creatives/:id?'><Demo /></Route>
+      <Route path='/creatives/:id?' component={Demo} />
       <Route exact path='/test' component={TestPage} />
     </Switch>
   </Router>
