@@ -10,27 +10,17 @@ const getCreatives = () => {
 
 export default class CreativesStore {
   data = getCreatives();
-
   query = {};
-
   isInfoState = true;
-
-  selectedVersion = (this.data?.demos && this.data.demos[0]) || null;
-
-  orientation = this.data?.defaultOrientation || 'portrait'; // landscape, portrait
-
-  state = this.data?.state || undefined;
-
-  userDevice = '' // 'phone', ''
-
-  isOpen = true
-
-  showModal = false
+  selectedVersion = this.data?.demos?.[0];
+  state = this.data?.state;
+  userDevice = '';
+  isOpen = true;
+  showModal = false;
 
   constructor(rootStore) {
     this.rootStore = rootStore;
 
-    this.changeOrientation = this.changeOrientation.bind(this);
     this.changeIsOpen = this.changeIsOpen.bind(this);
     this.reloard = this.reloard.bind(this);
     this.setState = this.setState.bind(this);
@@ -65,10 +55,6 @@ export default class CreativesStore {
   selectVersion(version) {
     this.selectedVersion = version;
     this.isOpen = true;
-  }
-
-  changeOrientation() {
-    this.orientation = this.orientation === 'portrait' ? 'landscape' : 'portrait';
   }
 
   reloard() {

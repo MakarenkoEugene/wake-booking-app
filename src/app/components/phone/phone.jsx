@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { inject, observer } from 'mobx-react';
 import clsx from 'clsx';
@@ -12,13 +12,19 @@ import TVNoise from '@public/img/tv-noise.gif';
 import './phone.scss';
 
 const Phone = ({ rootStore: { creatives } }) => {
-  const { orientation, selectedVersion, changeOrientation, userDevice, isOpen, data } = creatives;
+  const { selectedVersion, userDevice, isOpen, data } = creatives;
   const isFreeOrientation = data ? data.isFreeOrientation : true;
+
+  const [orientation, setOrientation] = useState(data?.defaultOrientation || 'portrait');
 
   const iframeRef = useRef(null);
 
   const forceUpdateIframe = () => {
     iframeRef.current.src = selectedVersion.url;
+  };
+
+  const changeOrientation = () => {
+    setOrientation(orientation === 'portrait' ? 'landscape' : 'portrait');
   };
 
   if (userDevice === 'phone' && !isOpen) return null;
