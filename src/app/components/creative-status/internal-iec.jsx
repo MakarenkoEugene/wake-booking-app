@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Autocomplete, Checkbox, TextArea } from '@components/ui';
 import { http } from '@libs/http';
-import { ReadyToGo } from './ready-to-go';
+import { Approve } from './approve';
 import { VariationsLabel } from './variations-label';
 import { SendButton } from './send-button';
 
@@ -19,20 +19,26 @@ export const InternalIEC = (data) => {
     e.preventDefault();
 
     data.setLoading(true);
-    // internal-iec
-    const response = await http.post('creatives/', {
-      action: 'internal-iec',
-      id: data.id,
-      approver: data.approver,
-      comment: state.comment,
-      isApproved: state.isApproved,
-      variations: state.variationsToUpload,
-      plaVariations: state.plaVariationsToUpload,
-      variationsLabels: state.variationsLabels,
-    });
 
-    data.setState(response === 'OK' ? 'thanks' : 'error');
-    data.setLoading(false);
+    try {
+      // internal-iec
+      await http.post('creatives/', {
+        action: 'internal-iec',
+        id: data.id,
+        approver: data.approver,
+        comment: state.comment,
+        isApproved: state.isApproved,
+        variations: state.variationsToUpload,
+        plaVariations: state.plaVariationsToUpload,
+        variationsLabels: state.variationsLabels,
+      });
+
+      setState('thanks');
+    } catch (error) {
+      setState('error');
+    } finally {
+      data.setLoading(false);
+    }
   };
 
   const { defaultCreativeLabels } = state.variationsLabels;
@@ -57,7 +63,7 @@ export const InternalIEC = (data) => {
 
   return (
     <form onSubmit={hendleOnSubmit}>
-      <ReadyToGo onChange={onChange('isApproved')} />
+      <Approve onChange={onChange('isApproved')} />
       <Autocomplete
         label='Default label list'
         multiple

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { TextArea } from '@components/ui';
 import { http } from '@libs/http';
 import { SendButton } from './send-button';
-import { ReadyToGo } from './ready-to-go';
+import { Approve } from './approve';
 
 export const AdvApproval = ({ id, setState, setLoading }) => {
-  const [readyToGo, setReadyToGo] = useState(null);
+  const [isApproved, setIsApproved] = useState(null);
   const [comment, setcomment] = useState(null);
 
   const hendleOnSubmit = async (e) => {
@@ -13,23 +13,28 @@ export const AdvApproval = ({ id, setState, setLoading }) => {
 
     setLoading(true);
 
-    // adv-approve
-    const response = await http.post('creatives/', {
-      action: 'adv-approve',
-      id,
-      isApproved: readyToGo,
-      comment,
-    });
+    try {
+      // adv-approve
+      await http.post('creatives/', {
+        action: 'adv-approve',
+        id,
+        isApproved,
+        comment,
+      });
 
-    setState(response === 'OK' ? 'thanks' : 'error');
-    setLoading(false);
+      setState('thanks');
+    } catch (error) {
+      setState('error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <form onSubmit={hendleOnSubmit}>
-      <ReadyToGo onChange={setReadyToGo} />
+      <Approve onChange={setIsApproved} />
       <TextArea onChange={setcomment} />
-      <SendButton disabled={readyToGo === null} />
+      <SendButton disabled={isApproved === null} />
     </form>
   );
 };

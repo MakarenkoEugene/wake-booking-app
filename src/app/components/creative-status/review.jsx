@@ -11,10 +11,16 @@ export const Review = ({ id, reviewer, setState, setLoading }) => {
 
     setLoading(true);
 
-    const response = await http.post('creatives/', { action: 'review', reviewer, id, comment });
+    try {
+      // review
+      await http.post('creatives/', { action: 'review', reviewer, id, comment });
 
-    setState(response === 'OK' ? 'thanks' : 'error');
-    setLoading(false);
+      setState('thanks');
+    } catch (error) {
+      setState('error');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

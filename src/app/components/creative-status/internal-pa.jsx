@@ -17,15 +17,21 @@ export const InternalPA = ({ id, ...data }) => {
     e.preventDefault();
 
     data.setLoading(true);
-    // internal-pa
-    const response = await http.post('creatives/', {
-      action: 'internal-pa',
-      id,
-      variationsLabels: state,
-    });
 
-    data.setState(response === 'OK' ? 'thanks' : 'error');
-    data.setLoading(false);
+    try {
+      // internal-pa
+      await http.post('creatives/', {
+        action: 'internal-pa',
+        id,
+        variationsLabels: state,
+      });
+
+      setState('thanks');
+    } catch (error) {
+      setState('error');
+    } finally {
+      data.setLoading(false);
+    }
   };
 
   return (

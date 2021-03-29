@@ -20,7 +20,7 @@ export const Paused = () => (
   <>
     <span className='badge paused'>PAUSED</span>
     <h2 style={{ whiteSpace: 'nowrap' }}>Creative paused.</h2>
-    <p>Creative is paused. Please contact your AM for detals.</p>
+    <p>Creative is paused. Please contact your AM for details.</p>
   </>
 );
 
