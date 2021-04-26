@@ -1,24 +1,22 @@
 * {
   padding: 0;
   margin: 0;
+  word-wrap: break-word;
 }
 
-html,
-body,
-#root {
-  background-color: #f5f5f5;
-  font-family: 'Helvetica Neue', sans-serif;
-  margin: 0 auto;
-  min-width: 1000px;
-  max-width: 1000px;
-  min-height: 100vh;
-  height: 100%;
+main {
+  padding: 2em 0px;
+}
 
-  .layout {
-    height: 100%;
-  }
+textarea::placeholder,
+input::placeholder {
+  font-size: 0.8em;
+}
+
+hr {
+  width: 100%;
 }
 
 .MuiAutocomplete-inputRoot[class*='MuiOutlinedInput-root'] .MuiAutocomplete-input:first-child {
-  padding-left: 5px !important;
+  padding: 12.5px 8px !important;
 }

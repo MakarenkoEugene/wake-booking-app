@@ -21,6 +21,7 @@
         "map": [
           ["@app", "./src/app"],
           ["@libs", "./src/app/libs"],
+          ["@utils", "./src/app/utils"],
           ["@components", "./src/app/components"],
           ["@store", "./src/app/store"]
         ],

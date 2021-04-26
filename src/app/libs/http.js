@@ -2,19 +2,23 @@ import { stringify } from 'query-string';
 
 class Http {
   constructor() {
-    this.BASE_URL = `${process.env.API_URL}/api`;
+    this.BASE_URL = `${process.env.API_URL}`;
   }
 
   get(url, data, headers) {
     return this.sendRequest('GET', url, data, headers);
   }
 
-  put(url, data, headers) {
-    return this.sendRequest('PUT', url, data, headers);
+  patch(url, data, headers) {
+    return this.sendRequest('PATCH', url, data, headers);
   }
 
   post(url, data, headers) {
     return this.sendRequest('POST', url, data, headers);
+  }
+
+  delete(url, data, headers) {
+    return this.sendRequest('DELETE', url, data, headers);
   }
 
   async sendRequest(method, url, data, headers) {
@@ -25,27 +29,30 @@ class Http {
       url = `${url}?${query}`;
     }
 
+    const delay = new Promise((res) => {
+      setTimeout(() => res('foo'), 1000);
+    });
+
+    await delay;
+
     const response = await fetch(this.getUrl(url), {
       method,
-      body: ['PUT', 'POST'].includes(method) ? JSON.stringify(data) : undefined,
+      body: ['PATCH', 'POST', 'DELETE'].includes(method) ? JSON.stringify(data) : undefined,
+      mode: 'cors',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         ...headers,
       },
     });
 
-    // TODO handle error
-    if (response.status === 200) {
-      const contentType = response.headers.get('Content-Type');
+    const contentType = response.headers.get('Content-Type');
 
-      if (contentType?.startsWith('application/json')) {
-        return response.json();
-      }
-
-      return response.text();
+    if (contentType?.startsWith('application/json')) {
+      return [await response.json(), response.status];
     }
 
-    return null;
+    return [await response.text(), response.status];
   }
 
   getUrl(url) {

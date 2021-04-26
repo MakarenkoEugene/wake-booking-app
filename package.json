@@ -1,14 +1,12 @@
 {
-  "name": "komodo-client",
-  "title": "Komodo",
+  "name": "wakebooking",
+  "title": "wakebooking",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
-    "deploy:staging": "STAGING=true webpack --mode production && ./bin/deploy-staging.sh",
     "build": "webpack --mode production",
-    "build:move": "webpack --mode production && ./bin/move.sh",
     "lint": "eslint ./src --ext .js,.jsx",
     "lint:fix": "eslint ./src --ext .js,.jsx --fix",
     "build:server": "bin/build.sh"
@@ -72,14 +70,18 @@
     "mobx-devtools-mst": "^0.9.26",
     "mobx-react": "^7.0.5",
     "mobx-state-tree": "^4.0.2",
+    "moment": "^2.29.1",
+    "notistack": "^1.0.5",
     "query-string": "^6.13.7",
     "react": "^17.0.1",
     "react-color": "2.19.3",
     "react-dom": "^17.0.1",
     "react-dropzone": "^11.2.4",
+    "react-google-maps": "^9.4.5",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "^5.2.0",
     "react-uuid": "^1.0.2",
+    "recompose": "^0.30.0",
     "styles-loader": "^3.0.0"
   },
   "husky": {

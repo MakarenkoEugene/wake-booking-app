@@ -1,7 +1,7 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { inject } from 'mobx-react';
-import { Grid, Typography } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 const Home = ({ rootStore: { ui } }) => {
   const q = new URLSearchParams(useLocation().search);
@@ -15,11 +15,15 @@ const Home = ({ rootStore: { ui } }) => {
   }
 
   return (
-    <Grid container justify='center'>
-      <Typography variant='h3'>Welcome to Komodo (admin panel)</Typography>
-
-      <img style={{ borderRadius: 10, marginTop: 20 }} src={`${process.env.PUBLIC_PATH}/assets/img/komodo.png`} />
-    </Grid>
+    <div>
+      <Typography variant='h3' color='textPrimary'>Welcome</Typography>
+      <Typography variant='body1' color='textPrimary'>
+        { new Array(50).fill(0)
+          .map(() => `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Sunt suscipit, ipsa fuga modi numquam maxime. Beatae corrupti facere ea.
+            Illo quisquam sequi sunt cupiditate blanditiis commodi, maiores totam explicabo ea.`).join('\n')}
+      </Typography>
+    </div>
   );
 };
 

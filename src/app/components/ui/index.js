@@ -8,4 +8,4 @@ export * from './alert';
 export * from './modal';
 export * from './table/table';
 export * from './toggle-button-group';
-export * from './text-area';
+export * from './stepper';

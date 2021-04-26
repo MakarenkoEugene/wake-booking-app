@@ -1,15 +1,21 @@
 import UIStore from '@store/ui.store';
 import UserStore from '@store/user.store';
-import AdvertisersStore from '@store/advertisers.store';
-import SettingsStore from '@store/settings.store';
-import CreativesStore from '@store/creatives.store';
+import ScheduleStore from '@store/schedule.store';
+
+const getInit = () => {
+  try {
+    return JSON.parse(window.data) || {};
+  } catch (error) {
+    return {};
+  }
+};
 
 export default class RootStore {
   constructor() {
+    this.init = getInit();
+
     this.ui = new UIStore(this);
     this.user = new UserStore(this);
-    this.advertisers = new AdvertisersStore(this);
-    this.settings = new SettingsStore(this);
-    this.creatives = new CreativesStore(this);
+    this.schedule = new ScheduleStore(this);
   }
 }

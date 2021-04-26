@@ -1,48 +1,60 @@
 import React from 'react';
-import { Router, Route, Switch, Link, useRouteMatch } from 'react-router-dom';
-import GuardedRoute from '@app/containers/guarded-route';
+import { Router, Route, Switch, useRouteMatch } from 'react-router-dom';
+// import GuardedRoute from '@app/containers/guarded-route';
 import Home from '@app/containers/home/home';
-import Advertisers from '@app/containers/advertisers/advertisers';
-import Mailer from '@app/containers/mailer/mailer';
-import Settings from '@app/containers/settings/settings';
-import TestPage from '@app/containers/test-page';
-import LayoutAdmin from '@app/containers/layout/admin';
-import Demo from '@app/containers/demo/demo';
+import Auth from '@app/containers/auth/auth';
+import NotFound from '@app/containers/not-found';
+import Layout from '@app/containers/layout/layout';
+
+import AdminRoute from './admin.routes';
+
 import history from './history';
 
-const AdminRoute = () => {
+// {/* <GuardedRoute path={`${path}/advertisers`} role='advertiser' component={Advertisers} />
+//   <GuardedRoute path={`${path}/mailer`} role='mailer' component={Mailer} />
+//   <GuardedRoute path={`${path}/settings/:tab?`} role='settings' component={Settings} /> */}
+
+const ClientRoute = () => {
   const { path } = useRouteMatch();
 
   return (
-    <LayoutAdmin>
-      <Switch>
-        <Route exact path={`${path}/`} component={Home} />
-
-        <GuardedRoute path={`${path}/advertisers`} role='advertiser' component={Advertisers} />
-        <GuardedRoute path={`${path}/mailer`} role='mailer' component={Mailer} />
-        <GuardedRoute path={`${path}/settings/:tab?`} role='settings' component={Settings} />
-      </Switch>
-    </LayoutAdmin>
+    <Switch>
+      <Route exact path={`${path}`} component={() => <h1>Client</h1>} />
+      <Route exact path={`${path}deal/`} component={() => <h1>Client deal</h1>} />
+      <Route exact path={`${path}subscriptions/`} component={() => <h1>Client subscriptions</h1>} />
+      <Route path='*' component={NotFound} />
+    </Switch>
   );
 };
 
-const H = () => (
-  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%' }}>
-    <ul>
-      <li><h2><Link to='/admin/'>Admin</Link></h2></li>
-      <li><h2><Link to='/creatives/'>Demo</Link></h2></li>
-    </ul>
-  </div>
-);
+const TeacherRoute = () => {
+  const { path } = useRouteMatch();
+
+  return (
+    <Switch>
+      <Route exact path={`${path}`} component={() => <h1>Teacher</h1>} />
+      <Route exact path={`${path}schedule/`} component={() => <h1>Teacher schedule</h1>} />
+      <Route exact path={`${path}queue/`} component={() => <h1>Teacher queue</h1>} />
+      <Route exact path={`${path}analytics/`} component={() => <h1>Teacher analytics</h1>} />
+      <Route exact path={`${path}subscriptions/`} component={() => <h1>Teacher subscriptions</h1>} />
+      <Route path='*' component={NotFound} />
+    </Switch>
+  );
+};
 
 const Routes = (
   <Router history={history}>
-    <Switch>
-      <Route exact path='/' component={H} />
-      <Route path='/admin' component={AdminRoute} />
-      <Route path='/creatives/:id?' component={Demo} />
-      <Route exact path='/test' component={TestPage} />
-    </Switch>
+    <Layout>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route path='/auth/' component={Auth} />
+        <Route path='/deal/' component={() => <h1>Deal</h1>} />
+        <Route path='/client/' component={ClientRoute} />
+        <Route path='/teacher/' component={TeacherRoute} />
+        <Route path='/admin/' component={AdminRoute} />
+        <Route path='*' component={NotFound} />
+      </Switch>
+    </Layout>
   </Router>
 );
 
